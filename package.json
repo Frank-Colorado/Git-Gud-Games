@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@mui/icons-material": "^5.14.11",
     "concurrently": "^8.2.1",
     "dotenv": "^16.3.1"
   }

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+import SearchInput from './SearchInput';
 import {
   Box,
   Typography,
@@ -11,7 +11,6 @@ import {
   MenuItem,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 
 const Navbar = () => {
@@ -30,6 +29,7 @@ const Navbar = () => {
           >
             Git Gud Games
           </Typography>
+          <SearchInput />
         </Toolbar>
       </AppBar>
     </Box>

@@ -1,8 +1,18 @@
+import Grid from '@mui/material/Grid';
+import { Box, Typography } from '@mui/material';
+
 const Home = () => {
   return (
-    <div>
-      <h1> Home Page</h1>
-    </div>
+    <Grid container spacing={2}>
+      <Grid item md={2}>
+        <Box sx={{ height: '100vh', width: '100vw', backgroundColor: 'red' }} />
+      </Grid>
+      <Grid item md={10}>
+        <Box
+          sx={{ height: '100vh', width: '100vw', backgroundColor: 'blue' }}
+        />
+      </Grid>
+    </Grid>
   );
 };
 

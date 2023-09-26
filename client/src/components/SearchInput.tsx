@@ -1,18 +1,20 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import { InputBase } from '@mui/material';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
+  border: '1px solid black',
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.black, 0.15),
+  backgroundColor: alpha(theme.palette.common.black, 0.05),
   '&:hover': {
-    backgroundColor: alpha(theme.palette.common.black, 0.25),
+    backgroundColor: alpha(theme.palette.common.black, 0.1),
   },
-  marginRight: theme.spacing(2),
+  marginRight: theme.spacing(10),
   marginLeft: 0,
   width: '100%',
+  height: '2.5rem',
   [theme.breakpoints.up('sm')]: {
     marginLeft: theme.spacing(3),
     width: 'auto',

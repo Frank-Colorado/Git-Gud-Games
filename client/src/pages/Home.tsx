@@ -1,11 +1,12 @@
 import Grid from '@mui/material/Grid';
 import { Box, Typography } from '@mui/material';
+import Sidebar from '../components/Sidebar';
 
 const Home = () => {
   return (
     <Grid container spacing={2}>
       <Grid item md={2}>
-        <Box sx={{ height: '100vh', width: '100vw', backgroundColor: 'red' }} />
+        <Sidebar />
       </Grid>
       <Grid item md={10}>
         <Box

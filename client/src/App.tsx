@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 
 const App = () => {
   return (
-    <div>
+    <div style={{ backgroundColor: 'black', height: '100vh', width: '100wh' }}>
       <Navbar />
       <Home />
     </div>

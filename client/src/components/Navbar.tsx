@@ -4,6 +4,7 @@ import {
   Box,
   Typography,
   AppBar,
+  Toolbar,
   InputBase,
   IconButton,
   Menu,
@@ -16,15 +17,20 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 const Navbar = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ height: '5rem' }}>
-        <Typography
-          variant="h6"
-          noWrap
-          component="div"
-          sx={{ display: { xs: 'none', sm: 'block' } }}
-        >
-          Git Gud Games
-        </Typography>
+      <AppBar
+        position="static"
+        sx={{ height: '5rem', backgroundColor: 'white' }}
+      >
+        <Toolbar>
+          <Typography
+            variant="h4"
+            noWrap
+            component="div"
+            sx={{ display: { xs: 'none', sm: 'block' }, color: 'black' }}
+          >
+            Git Gud Games
+          </Typography>
+        </Toolbar>
       </AppBar>
     </Box>
   );

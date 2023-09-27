@@ -1,8 +1,41 @@
+import { Grid, List, ListItem, Typography } from '@mui/material';
+
+const list = [
+  {
+    header: 'Home',
+    items: ['Popular', 'Favorites', 'New Releases'],
+  },
+  {
+    header: 'Genres',
+    items: [
+      'Action',
+      'Adventure',
+      'RPG',
+      'Shooter',
+      'Sports',
+      'Strategy',
+      'Indie',
+      'Puzzle',
+    ],
+  },
+];
+
 const Sidebar = () => {
   return (
-    <div>
-      <h1 style={{ color: 'white' }}>Sidebar</h1>
-    </div>
+    <Grid container direction="column" alignItems="center">
+      <div style={{ position: 'fixed', backgroundColor: 'orange' }}>
+        {list.map((item) => {
+          return (
+            <List>
+              <Typography variant="h5">{item.header}</Typography>
+              {item.items.map((subItem) => {
+                return <ListItem>{subItem}</ListItem>;
+              })}
+            </List>
+          );
+        })}
+      </div>
+    </Grid>
   );
 };
 

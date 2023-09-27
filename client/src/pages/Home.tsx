@@ -5,8 +5,8 @@ import GamesDisplay from '../components/GamesDisplay';
 
 const Home = () => {
   return (
-    <Grid container>
-      <Grid item md={2} sx={{ backgroundColor: 'green', height: '100vh' }}>
+    <Grid container sx={{ height: '100vh' }}>
+      <Grid item md={2} sx={{ backgroundColor: 'green' }}>
         <Sidebar />
       </Grid>
       <Grid item md={10} sx={{ backgroundColor: 'blue' }}>

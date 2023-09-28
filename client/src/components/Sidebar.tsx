@@ -26,10 +26,10 @@ const Sidebar = () => {
       <div style={{ position: 'fixed', backgroundColor: 'orange' }}>
         {list.map((item) => {
           return (
-            <List>
+            <List key={item.header}>
               <Typography variant="h5">{item.header}</Typography>
               {item.items.map((subItem) => {
-                return <ListItem>{subItem}</ListItem>;
+                return <ListItem key={subItem}>{subItem}</ListItem>;
               })}
             </List>
           );

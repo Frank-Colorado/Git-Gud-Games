@@ -1,12 +1,19 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
+import { useGetGamesByGenreQuery } from './store';
 
 const App = () => {
   return (
-    <div>
+    <Router>
       <Navbar />
-      <Home />
-    </div>
+      <Routes>
+        <Route
+          path="/"
+          element={<Home gamesQuery={useGetGamesByGenreQuery} />}
+        />
+      </Routes>
+    </Router>
   );
 };
 

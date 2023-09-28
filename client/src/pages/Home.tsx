@@ -13,7 +13,7 @@ const Home = () => {
         <Typography variant="h2" sx={{ mb: 2, color: 'white' }} align="center">
           Here's What's Good...
         </Typography>
-        <GamesDisplay />
+        <GamesDisplay  />
       </Grid>
     </Grid>
   );

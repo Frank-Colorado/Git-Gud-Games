@@ -55,7 +55,7 @@ const Navbar = () => {
         sx={{ height: '5rem', backgroundColor: 'white' }}
       >
         <Toolbar>
-          <Link to="/home/action">
+          <Link to="/">
             <Typography
               variant="h4"
               noWrap

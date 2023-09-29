@@ -1,4 +1,5 @@
 import { Grid, List, ListItem, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const list = [
   {
@@ -9,13 +10,13 @@ const list = [
     header: 'Genres',
     items: [
       'Action',
-      'Adventure',
-      'RPG',
-      'Shooter',
-      'Sports',
       'Strategy',
       'Indie',
+      'Shooter',
+      'Adventure',
       'Puzzle',
+      'Racing',
+      'Sports',
     ],
   },
 ];
@@ -29,7 +30,13 @@ const Sidebar = () => {
             <List key={item.header}>
               <Typography variant="h5">{item.header}</Typography>
               {item.items.map((subItem) => {
-                return <ListItem key={subItem}>{subItem}</ListItem>;
+                return (
+                  <ListItem key={subItem}>
+                    <Link to={`/games/${subItem.toLowerCase()}`}>
+                      {subItem}
+                    </Link>
+                  </ListItem>
+                );
               })}
             </List>
           );

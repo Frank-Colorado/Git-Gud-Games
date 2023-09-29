@@ -14,8 +14,8 @@ interface GamesDisplayProps {
 }
 
 const GamesDisplay = ({ query }: GamesDisplayProps) => {
-  const { data, error, isLoading } = useGetGamesQuery(query);
-  console.log(data, error, isLoading);
+  const { data, error, isFetching } = useGetGamesQuery(query);
+  console.log(data, error, isFetching);
 
   return (
     <Grid

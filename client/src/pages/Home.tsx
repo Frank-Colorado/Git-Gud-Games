@@ -1,5 +1,5 @@
 import MainDisplay from '../components/MainDisplay';
-import { useGetGamesByGenreQuery } from '../store';
+import { useGetGamesQuery } from '../store';
 
 const Home = () => {
   const headerText = "Here's What's Good...";
@@ -7,8 +7,8 @@ const Home = () => {
     <div>
       <MainDisplay
         header={headerText}
-        query="action"
-        gamesQuery={useGetGamesByGenreQuery}
+        query="&genre=action"
+        gamesQuery={useGetGamesQuery}
       />
     </div>
   );

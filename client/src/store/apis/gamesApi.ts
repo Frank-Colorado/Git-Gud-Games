@@ -10,33 +10,21 @@ export interface Game {
   rating: number;
 }
 
-export type GameApiQuery = typeof useGetGamesByGenreQuery;
+export type GamesApiQueryType = typeof useGetGamesQuery;
 
 const gamesApi = createApi({
   reducerPath: 'games',
   baseQuery: fetchBaseQuery({ baseUrl }),
   tagTypes: ['Games'],
   endpoints: (builder) => ({
-    // This query gets games by the specified genre
-    // It accepts a string as an param, and returns type Games
-    getGamesByGenre: builder.query<Game[], {}>({
-      query: (genre: string) =>
-        `/games?key=${apiKey}&platforms=4&genres=${genre}`,
-      transformResponse: (response: { results: Game[] }, _meta, _arg) =>
-        response.results,
-    }),
-    // This query gets games by the specified search term
-    // It accepts a string as an param, and returns type Games
-    getGamesBySearchTerm: builder.query<Game[], string>({
-      query: (searchTerm: string): string =>
-        `/games?key=${apiKey}&platforms=4&search=${searchTerm}`,
+    getGames: builder.query<Game[], {}>({
+      query: (param: string) => `/games?key=${apiKey}&platforms=4${param}`,
       transformResponse: (response: { results: Game[] }, _meta, _arg) =>
         response.results,
     }),
   }),
 });
 
-export const { useGetGamesByGenreQuery, useGetGamesBySearchTermQuery } =
-  gamesApi;
+export const { useGetGamesQuery } = gamesApi;
 
 export { gamesApi };

@@ -13,8 +13,5 @@ export const store = configureStore({
 
 setupListeners(store.dispatch);
 
-export {
-  useGetGamesByGenreQuery,
-  useGetGamesBySearchTermQuery,
-} from './apis/gamesApi';
-export type { Game, GameApiQuery } from './apis/gamesApi';
+export { useGetGamesQuery } from './apis/gamesApi';
+export type { Game, GamesApiQueryType } from './apis/gamesApi';

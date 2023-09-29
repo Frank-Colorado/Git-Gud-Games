@@ -7,11 +7,11 @@ import {
   Button,
   Typography,
 } from '@mui/material';
-import { GameApiQuery } from '../store';
+import { GamesApiQueryType } from '../store';
 
 interface GamesDisplayProps {
   query: string;
-  gamesQuery: GameApiQuery;
+  gamesQuery: GamesApiQueryType;
 }
 
 const GamesDisplay = ({ query, gamesQuery }: GamesDisplayProps) => {

@@ -1,12 +1,12 @@
 import { Grid, Typography } from '@mui/material';
 import Sidebar from './Sidebar';
 import GamesDisplay from './GamesDisplay';
-import { GameApiQuery } from '../store';
+import { GamesApiQueryType } from '../store';
 
 interface MainDisplayProps {
   header: string;
   query: string;
-  gamesQuery: GameApiQuery;
+  gamesQuery: GamesApiQueryType;
 }
 
 const MainDisplay = ({ header, query, gamesQuery }: MainDisplayProps) => {

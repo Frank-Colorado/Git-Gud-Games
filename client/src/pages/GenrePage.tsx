@@ -3,7 +3,7 @@ import MainDisplay from '../components/MainDisplay';
 
 const GenrePage = () => {
   const { genre } = useParams();
-  const headerText = `{genre} Games`;
+  const headerText = `${genre} Games`;
   const queryText = `&genres=${genre}`;
   return (
     <div>

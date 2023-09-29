@@ -1,15 +1,13 @@
 import { Grid, Typography } from '@mui/material';
 import Sidebar from './Sidebar';
 import GamesDisplay from './GamesDisplay';
-import { GamesApiQueryType } from '../store';
 
 interface MainDisplayProps {
   header: string;
   query: string;
-  gamesQuery: GamesApiQueryType;
 }
 
-const MainDisplay = ({ header, query, gamesQuery }: MainDisplayProps) => {
+const MainDisplay = ({ header, query }: MainDisplayProps) => {
   return (
     <Grid container sx={{ height: '100vh' }}>
       <Grid item md={2} sx={{ backgroundColor: 'green' }}>
@@ -19,7 +17,7 @@ const MainDisplay = ({ header, query, gamesQuery }: MainDisplayProps) => {
         <Typography variant="h2" sx={{ mb: 2, color: 'white' }} align="center">
           {header}
         </Typography>
-        <GamesDisplay query={query} gamesQuery={gamesQuery} />
+        <GamesDisplay query={query} />
       </Grid>
     </Grid>
   );

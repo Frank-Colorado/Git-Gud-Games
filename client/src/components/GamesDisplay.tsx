@@ -7,15 +7,14 @@ import {
   Button,
   Typography,
 } from '@mui/material';
-import { GamesApiQueryType } from '../store';
+import { useGetGamesQuery } from '../store';
 
 interface GamesDisplayProps {
   query: string;
-  gamesQuery: GamesApiQueryType;
 }
 
-const GamesDisplay = ({ query, gamesQuery }: GamesDisplayProps) => {
-  const { data, error, isLoading } = gamesQuery(query);
+const GamesDisplay = ({ query }: GamesDisplayProps) => {
+  const { data, error, isLoading } = useGetGamesQuery(query);
   console.log(data, error, isLoading);
 
   return (

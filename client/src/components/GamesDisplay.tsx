@@ -7,30 +7,15 @@ import {
   Button,
   Typography,
 } from '@mui/material';
-import { useParams } from 'react-router-dom';
 import { GameApiQuery } from '../store';
-import {
-  useGetGamesByGenreQuery,
-  useGetGamesBySearchTermQuery,
-} from '../store';
 
 interface GamesDisplayProps {
-  gamesQuery: GameApiQuery;
   query: string;
+  gamesQuery: GameApiQuery;
 }
 
 const GamesDisplay = ({ query, gamesQuery }: GamesDisplayProps) => {
-  const { genre, searchTerm } = useParams();
-
-  const isGenre = Boolean(genre);
-  const isSearchTerm = Boolean(searchTerm);
-
-  const { data, error, isLoading } = isGenre
-    ? useGetGamesByGenreQuery(genre!)
-    : isSearchTerm
-    ? useGetGamesBySearchTermQuery(searchTerm!)
-    : useGetGamesByGenreQuery('top rated');
-
+  const { data, error, isLoading } = gamesQuery(query);
   console.log(data, error, isLoading);
 
   return (

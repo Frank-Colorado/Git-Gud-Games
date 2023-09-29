@@ -16,9 +16,10 @@ import {
 
 interface GamesDisplayProps {
   gamesQuery: GameApiQuery;
+  query: string;
 }
 
-const GamesDisplay = ({ gamesQuery }: GamesDisplayProps) => {
+const GamesDisplay = ({ query, gamesQuery }: GamesDisplayProps) => {
   const { genre, searchTerm } = useParams();
 
   const isGenre = Boolean(genre);

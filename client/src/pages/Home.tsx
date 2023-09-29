@@ -1,11 +1,12 @@
+import { useParams } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import { Typography } from '@mui/material';
 import Sidebar from '../components/Sidebar';
 import GamesDisplay from '../components/GamesDisplay';
-import { useGetGamesByGenreQuery } from '../store';
+import { GameApiQuery } from '../store';
 
 interface HomeProps {
-  gamesQuery: typeof useGetGamesByGenreQuery;
+  gamesQuery: GameApiQuery;
 }
 
 const Home = ({ gamesQuery }: HomeProps) => {
@@ -18,7 +19,7 @@ const Home = ({ gamesQuery }: HomeProps) => {
         <Typography variant="h2" sx={{ mb: 2, color: 'white' }} align="center">
           Here's What's Good...
         </Typography>
-        <GamesDisplay />
+        <GamesDisplay gamesQuery={gamesQuery} />
       </Grid>
     </Grid>
   );

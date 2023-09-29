@@ -12,6 +12,7 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -54,14 +55,17 @@ const Navbar = () => {
         sx={{ height: '5rem', backgroundColor: 'white' }}
       >
         <Toolbar>
-          <Typography
-            variant="h4"
-            noWrap
-            component="div"
-            sx={{ color: 'black' }}
-          >
-            Git Gud Games
-          </Typography>
+          <Link to="/home/action">
+            <Typography
+              variant="h4"
+              noWrap
+              component="div"
+              sx={{ color: 'black' }}
+            >
+              Git Gud Games
+            </Typography>
+          </Link>
+
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <SearchInput />

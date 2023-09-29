@@ -9,7 +9,7 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route
-          path="/"
+          path="/home/:genre"
           element={<Home gamesQuery={useGetGamesByGenreQuery} />}
         />
       </Routes>

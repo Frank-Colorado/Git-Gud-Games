@@ -7,8 +7,31 @@ import {
   Button,
   Typography,
 } from '@mui/material';
+import { useParams } from 'react-router-dom';
+import { GameApiQuery } from '../store';
+import {
+  useGetGamesByGenreQuery,
+  useGetGamesBySearchTermQuery,
+} from '../store';
 
-const GamesDisplay = () => {
+interface GamesDisplayProps {
+  gamesQuery: GameApiQuery;
+}
+
+const GamesDisplay = ({ gamesQuery }: GamesDisplayProps) => {
+  const { genre, searchTerm } = useParams();
+
+  const isGenre = Boolean(genre);
+  const isSearchTerm = Boolean(searchTerm);
+
+  const { data, error, isLoading } = isGenre
+    ? useGetGamesByGenreQuery(genre!)
+    : isSearchTerm
+    ? useGetGamesBySearchTermQuery(searchTerm!)
+    : useGetGamesByGenreQuery('top rated');
+
+  console.log(data, error, isLoading);
+
   return (
     <Grid
       container

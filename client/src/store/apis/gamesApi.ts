@@ -10,6 +10,8 @@ export interface Game {
   rating: number;
 }
 
+export type GameApiQuery = typeof useGetGamesByGenreQuery;
+
 const gamesApi = createApi({
   reducerPath: 'games',
   baseQuery: fetchBaseQuery({ baseUrl }),

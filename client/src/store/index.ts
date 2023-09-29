@@ -17,4 +17,4 @@ export {
   useGetGamesByGenreQuery,
   useGetGamesBySearchTermQuery,
 } from './apis/gamesApi';
-export type { Game } from './apis/gamesApi';
+export type { Game, GameApiQuery } from './apis/gamesApi';

@@ -8,10 +8,7 @@ const App = () => {
     <Router>
       <Navbar />
       <Routes>
-        <Route
-          path="/home/:genre"
-          element={<Home gamesQuery={useGetGamesByGenreQuery} />}
-        />
+        <Route path="/home/:genre" element={<Home />} />
       </Routes>
     </Router>
   );

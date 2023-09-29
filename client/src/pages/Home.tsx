@@ -1,15 +1,15 @@
-import { useParams } from 'react-router-dom';
+import MainDisplay from '../components/MainDisplay';
+import { useGetGamesByGenreQuery } from '../store';
 
-import { GameApiQuery } from '../store';
-
-interface HomeProps {
-  gamesQuery: GameApiQuery;
-}
-
-const Home = ({ gamesQuery }: HomeProps) => {
+const Home = () => {
+  const headerText = "Here's What's Good...";
   return (
     <div>
-      <h1>placeholder</h1>
+      <MainDisplay
+        header={headerText}
+        query="action"
+        gamesQuery={useGetGamesByGenreQuery}
+      />
     </div>
   );
 };

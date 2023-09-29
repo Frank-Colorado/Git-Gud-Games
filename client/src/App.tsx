@@ -7,7 +7,7 @@ const App = () => {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/home/:genre" element={<Home />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </Router>
   );

@@ -4,34 +4,35 @@ import {
   Autocomplete as MuiAutocomplete,
   Typography,
 } from '@mui/material';
-import { Game } from '../store';
+import { useGetGamesQuery, Game } from '../store';
 
 const Autocomplete = () => {
-  const [value, setValue] = useState<Game | null>(null);
   const [inputValue, setInputValue] = useState('');
-  const [options, setOptions] = useState<Game[]>([]);
+  const { data, error, isLoading } = useGetGamesQuery(inputValue);
+  const options: Game[] = data || [];
+  console.log(data);
+
+  const handleInputChange = (
+    event: React.ChangeEvent<{}>,
+    newInputValue: string
+  ) => {
+    setInputValue(newInputValue);
+  };
+
   return (
     <MuiAutocomplete
       disablePortal
       sx={{ width: 300 }}
       options={options}
-      getOptionLabel={(option) =>
-        typeof option === 'string' ? option : option.name
-      }
-      filterOptions={(x) => x}
-      autoComplete
-      includeInputInList
-      value={value}
-      noOptionsText={<Typography>No results found</Typography>}
+      loading={isLoading}
+      value={null}
       onChange={(event, newValue: Game | null) => {
-        setOptions(newValue ? [newValue, ...options] : options);
-        setValue(newValue);
+        console.log(newValue);
       }}
-      onInputChange={(event, newInputValue) => {
-        setInputValue(newInputValue);
-      }}
+      onInputChange={handleInputChange}
+      getOptionLabel={(option: Game) => option.name}
       renderInput={(params) => (
-        <TextField {...params} label="Combo box" placeholder="Favorites" />
+        <TextField {...params} label="Search" variant="outlined" fullWidth />
       )}
     />
   );

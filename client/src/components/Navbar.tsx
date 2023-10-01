@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import SearchInput from './SearchInput';
+import Autocomplete from './Autocomplete';
 import {
   Box,
   Typography,
@@ -65,10 +66,9 @@ const Navbar = () => {
               Git Gud Games
             </Typography>
           </Link>
-
+          <Autocomplete />
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <SearchInput />
             <IconButton
               size="large"
               edge="end"

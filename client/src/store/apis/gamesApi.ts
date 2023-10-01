@@ -17,14 +17,20 @@ const gamesApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl }),
   tagTypes: ['Games'],
   endpoints: (builder) => ({
-    getGames: builder.query<Game[], {}>({
+    getGames: builder.query<Game[], string>({
       query: (param: string) => `/games?key=${apiKey}&platforms=4${param}`,
+      transformResponse: (response: { results: Game[] }, _meta, _arg) =>
+        response.results,
+    }),
+    getSearchOptions: builder.query<Game[], string>({
+      query: (param: string) =>
+        `/games?key=${apiKey}&page_size=5&search=${param}`,
       transformResponse: (response: { results: Game[] }, _meta, _arg) =>
         response.results,
     }),
   }),
 });
 
-export const { useGetGamesQuery } = gamesApi;
+export const { useGetGamesQuery, useGetSearchOptionsQuery } = gamesApi;
 
 export { gamesApi };

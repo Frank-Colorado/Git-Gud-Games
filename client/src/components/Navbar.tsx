@@ -66,9 +66,9 @@ const Navbar = () => {
               Git Gud Games
             </Typography>
           </Link>
-          <Autocomplete />
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <Autocomplete />
             <IconButton
               size="large"
               edge="end"

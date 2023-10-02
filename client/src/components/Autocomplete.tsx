@@ -1,16 +1,16 @@
 import { useState } from 'react';
-import {
-  TextField,
-  Autocomplete as MuiAutocomplete,
-  Typography,
-} from '@mui/material';
-import { useGetGamesQuery, Game } from '../store';
+import { useNavigate } from 'react-router-dom';
+import { TextField, Autocomplete as MuiAutocomplete } from '@mui/material';
+import { useGetSearchOptionsQuery, Game } from '../store';
 
 const Autocomplete = () => {
+  const navigate = useNavigate();
+
   const [inputValue, setInputValue] = useState('');
-  const { data, error, isLoading } = useGetGamesQuery(inputValue);
+  const [value, setValue] = useState<Game | null>(null);
+  const { data, error, isFetching } = useGetSearchOptionsQuery(inputValue);
   const options: Game[] = data || [];
-  console.log(data);
+  console.log(data, error, isFetching);
 
   const handleInputChange = (
     event: React.ChangeEvent<{}>,
@@ -19,22 +19,47 @@ const Autocomplete = () => {
     setInputValue(newInputValue);
   };
 
+  const handleValueChange = (
+    event: React.ChangeEvent<{}>,
+    newValue: Game | null
+  ) => {
+    setValue(newValue);
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (value) {
+      navigate(`/search/${value.slug}`);
+      setInputValue('');
+      setValue(null);
+      return;
+    }
+    if (inputValue) {
+      navigate(`/search/${inputValue}`);
+      setInputValue('');
+      setValue(null);
+      return;
+    }
+    navigate('/');
+  };
+
   return (
-    <MuiAutocomplete
-      disablePortal
-      sx={{ width: 300 }}
-      options={options}
-      loading={isLoading}
-      value={null}
-      onChange={(event, newValue: Game | null) => {
-        console.log(newValue);
-      }}
-      onInputChange={handleInputChange}
-      getOptionLabel={(option: Game) => option.name}
-      renderInput={(params) => (
-        <TextField {...params} label="Search" variant="outlined" fullWidth />
-      )}
-    />
+    <form onSubmit={handleSubmit}>
+      <MuiAutocomplete
+        disablePortal
+        sx={{ width: 300 }}
+        options={options}
+        loading={isFetching}
+        value={null}
+        onChange={handleValueChange}
+        onInputChange={handleInputChange}
+        getOptionLabel={(option: Game) => option.name}
+        renderInput={(params) => (
+          <TextField {...params} label="Search" variant="outlined" fullWidth />
+        )}
+      />
+    </form>
   );
 };
 

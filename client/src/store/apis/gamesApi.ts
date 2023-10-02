@@ -4,6 +4,7 @@ const baseUrl = `https://api.rawg.io/api`;
 
 export interface Game {
   id: number;
+  slug: string;
   name: string;
   background_image: string;
   genres: { id: number; name: string; slug: string }[];

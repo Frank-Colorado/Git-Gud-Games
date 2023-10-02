@@ -17,7 +17,7 @@ const MainDisplay = ({ header, query }: MainDisplayProps) => {
         <Typography variant="h2" sx={{ mb: 2, color: 'white' }} align="center">
           {header}
         </Typography>
-        <GamesDisplay query={query} />
+        <GamesDisplay query={query} />;
       </Grid>
     </Grid>
   );

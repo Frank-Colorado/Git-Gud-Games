@@ -55,9 +55,7 @@ const Autocomplete = () => {
         onChange={handleValueChange}
         onInputChange={handleInputChange}
         getOptionLabel={(option: Game) => option.name}
-        renderInput={(params) => (
-          <TextField {...params} label="Search" variant="outlined" fullWidth />
-        )}
+        renderInput={(params) => <TextField {...params} label="Search" />}
       />
     </form>
   );

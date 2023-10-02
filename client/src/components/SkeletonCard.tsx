@@ -5,9 +5,8 @@ const SkeletonCard = () => {
     <Grid item xs={3}>
       <Card
         sx={{
-          minHeight: '20rem',
-          maxHeight: '25rem',
-          maxWidth: '22rem',
+          height: '22rem',
+          width: '22rem',
           bgcolor: '#3e3e3e',
         }}
       >

@@ -2,6 +2,7 @@ import Grid from '@mui/material/Grid';
 import { Typography } from '@mui/material';
 import { useGetGamesQuery } from '../store';
 import GameCard from './GameCard';
+import SkeletonCard from './SkeletonCard';
 
 interface GamesDisplayProps {
   query: string;
@@ -12,11 +13,16 @@ const GamesDisplay = ({ query }: GamesDisplayProps) => {
   console.log(data, error, isFetching);
 
   const Fetching = (
-    <Grid item xs={12}>
-      <Typography variant="h3" component="div">
-        Fetching...
-      </Typography>
-    </Grid>
+    <>
+      <SkeletonCard />
+      <SkeletonCard />
+      <SkeletonCard />
+      <SkeletonCard />
+      <SkeletonCard />
+      <SkeletonCard />
+      <SkeletonCard />
+      <SkeletonCard />
+    </>
   );
 
   const Error = (

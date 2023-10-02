@@ -6,7 +6,6 @@ import {
   CardActions,
   Button,
   Typography,
-  Box,
 } from '@mui/material';
 import { GameType } from '../store';
 
@@ -19,7 +18,7 @@ const GameCard = ({ game }: GameCardProps) => {
 
   return (
     <Grid item xs={3}>
-      <Card sx={{ minHeight: '20rem', maxHeight: '25rem', maxWidth: '22rem' }}>
+      <Card sx={{ height: '22rem', width: '22rem' }}>
         <CardMedia
           component="img"
           height="200"

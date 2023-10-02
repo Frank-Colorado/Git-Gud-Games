@@ -7,14 +7,22 @@ import {
   Button,
   Typography,
 } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import { GameType } from '../store';
+import React from 'react';
 
 interface GameCardProps {
   game: GameType;
 }
 
 const GameCard = ({ game }: GameCardProps) => {
+  const navigate = useNavigate();
   const { id, name, background_image, genres } = game;
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const id = event.currentTarget.value;
+    navigate(`/game/${id}`);
+  };
 
   return (
     <Grid item xs={3}>
@@ -38,7 +46,7 @@ const GameCard = ({ game }: GameCardProps) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" value={id}>
+          <Button size="small" value={id} onClick={handleClick}>
             View
           </Button>
         </CardActions>

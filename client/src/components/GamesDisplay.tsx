@@ -8,6 +8,7 @@ import {
   Typography,
 } from '@mui/material';
 import { useGetGamesQuery } from '../store';
+import GameCard from './GameCard';
 
 interface GamesDisplayProps {
   query: string;
@@ -15,7 +16,6 @@ interface GamesDisplayProps {
 
 const GamesDisplay = ({ query }: GamesDisplayProps) => {
   const { data, error, isFetching } = useGetGamesQuery(query);
-  console.log(data, error, isFetching);
 
   return (
     <Grid
@@ -23,58 +23,13 @@ const GamesDisplay = ({ query }: GamesDisplayProps) => {
       rowSpacing={7}
       sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}
     >
-      <Grid item xs={3}>
-        <Card sx={{ maxHeight: '20rem', maxWidth: '22rem' }}>
-          <CardContent>
-            <Typography variant="h5" component="div">
-              Game 1
-            </Typography>
-            <Box sx={{ height: '500px', backgroundColor: 'red' }} />
-          </CardContent>
-          <CardActions>
-            <Button size="small">View</Button>
-          </CardActions>
-        </Card>
-      </Grid>
-      <Grid item xs={3}>
-        <Card sx={{ maxHeight: '20rem', maxWidth: '22rem' }}>
-          <CardContent>
-            <Typography variant="h5" component="div">
-              Game 1
-            </Typography>
-            <Box sx={{ height: '500px', backgroundColor: 'red' }} />
-          </CardContent>
-          <CardActions>
-            <Button size="small">View</Button>
-          </CardActions>
-        </Card>
-      </Grid>
-      <Grid item xs={3}>
-        <Card sx={{ maxHeight: '20rem', maxWidth: '22rem' }}>
-          <CardContent>
-            <Typography variant="h5" component="div">
-              Game 1
-            </Typography>
-            <Box sx={{ height: '500px', backgroundColor: 'red' }} />
-          </CardContent>
-          <CardActions>
-            <Button size="small">View</Button>
-          </CardActions>
-        </Card>
-      </Grid>
-      <Grid item xs={3}>
-        <Card sx={{ maxHeight: '20rem', maxWidth: '22rem' }}>
-          <CardContent>
-            <Typography variant="h5" component="div">
-              Game 1
-            </Typography>
-            <Box sx={{ height: '500px', backgroundColor: 'red' }} />
-          </CardContent>
-          <CardActions>
-            <Button size="small">View</Button>
-          </CardActions>
-        </Card>
-      </Grid>
+      {isFetching && <div>loading...</div>}
+      {error && <div>error...</div>}
+      {data ? (
+        data.map((game) => <GameCard key={game.id} game={game} />)
+      ) : (
+        <div>no games found</div>
+      )}
     </Grid>
   );
 };

@@ -1,7 +1,6 @@
 import {
   Grid,
   Card,
-  CardHeader,
   CardMedia,
   CardContent,
   CardActions,
@@ -20,11 +19,10 @@ const GameCard = ({ game }: GameCardProps) => {
 
   return (
     <Grid item xs={3}>
-      <Card sx={{ maxHeight: '20rem', maxWidth: '22rem' }}>
-        <CardHeader title={name} />
+      <Card sx={{ minHeight: '20rem', maxHeight: '25rem', maxWidth: '22rem' }}>
         <CardMedia
           component="img"
-          height="140"
+          height="200"
           image={
             background_image
               ? background_image
@@ -33,7 +31,10 @@ const GameCard = ({ game }: GameCardProps) => {
           alt={name}
         />
         <CardContent>
-          <Typography variant="h5" component="div">
+          <Typography variant="h6" textAlign="center">
+            {name}
+          </Typography>
+          <Typography component="div" textAlign="center">
             {genres.map((genre) => genre.name).join(', ')}
           </Typography>
         </CardContent>

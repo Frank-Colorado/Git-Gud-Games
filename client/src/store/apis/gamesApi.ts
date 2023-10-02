@@ -29,9 +29,17 @@ const gamesApi = createApi({
       transformResponse: (response: { results: GameType[] }, _meta, _arg) =>
         response.results,
     }),
+    getGameDetails: builder.query<GameType, string>({
+      query: (gameId: string) => `/games/${gameId}?key=${apiKey}`,
+      transformResponse: (response: GameType, _meta, _arg) => response,
+    }),
   }),
 });
 
-export const { useGetGamesQuery, useGetSearchOptionsQuery } = gamesApi;
+export const {
+  useGetGamesQuery,
+  useGetSearchOptionsQuery,
+  useGetGameDetailsQuery,
+} = gamesApi;
 
 export { gamesApi };

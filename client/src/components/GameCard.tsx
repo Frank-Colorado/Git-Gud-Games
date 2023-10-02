@@ -7,8 +7,13 @@ import {
   Typography,
   Box,
 } from '@mui/material';
+import { GameType } from '../store';
 
-const GameCard = () => {
+interface GameCardProps {
+  game: GameType;
+}
+
+const GameCard = ({ game }: GameCardProps) => {
   return (
     <Grid item xs={3}>
       <Card sx={{ maxHeight: '20rem', maxWidth: '22rem' }}>

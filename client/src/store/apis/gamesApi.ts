@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 const apiKey = import.meta.env.VITE_RAWG_API_KEY;
 const baseUrl = `https://api.rawg.io/api`;
 
-export interface Game {
+export interface GameType {
   id: number;
   slug: string;
   name: string;
@@ -18,15 +18,15 @@ const gamesApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl }),
   tagTypes: ['Games'],
   endpoints: (builder) => ({
-    getGames: builder.query<Game[], string>({
+    getGames: builder.query<GameType[], string>({
       query: (param: string) => `/games?key=${apiKey}&platforms=4${param}`,
-      transformResponse: (response: { results: Game[] }, _meta, _arg) =>
+      transformResponse: (response: { results: GameType[] }, _meta, _arg) =>
         response.results,
     }),
-    getSearchOptions: builder.query<Game[], string>({
+    getSearchOptions: builder.query<GameType[], string>({
       query: (param: string) =>
         `/games?key=${apiKey}&page_size=5&search=${param}`,
-      transformResponse: (response: { results: Game[] }, _meta, _arg) =>
+      transformResponse: (response: { results: GameType[] }, _meta, _arg) =>
         response.results,
     }),
   }),

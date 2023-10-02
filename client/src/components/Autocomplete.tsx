@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TextField, Autocomplete as MuiAutocomplete } from '@mui/material';
-import { useGetSearchOptionsQuery, Game } from '../store';
+import { useGetSearchOptionsQuery, GameType } from '../store';
 
 const Autocomplete = () => {
   const navigate = useNavigate();
 
   const [inputValue, setInputValue] = useState('');
-  const [value, setValue] = useState<Game | null>(null);
+  const [value, setValue] = useState<GameType | null>(null);
   const { data, error, isFetching } = useGetSearchOptionsQuery(inputValue);
-  const options: Game[] = data || [];
+  const options: GameType[] = data || [];
   console.log(data, error, isFetching);
 
   const handleInputChange = (
@@ -21,7 +21,7 @@ const Autocomplete = () => {
 
   const handleValueChange = (
     event: React.ChangeEvent<{}>,
-    newValue: Game | null
+    newValue: GameType | null
   ) => {
     setValue(newValue);
   };
@@ -54,7 +54,7 @@ const Autocomplete = () => {
         value={null}
         onChange={handleValueChange}
         onInputChange={handleInputChange}
-        getOptionLabel={(option: Game) => option.name}
+        getOptionLabel={(option: GameType) => option.name}
         renderInput={(params) => <TextField {...params} label="Search" />}
       />
     </form>

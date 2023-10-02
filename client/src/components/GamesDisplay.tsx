@@ -7,7 +7,7 @@ import {
   Button,
   Typography,
 } from '@mui/material';
-import { useGetGamesQuery } from '../store';
+import { useGetGamesQuery, GameType } from '../store';
 import GameCard from './GameCard';
 
 interface GamesDisplayProps {
@@ -16,6 +16,7 @@ interface GamesDisplayProps {
 
 const GamesDisplay = ({ query }: GamesDisplayProps) => {
   const { data, error, isFetching } = useGetGamesQuery(query);
+  console.log(data, error, isFetching);
 
   return (
     <Grid
@@ -25,10 +26,10 @@ const GamesDisplay = ({ query }: GamesDisplayProps) => {
     >
       {isFetching && <div>loading...</div>}
       {error && <div>error...</div>}
-      {data ? (
-        data.map((game) => <GameCard key={game.id} game={game} />)
+      {data?.length === 0 ? (
+        <div> no games found </div>
       ) : (
-        <div>no games found</div>
+        data?.map((game) => <GameCard key={game.id} game={game} />)
       )}
     </Grid>
   );

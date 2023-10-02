@@ -1,6 +1,8 @@
 import {
   Grid,
   Card,
+  CardHeader,
+  CardMedia,
   CardContent,
   CardActions,
   Button,
@@ -14,17 +16,31 @@ interface GameCardProps {
 }
 
 const GameCard = ({ game }: GameCardProps) => {
+  const { id, name, background_image, genres } = game;
+
   return (
     <Grid item xs={3}>
       <Card sx={{ maxHeight: '20rem', maxWidth: '22rem' }}>
+        <CardHeader title={name} />
+        <CardMedia
+          component="img"
+          height="140"
+          image={
+            background_image
+              ? background_image
+              : 'https://via.placeholder.com/150'
+          }
+          alt={name}
+        />
         <CardContent>
           <Typography variant="h5" component="div">
-            Game 1
+            {genres.map((genre) => genre.name).join(', ')}
           </Typography>
-          <Box sx={{ height: '500px', backgroundColor: 'red' }} />
         </CardContent>
         <CardActions>
-          <Button size="small">View</Button>
+          <Button size="small" value={id}>
+            View
+          </Button>
         </CardActions>
       </Card>
     </Grid>

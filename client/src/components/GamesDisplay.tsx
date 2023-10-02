@@ -1,13 +1,6 @@
 import Grid from '@mui/material/Grid';
-import {
-  Box,
-  Card,
-  CardActions,
-  CardContent,
-  Button,
-  Typography,
-} from '@mui/material';
-import { useGetGamesQuery, GameType } from '../store';
+
+import { useGetGamesQuery } from '../store';
 import GameCard from './GameCard';
 
 interface GamesDisplayProps {

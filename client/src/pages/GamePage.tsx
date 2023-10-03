@@ -7,7 +7,7 @@ const GamePage = () => {
   const { id } = useParams();
 
   if (!id) {
-    return <div>Invalid Game ID</div>;
+    return <div>This Game Does Not Exist</div>;
   }
 
   const { data, error, isLoading } = useGetGameDetailsQuery(id);
@@ -24,10 +24,7 @@ const GamePage = () => {
     >
       <Grid item md={8}>
         <Typography variant="h2" sx={{ mb: 2, color: 'white' }}>
-          Hello
-        </Typography>
-        <Typography variant="h2" sx={{ mb: 2, color: 'white' }}>
-          World
+          {data?.name}
         </Typography>
         <Carousel
           autoPlay={false}

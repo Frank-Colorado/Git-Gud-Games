@@ -1,4 +1,5 @@
 import Carousel from 'react-material-ui-carousel';
+import { Box } from '@mui/material';
 import CarouselItem from './CarouselItem';
 import { useGetGameScreenShotsQuery } from '../store';
 
@@ -10,7 +11,7 @@ const GameCarousel = ({ id }: GameCarouselProps) => {
   const { data, error, isLoading } = useGetGameScreenShotsQuery(id);
 
   return (
-    <div>
+    <Box sx={{ mt: 2 }}>
       {isLoading ? (
         <div>Loading...</div>
       ) : error ? (
@@ -30,7 +31,7 @@ const GameCarousel = ({ id }: GameCarouselProps) => {
       ) : (
         <div>No screenshots available</div>
       )}
-    </div>
+    </Box>
   );
 };
 export default GameCarousel;

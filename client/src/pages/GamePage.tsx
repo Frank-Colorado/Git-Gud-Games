@@ -3,6 +3,7 @@ import { useGetGameDetailsQuery } from '../store';
 import { Grid, Typography, Box, Paper, Button } from '@mui/material';
 import GameCarousel from '../components/GameCarousel';
 import GameDetails from '../components/GameDetails';
+import GameDeals from '../components/GameDeals';
 
 const GamePage = () => {
   const { gameId } = useParams();
@@ -46,9 +47,8 @@ const GamePage = () => {
         </div>
         <Grid container spacing={3}>
           <Grid item md={8}>
-            <Box sx={{ mt: 2 }}>
-              <GameCarousel id={gameId} />
-            </Box>
+            <GameCarousel id={gameId} />
+            <GameDeals />
           </Grid>
           <Grid item md={4}>
             <GameDetails details={data} />

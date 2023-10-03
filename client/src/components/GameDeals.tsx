@@ -1,8 +1,10 @@
+import { Box } from '@mui/material';
+
 const GameDeals = () => {
   return (
-    <div>
+    <Box sx={{ mt: 2 }}>
       <h1>Game Deals</h1>
-    </div>
+    </Box>
   );
 };
 

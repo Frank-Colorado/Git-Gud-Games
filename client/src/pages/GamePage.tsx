@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useGetGameDetailsQuery } from '../store';
 import { Grid, Typography, Box, Paper, Button } from '@mui/material';
 import GameCarousel from '../components/GameCarousel';
+import GameDetails from '../components/GameDetails';
 
 const GamePage = () => {
   const { gameId } = useParams();
@@ -12,6 +13,10 @@ const GamePage = () => {
 
   const { data, error, isLoading } = useGetGameDetailsQuery(gameId);
   console.log(data, error, isLoading);
+
+  if (!data) {
+    return <div> No Game Found </div>;
+  }
 
   return (
     <Grid
@@ -45,7 +50,9 @@ const GamePage = () => {
               <GameCarousel id={gameId} />
             </Box>
           </Grid>
-          <Grid item md={4}></Grid>
+          <Grid item md={4}>
+            <GameDetails details={data} />
+          </Grid>
         </Grid>
       </Grid>
     </Grid>

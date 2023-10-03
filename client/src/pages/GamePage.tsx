@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useGetGameDetailsQuery } from '../store';
-import { Grid, Typography, Box, Paper } from '@mui/material';
+import { Grid, Typography, Box, Paper, Button } from '@mui/material';
 import GameCarousel from '../components/GameCarousel';
 
 const GamePage = () => {
@@ -20,21 +20,33 @@ const GamePage = () => {
         height: '100vh',
         display: 'flex',
         justifyContent: 'center',
+        marginTop: '5rem',
+        marginBottom: '5rem',
       }}
     >
       <Grid item md={8}>
-        <Typography variant="h2" sx={{ mb: 2, color: 'white' }}>
-          {data?.name}
-        </Typography>
-        <GameCarousel id={gameId} />
-        <Box sx={{ mt: 2 }}>
-          <Paper sx={{ p: 2 }}>
-            <Typography variant="h5" sx={{ mb: 2 }}>
-              Description
-            </Typography>
-            <Typography variant="body1">{data?.description_raw}</Typography>
-          </Paper>
-        </Box>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}
+        >
+          <Typography variant="h3" sx={{ color: 'white' }}>
+            {data?.name}
+          </Typography>
+          <Button variant="contained" color="primary">
+            Add to Library
+          </Button>
+        </div>
+        <Grid container spacing={2}>
+          <Grid item md={8}>
+            <Box sx={{ mt: 2 }}>
+              <GameCarousel id={gameId} />
+            </Box>
+          </Grid>
+          <Grid item md={4}></Grid>
+        </Grid>
       </Grid>
     </Grid>
   );

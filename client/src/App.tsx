@@ -9,14 +9,12 @@ const App = () => {
   return (
     <Router>
       <Navbar />
-      <div>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/games/:genre" element={<GenrePage />} />
-          <Route path="/search/:searchTerm" element={<SearchPage />} />
-          <Route path="/game/:gameId" element={<GamePage />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/games/:genre" element={<GenrePage />} />
+        <Route path="/search/:searchTerm" element={<SearchPage />} />
+        <Route path="/game/:gameId" element={<GamePage />} />
+      </Routes>
     </Router>
   );
 };

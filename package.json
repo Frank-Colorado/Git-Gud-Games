@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "concurrently": "^8.2.1",
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "react-material-ui-carousel": "^3.4.2"
   }
 }

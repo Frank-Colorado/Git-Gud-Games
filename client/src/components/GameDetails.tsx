@@ -1,5 +1,6 @@
 import { GameDetailsType } from '../store/apis/gamesApi';
 import { Box, Typography } from '@mui/material';
+import Expandable from './Expandable';
 
 interface GameDetailsProps {
   details: GameDetailsType;
@@ -14,7 +15,10 @@ const GameDetails = ({ details }: GameDetailsProps) => {
           mt: 2,
         }}
       >
-        {/* Expandable Component For Game Description Here */}
+        <Typography variant="h6" sx={{ color: 'white' }}>
+          Description
+        </Typography>
+        <Expandable>{details.description_raw}</Expandable>
       </Box>
       <Box
         sx={{

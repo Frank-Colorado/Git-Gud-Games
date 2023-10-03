@@ -11,7 +11,7 @@ export interface GameType {
   rating: number;
 }
 
-export interface GameScreenShots {
+export interface GameScreenShotsType {
   id: number;
   image: string;
   hidden: boolean;
@@ -41,10 +41,10 @@ const gamesApi = createApi({
       query: (gameId: string) => `/games/${gameId}?key=${apiKey}`,
       transformResponse: (response: GameType, _meta, _arg) => response,
     }),
-    getGameScreenShots: builder.query<GameScreenShots[], string>({
+    getGameScreenShots: builder.query<GameScreenShotsType[], string>({
       query: (gameId: string) => `/games/${gameId}/screenshots?key=${apiKey}`,
       transformResponse: (
-        response: { results: GameScreenShots[] },
+        response: { results: GameScreenShotsType[] },
         _meta,
         _arg
       ) => response.results,

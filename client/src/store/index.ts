@@ -19,4 +19,8 @@ export {
   useGetGameDetailsQuery,
   useGetGameScreenShotsQuery,
 } from './apis/gamesApi';
-export type { GameType, GamesApiQueryType } from './apis/gamesApi';
+export type {
+  GameType,
+  GamesApiQueryType,
+  GameScreenShotsType,
+} from './apis/gamesApi';

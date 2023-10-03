@@ -1,11 +1,13 @@
+import { GameScreenShotsType } from '../store';
+
 interface CarouselItemProps {
-  item: string;
+  item: GameScreenShotsType;
 }
 
 const CarouselItem = ({ item }: CarouselItemProps) => {
   return (
     <div>
-      <img src={item} alt="carousel-item" />
+      <img src={item.image} alt="carousel-item" />
     </div>
   );
 };

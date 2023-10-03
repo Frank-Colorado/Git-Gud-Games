@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useGetGameDetailsQuery } from '../store';
-import { Grid, Typography, Box } from '@mui/material';
+import Carousel from 'react-material-ui-carousel';
+import { Grid, Typography, Box, Paper } from '@mui/material';
 
 const GamePage = () => {
   const { id } = useParams();
@@ -28,7 +29,13 @@ const GamePage = () => {
         <Typography variant="h2" sx={{ mb: 2, color: 'white' }}>
           World
         </Typography>
-        <Box sx={{ height: 50, width: '100%', backgroundColor: 'red' }} />
+        <Carousel
+          autoPlay={false}
+          animation="fade"
+          navButtonsAlwaysVisible={true}
+          swipe={false}
+          height={500}
+        ></Carousel>
       </Grid>
     </Grid>
   );

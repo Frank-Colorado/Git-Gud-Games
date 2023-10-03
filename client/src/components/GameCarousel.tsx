@@ -8,7 +8,6 @@ interface GameCarouselProps {
 
 const GameCarousel = ({ id }: GameCarouselProps) => {
   const { data, error, isLoading } = useGetGameScreenShotsQuery(id);
-  console.log(data, error, isLoading);
 
   return (
     <div>

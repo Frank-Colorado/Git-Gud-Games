@@ -19,6 +19,18 @@ export interface GameScreenShotsType {
   height: number;
 }
 
+export interface GameDetailsType {
+  id: number;
+  background_image: string;
+  description_raw: string;
+  name: string;
+  developers: { id: number; name: string }[];
+  genres: { id: number; name: string }[];
+  platforms: { platform: { id: number; name: string } }[];
+  rating: number;
+  released: string;
+}
+
 export type GamesApiQueryType = typeof useGetGamesQuery;
 
 const gamesApi = createApi({
@@ -37,9 +49,9 @@ const gamesApi = createApi({
       transformResponse: (response: { results: GameType[] }, _meta, _arg) =>
         response.results,
     }),
-    getGameDetails: builder.query<GameType, string>({
+    getGameDetails: builder.query<GameDetailsType, string>({
       query: (gameId: string) => `/games/${gameId}?key=${apiKey}`,
-      transformResponse: (response: GameType, _meta, _arg) => response,
+      transformResponse: (response: GameDetailsType, _meta, _arg) => response,
     }),
     getGameScreenShots: builder.query<GameScreenShotsType[], string>({
       query: (gameId: string) => `/games/${gameId}/screenshots?key=${apiKey}`,

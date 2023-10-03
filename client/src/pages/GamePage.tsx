@@ -27,6 +27,14 @@ const GamePage = () => {
           {data?.name}
         </Typography>
         <GameCarousel id={gameId} />
+        <Box sx={{ mt: 2 }}>
+          <Paper sx={{ p: 2 }}>
+            <Typography variant="h5" sx={{ mb: 2 }}>
+              Description
+            </Typography>
+            <Typography variant="body1">{data?.description_raw}</Typography>
+          </Paper>
+        </Box>
       </Grid>
     </Grid>
   );

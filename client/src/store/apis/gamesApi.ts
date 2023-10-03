@@ -11,6 +11,14 @@ export interface GameType {
   rating: number;
 }
 
+export interface GameScreenShots {
+  id: number;
+  image: string;
+  hidden: boolean;
+  width: number;
+  height: number;
+}
+
 export type GamesApiQueryType = typeof useGetGamesQuery;
 
 const gamesApi = createApi({
@@ -33,6 +41,14 @@ const gamesApi = createApi({
       query: (gameId: string) => `/games/${gameId}?key=${apiKey}`,
       transformResponse: (response: GameType, _meta, _arg) => response,
     }),
+    getGameScreenShots: builder.query<GameScreenShots[], string>({
+      query: (gameId: string) => `/games/${gameId}/screenshots?key=${apiKey}`,
+      transformResponse: (
+        response: { results: GameScreenShots[] },
+        _meta,
+        _arg
+      ) => response.results,
+    }),
   }),
 });
 
@@ -40,6 +56,7 @@ export const {
   useGetGamesQuery,
   useGetSearchOptionsQuery,
   useGetGameDetailsQuery,
+  useGetGameScreenShotsQuery,
 } = gamesApi;
 
 export { gamesApi };

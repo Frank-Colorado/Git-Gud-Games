@@ -1,6 +1,5 @@
-import { useState } from 'react';
 import { GameDetailsType } from '../store/apis/gamesApi';
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 interface GameDetailsProps {
   details: GameDetailsType;

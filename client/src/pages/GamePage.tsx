@@ -44,7 +44,7 @@ const GamePage = () => {
             Add to Library
           </Button>
         </div>
-        <Grid container spacing={2}>
+        <Grid container spacing={3}>
           <Grid item md={8}>
             <Box sx={{ mt: 2 }}>
               <GameCarousel id={gameId} />

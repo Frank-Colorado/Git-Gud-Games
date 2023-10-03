@@ -25,10 +25,13 @@ export interface GameDetailsType {
   description_raw: string;
   name: string;
   developers: { id: number; name: string }[];
+  publishers: { id: number; name: string }[];
   genres: { id: number; name: string }[];
   platforms: { platform: { id: number; name: string } }[];
   rating: number;
   released: string;
+  esrb_rating: { id: number; name: string } | null;
+  tags: { id: number; name: string }[];
 }
 
 export type GamesApiQueryType = typeof useGetGamesQuery;

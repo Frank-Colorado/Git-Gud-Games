@@ -7,7 +7,11 @@ interface CarouselItemProps {
 const CarouselItem = ({ item }: CarouselItemProps) => {
   return (
     <div>
-      <img src={item.image} alt="carousel-item" />
+      <img
+        src={item.image}
+        style={{ height: '100%', width: '100%' }}
+        alt="carousel-item"
+      />
     </div>
   );
 };

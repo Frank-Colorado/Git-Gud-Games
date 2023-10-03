@@ -1,16 +1,16 @@
 import { useParams } from 'react-router-dom';
 import { useGetGameDetailsQuery } from '../store';
-import Carousel from 'react-material-ui-carousel';
 import { Grid, Typography, Box, Paper } from '@mui/material';
+import GameCarousel from '../components/GameCarousel';
 
 const GamePage = () => {
-  const { id } = useParams();
+  const { gameId } = useParams();
 
-  if (!id) {
+  if (!gameId) {
     return <div>This Game Does Not Exist</div>;
   }
 
-  const { data, error, isLoading } = useGetGameDetailsQuery(id);
+  const { data, error, isLoading } = useGetGameDetailsQuery(gameId);
   console.log(data, error, isLoading);
 
   return (
@@ -26,13 +26,7 @@ const GamePage = () => {
         <Typography variant="h2" sx={{ mb: 2, color: 'white' }}>
           {data?.name}
         </Typography>
-        <Carousel
-          autoPlay={false}
-          animation="fade"
-          navButtonsAlwaysVisible={true}
-          swipe={false}
-          height={500}
-        ></Carousel>
+        <GameCarousel id={gameId} />
       </Grid>
     </Grid>
   );

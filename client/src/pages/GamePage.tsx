@@ -14,7 +14,6 @@ const GamePage = () => {
   }
 
   const { data, error, isLoading } = useGetGameDetailsQuery(gameId);
-  console.log(data, error, isLoading);
 
   if (!data) {
     return <div> No Game Found </div>;

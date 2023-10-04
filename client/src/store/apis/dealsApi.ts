@@ -3,7 +3,7 @@ import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 const baseUrl = `https://www.cheapshark.com/api/1.0`;
 
 type Deal = {
-  storeId: string;
+  storeID: string;
   dealID: string;
   price: string;
   retailPrice: string;

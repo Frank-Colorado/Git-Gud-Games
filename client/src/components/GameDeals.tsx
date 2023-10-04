@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useGetGameDealsQuery } from '../store';
 
 // Here I decided to hardcode the data for the stores from CheapShark's API.
@@ -7,7 +7,7 @@ import { useGetGameDealsQuery } from '../store';
 // I could also get the names for each deal by making a request to the API for each deal and then getting the store name from the response, but that would be a lot of requests.
 // So I decided to just hardcode the data for the stores and then use the storeID from the deal data to get the store name from the hardcoded data.
 // This seems like a much more performant solution but it does have the downside of having to manually update the store data if a store is modified or added to the API.
-const storesInfo = [
+const storeList = [
   {
     storeID: '1',
     storeName: 'Steam',
@@ -366,11 +366,44 @@ interface GameDealsProps {
 
 const GameDeals = ({ gameTitle }: GameDealsProps) => {
   const { data, error, isLoading } = useGetGameDealsQuery(gameTitle);
-  console.log(data, error, isLoading);
+
+  if (!data) {
+    return <div> No Game Found </div>;
+  }
+
+  const newData = data.deals.map((deal) => {
+    const store = storeList.find((store) => store.storeID === deal.storeID);
+    return { ...deal, storeName: store?.storeName };
+  });
+
+  console.log(newData);
 
   return (
     <Box sx={{ mt: 2 }}>
-      <h1>Game Deals</h1>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Typography variant="h4" sx={{ color: 'white' }}>
+          Deals
+        </Typography>
+        <Typography variant="h4" sx={{ color: 'white' }}>
+          Retail Price: {newData[0].retailPrice}
+        </Typography>
+      </div>
+      {newData.map((deal) => (
+        <div
+          style={{ display: 'flex', justifyContent: 'space-between' }}
+          key={deal.dealID}
+        >
+          <Typography variant="h4" sx={{ color: 'white' }}>
+            {deal.storeName}
+          </Typography>
+          <div>
+            <Typography variant="h4" sx={{ color: 'white' }}>
+              ${deal.price}
+            </Typography>
+            <button> View Deal</button>
+          </div>
+        </div>
+      ))}
     </Box>
   );
 };

@@ -39,7 +39,6 @@ export type GamesApiQueryType = typeof useGetGamesQuery;
 const gamesApi = createApi({
   reducerPath: 'games',
   baseQuery: fetchBaseQuery({ baseUrl }),
-  tagTypes: ['Games'],
   endpoints: (builder) => ({
     getGames: builder.query<GameType[], string>({
       query: (param: string) => `/games?key=${apiKey}&platforms=4${param}`,

@@ -10,7 +10,7 @@ type Deal = {
   savings: string;
 };
 
-interface Deals {
+export interface Deals {
   info: {
     title: string;
     steamAppID: string;

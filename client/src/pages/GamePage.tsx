@@ -36,7 +36,7 @@ const GamePage = () => {
         <Grid container spacing={4}>
           <Grid item md={8}>
             <GameCarousel id={gameId} />
-            <GameDeals />
+            <GameDeals gameTitle={data.name} />
           </Grid>
           <Grid item md={4}>
             <GameDetails details={data} />

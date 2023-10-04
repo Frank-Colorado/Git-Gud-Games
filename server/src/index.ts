@@ -1,11 +1,12 @@
 import express, { Express } from 'express';
 import { ApolloServer } from '@apollo/server';
 import { buildSchema } from 'type-graphql';
+import { PlaceholderResolver } from './resolvers';
 
 const main = async () => {
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [],
+      resolvers: [PlaceholderResolver],
       validate: false,
     }),
   });

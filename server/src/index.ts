@@ -1,17 +1,21 @@
 import express, { Express } from 'express';
 import { ApolloServer } from '@apollo/server';
+import { expressMiddleware } from '@apollo/server/express4';
 import { buildSchema } from 'type-graphql';
 import { PlaceholderResolver } from './resolvers';
 
 const main = async () => {
-  const apolloServer = new ApolloServer({
+  const server = new ApolloServer({
     schema: await buildSchema({
       resolvers: [PlaceholderResolver],
       validate: false,
     }),
   });
 
+  await server.start();
   const app: Express = express();
+
+  app.use(expressMiddleware(server));
 
   const PORT: string | number = process.env.PORT || 3001;
 

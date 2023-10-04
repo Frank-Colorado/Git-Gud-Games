@@ -1,6 +1,5 @@
 import express, { Express } from 'express';
-import { ApolloServer } from '@apollo/server';
-import { expressMiddleware } from '@apollo/server/express4';
+import { ApolloServer } from 'apollo-server-express';
 import { buildSchema } from 'type-graphql';
 import { PlaceholderResolver } from './resolvers';
 
@@ -15,7 +14,7 @@ const main = async () => {
   await server.start();
   const app: Express = express();
 
-  app.use(expressMiddleware(server));
+  server.applyMiddleware({ app });
 
   const PORT: string | number = process.env.PORT || 3001;
 

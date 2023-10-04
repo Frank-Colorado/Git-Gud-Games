@@ -27,6 +27,17 @@ interface GameResult {
   gameID: string;
 }
 
+interface Store {
+  storeID: string;
+  storeName: string;
+  isActive: number;
+  images: {
+    banner: string;
+    logo: string;
+    icon: string;
+  };
+}
+
 const dealsApi = createApi({
   reducerPath: 'deals',
   baseQuery: fetchBaseQuery({ baseUrl }),
@@ -49,8 +60,11 @@ const dealsApi = createApi({
           : { error: result.error as FetchBaseQueryError };
       },
     }),
+    getStores: builder.query<Store[], void>({
+      query: () => `/stores`,
+    }),
   }),
 });
 
-export const { useGetGameDealsQuery } = dealsApi;
+export const { useGetGameDealsQuery, useGetStoresQuery } = dealsApi;
 export { dealsApi };

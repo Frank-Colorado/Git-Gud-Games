@@ -29,5 +29,5 @@ export type {
   GameScreenShotsType,
 } from './apis/gamesApi';
 
-export { useGetGameDealsQuery } from './apis/dealsApi';
+export { useGetGameDealsQuery, useGetStoresQuery } from './apis/dealsApi';
 export type { Deals } from './apis/dealsApi';

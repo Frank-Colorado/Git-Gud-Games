@@ -1,6 +1,12 @@
 import { Box } from '@mui/material';
 import { useGetGameDealsQuery } from '../store';
 
+// Here I decided to hardcode the data for the stores from CheapShark's API.
+// My reasoning for this is because the deal data for a game that is returned from the API only contains the storeID for that deal and not the store name.
+// I could just create a list of the games deals with a link to the store page, but then their would be no way to know what store the deal is for.
+// I could also get the names for each deal by making a request to the API for each deal and then getting the store name from the response, but that would be a lot of requests.
+// So I decided to just hardcode the data for the stores and then use the storeID from the deal data to get the store name from the hardcoded data.
+// This seems like a much more performant solution but it does have the downside of having to manually update the store data if a store is modified or added to the API.
 const storesInfo = [
   {
     storeID: '1',

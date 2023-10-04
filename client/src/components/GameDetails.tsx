@@ -11,7 +11,6 @@ const GameDetails = ({ details }: GameDetailsProps) => {
     <>
       <Box
         sx={{
-          pt: 2,
           mt: 2,
         }}
       >

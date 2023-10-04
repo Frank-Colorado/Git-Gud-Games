@@ -366,9 +366,15 @@ interface GameDealsProps {
 
 const GameDeals = ({ gameTitle }: GameDealsProps) => {
   const { data, error, isLoading } = useGetGameDealsQuery(gameTitle);
+  console.log(data, error, isLoading);
 
   if (!data) {
-    return <div> No Game Found </div>;
+    return (
+      <Typography variant="h4" sx={{ color: 'white' }}>
+        {' '}
+        No Deals Found{' '}
+      </Typography>
+    );
   }
 
   const newData = data.deals.map((deal) => {

@@ -23,6 +23,7 @@ export interface GameDetailsType {
   id: number;
   background_image: string;
   description_raw: string;
+  slug: string;
   name: string;
   developers: { id: number; name: string }[];
   publishers: { id: number; name: string }[];

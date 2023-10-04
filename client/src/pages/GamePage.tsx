@@ -14,6 +14,7 @@ const GamePage = () => {
   }
 
   const { data, error, isLoading } = useGetGameDetailsQuery(gameId);
+  console.log(data);
 
   if (!data) {
     return <div> No Game Found </div>;
@@ -35,7 +36,7 @@ const GamePage = () => {
         <Grid container spacing={4}>
           <Grid item md={8}>
             <GameCarousel id={gameId} />
-            <GameDeals gameTitle={data.name} />
+            <GameDeals gameTitle={data.slug} />
           </Grid>
           <Grid item md={4}>
             <GameDetails details={data} />

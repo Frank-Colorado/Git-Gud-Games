@@ -1,4 +1,4 @@
-import { Field } from 'type-graphql';
+import { Field, ObjectType } from 'type-graphql';
 import { prop } from '@typegoose/typegoose';
 import { Types } from 'mongoose';
 
@@ -10,6 +10,7 @@ class Game {
   id: string;
 }
 
+@ObjectType()
 export class User {
   @Field(() => String)
   _id: string;

@@ -2,12 +2,15 @@ import { Field, ObjectType } from 'type-graphql';
 import { prop } from '@typegoose/typegoose';
 import { Types } from 'mongoose';
 
+@ObjectType()
 class Game {
+  @Field(() => String)
   @prop()
-  name: string;
+  name?: string;
 
+  @Field(() => String)
   @prop()
-  id: string;
+  id?: string;
 }
 
 @ObjectType()

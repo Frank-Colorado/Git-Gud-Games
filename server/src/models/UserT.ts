@@ -1,9 +1,10 @@
 import { Field, InputType, ObjectType } from 'type-graphql';
 import { getModelForClass, prop } from '@typegoose/typegoose';
+import { MaxLength, MinLength } from 'class-validator';
 import { Types } from 'mongoose';
 
 @ObjectType()
-class Game {
+class GameObject {
   @Field(() => String)
   @prop()
   name?: string;
@@ -22,16 +23,25 @@ export class User {
   @prop({ type: String, required: true, unique: true, trim: true })
   username!: string;
 
-  @Field(() => String)
+  @Field(() => String, { nullable: true })
   @prop({ type: String })
   avatar?: string;
 
   @prop({ type: String, required: true })
   password!: string;
 
-  @Field(() => [Game])
-  @prop({ type: () => [Game], default: [] })
-  gameLibrary?: Types.Array<Game>;
+  @Field(() => [GameObject])
+  @prop({ type: () => [GameObject], default: [] })
+  gameLibrary?: Types.Array<GameObject>;
+}
+
+@InputType()
+class GameInput {
+  @Field(() => String)
+  name?: string;
+
+  @Field(() => String)
+  id?: string;
 }
 
 @InputType()
@@ -48,11 +58,11 @@ export class CreateUserInput {
   @Field(() => String)
   password!: string;
 
-  @Field(() => String)
+  @Field(() => String, { nullable: true })
   avatar?: string;
 
-  @Field(() => [Game])
-  gameLibrary?: Game[];
+  @Field(() => [GameInput], { nullable: true })
+  gameLibrary?: GameInput[];
 }
 
 export const UserModel = getModelForClass(User);

@@ -1,7 +1,8 @@
 import { Field, InputType, ObjectType } from 'type-graphql';
-import { getModelForClass, prop } from '@typegoose/typegoose';
+import { getModelForClass, prop, pre } from '@typegoose/typegoose';
 import { MaxLength, MinLength } from 'class-validator';
 import { Types } from 'mongoose';
+import bcrypt from 'bcrypt';
 
 @ObjectType()
 class GameObject {
@@ -14,6 +15,17 @@ class GameObject {
   id?: string;
 }
 
+@pre<User>('save', async function (next) {
+  // Check that the password is being modified
+  if (!this.isModified('password')) {
+    return next();
+  }
+  const salt = await bcrypt.genSalt(10);
+  const hash = await bcrypt.hashSync(this.password, salt);
+
+  this.password = hash;
+  return next();
+})
 @ObjectType()
 export class User {
   @Field(() => String)

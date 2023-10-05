@@ -1,5 +1,7 @@
 import 'reflect-metadata';
 import path from 'path';
+import dotenv from 'dotenv';
+dotenv.config();
 import express, { Express } from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import {
@@ -8,6 +10,7 @@ import {
 } from 'apollo-server-core';
 import { buildSchema } from 'type-graphql';
 import { resolvers } from './resolvers';
+import cookieParser from 'cookie-parser';
 import db from './config/connection';
 
 const main = async () => {
@@ -33,6 +36,7 @@ const main = async () => {
 
   const app: Express = express();
 
+  app.use(cookieParser());
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
 

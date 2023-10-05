@@ -2,6 +2,7 @@ import { CreateUserInput, LoginInput, UserModel } from '../models/UserT';
 import Context from '../types/context';
 import { ApolloError } from 'apollo-server-express';
 import bcrypt from 'bcrypt';
+import { signJwt } from '../utils/jwt';
 
 class UserService {
   async createUser(input: CreateUserInput) {
@@ -23,6 +24,7 @@ class UserService {
       throw new ApolloError('Invalid credentials.');
     }
     // sign a JWT Token
+    const token = signJwt();
     // Set a cookie for the JWT Token
     // Return the JWT Token
   }

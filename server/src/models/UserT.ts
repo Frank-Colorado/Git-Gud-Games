@@ -1,5 +1,5 @@
 import { Field, ObjectType } from 'type-graphql';
-import { prop } from '@typegoose/typegoose';
+import { getModelForClass, prop } from '@typegoose/typegoose';
 import { Types } from 'mongoose';
 
 @ObjectType()
@@ -33,3 +33,5 @@ export class User {
   @prop({ type: () => [Game], default: [] })
   gameLibrary?: Types.Array<Game>;
 }
+
+export const UserModel = getModelForClass(User);

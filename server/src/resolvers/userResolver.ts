@@ -13,6 +13,11 @@ export default class UserResolver {
     return this.userService.createUser(input);
   }
 
+  @Mutation(() => String) // Returns JWT token
+  login(@Arg('input') input: LoginInput, @Ctx() context: Context) {
+    return this.userService.login(input);
+  }
+
   @Query(() => User)
   me() {
     return {

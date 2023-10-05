@@ -1,6 +1,7 @@
 import { Query, Mutation, Resolver, Arg } from 'type-graphql';
 import { User, CreateUserInput } from '../models/UserT';
 import UserService from '../service/userService';
+import Context from '../types/context';
 
 @Resolver()
 export default class UserResolver {

@@ -1,27 +1,51 @@
 import 'reflect-metadata';
+import path from 'path';
 import express, { Express } from 'express';
 import { ApolloServer } from 'apollo-server-express';
+import {
+  ApolloServerPluginLandingPageProductionDefault,
+  ApolloServerPluginLandingPageGraphQLPlayground,
+} from 'apollo-server-core';
 import { buildSchema } from 'type-graphql';
 import { PlaceholderResolver } from './resolvers';
 import db from './config/connection';
 
 const main = async () => {
+  const PORT: string | number = process.env.PORT || 3001;
+
+  const schema = await buildSchema({
+    resolvers: [PlaceholderResolver],
+    // authChecker,
+  });
+
   const server = new ApolloServer({
-    schema: await buildSchema({
-      resolvers: [PlaceholderResolver],
-      validate: false,
-    }),
+    schema,
+    context: (ctx) => {
+      console.log(ctx);
+      return ctx;
+    },
+    plugins: [
+      process.env.NODE_ENV === 'production'
+        ? ApolloServerPluginLandingPageProductionDefault()
+        : ApolloServerPluginLandingPageGraphQLPlayground(),
+    ],
+  });
+
+  const app: Express = express();
+
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: false }));
+
+  if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../client/build')));
+  }
+
+  app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './client/build/index.html'));
   });
 
   await server.start();
-  const app: Express = express();
   server.applyMiddleware({ app });
-
-  const PORT: string | number = process.env.PORT || 3001;
-
-  app.get('/', (req, res) => {
-    res.send('Hello World!');
-  });
 
   db.once('open', () => {
     app.listen(PORT, () => {

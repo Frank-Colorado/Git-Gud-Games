@@ -7,14 +7,14 @@ import {
   ApolloServerPluginLandingPageGraphQLPlayground,
 } from 'apollo-server-core';
 import { buildSchema } from 'type-graphql';
-import { PlaceholderResolver } from './resolvers';
+import { resolvers } from './resolvers';
 import db from './config/connection';
 
 const main = async () => {
   const PORT: string | number = process.env.PORT || 3001;
 
   const schema = await buildSchema({
-    resolvers: [PlaceholderResolver],
+    resolvers,
     // authChecker,
   });
 

@@ -77,4 +77,13 @@ export class CreateUserInput {
   gameLibrary?: GameInput[];
 }
 
+@InputType()
+export class LoginInput {
+  @Field(() => String)
+  username!: string;
+
+  @Field(() => String)
+  password!: string;
+}
+
 export const UserModel = getModelForClass(User);

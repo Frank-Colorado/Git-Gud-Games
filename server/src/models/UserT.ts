@@ -1,8 +1,27 @@
 import { Field, InputType, ObjectType } from 'type-graphql';
-import { getModelForClass, prop, pre } from '@typegoose/typegoose';
+import {
+  getModelForClass,
+  prop,
+  pre,
+  ReturnModelType,
+  queryMethod,
+  index,
+} from '@typegoose/typegoose';
 import { MaxLength, MinLength } from 'class-validator';
 import { Types } from 'mongoose';
 import bcrypt from 'bcrypt';
+import { AsQueryMethod } from '@typegoose/typegoose/lib/types';
+
+function findByUsername(
+  this: ReturnModelType<typeof User, QueryHelpers>,
+  username: User['username']
+) {
+  return this.findOne({ username });
+}
+
+interface QueryHelpers {
+  findByUsername: AsQueryMethod<typeof findByUsername>;
+}
 
 @ObjectType()
 class GameObject {
@@ -16,16 +35,14 @@ class GameObject {
 }
 
 @pre<User>('save', async function (next) {
-  // Check that the password is being modified
-  if (!this.isModified('password')) {
-    return next();
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
   }
-  const salt = await bcrypt.genSalt(10);
-  const hash = await bcrypt.hashSync(this.password, salt);
-
-  this.password = hash;
-  return next();
+  next();
 })
+@index({ username: 1 })
+@queryMethod(findByUsername)
 @ObjectType()
 export class User {
   @Field(() => String)
@@ -46,6 +63,8 @@ export class User {
   @prop({ type: () => [GameObject], default: [] })
   gameLibrary?: Types.Array<GameObject>;
 }
+
+export const UserModel = getModelForClass<typeof User, QueryHelpers>(User);
 
 @InputType()
 class GameInput {
@@ -85,5 +104,3 @@ export class LoginInput {
   @Field(() => String)
   password!: string;
 }
-
-export const UserModel = getModelForClass(User);

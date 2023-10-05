@@ -1,5 +1,6 @@
 import { CreateUserInput, LoginInput, UserModel } from '../models/UserT';
 import Context from '../types/context';
+import { ApolloError } from 'apollo-server-express';
 
 class UserService {
   async createUser(input: CreateUserInput) {
@@ -9,7 +10,13 @@ class UserService {
 
   async login(input: LoginInput, context: Context) {
     // Get our user by username
-    const user = UserModel.findOne({ username: input.username });
+    const user = await UserModel.find().findByUsername(input.username).lean();
+    // If the user doesn't exist, throw an error
+    if (!user) {
+      throw new ApolloError('Invalid credentials.');
+    }
+
+    const validPassword = await bcrypt.compare(input.password, user.password);
   }
 }
 

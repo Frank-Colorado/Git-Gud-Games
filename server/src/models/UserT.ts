@@ -6,11 +6,11 @@ import {
   ReturnModelType,
   queryMethod,
   index,
+  DocumentType,
 } from '@typegoose/typegoose';
 import { MaxLength, MinLength } from 'class-validator';
-import { Types } from 'mongoose';
 import bcrypt from 'bcrypt';
-import { AsQueryMethod } from '@typegoose/typegoose/lib/types';
+import { AsQueryMethod, Ref } from '@typegoose/typegoose/lib/types';
 
 function findByUsername(
   this: ReturnModelType<typeof User, QueryHelpers>,
@@ -61,7 +61,11 @@ export class User {
 
   @Field(() => [GameObject])
   @prop({ type: () => [GameObject], default: [] })
-  gameLibrary?: Types.Array<GameObject>;
+  gameLibrary?: Ref<GameObject>[];
+
+  async isCorrectPassword(this: DocumentType<User>, password: string) {
+    return bcrypt.compare(password, this.password);
+  }
 }
 
 export const UserModel = getModelForClass<typeof User, QueryHelpers>(User);

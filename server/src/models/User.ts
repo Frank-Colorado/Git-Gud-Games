@@ -1,10 +1,10 @@
 import mongoose, { Schema, Model, Types, model } from 'mongoose';
 import bcrypt from 'bcrypt';
 
-type Game = {
+interface Game {
   name: string;
   id: string;
-};
+}
 
 interface IUser extends mongoose.Document {
   username: string;

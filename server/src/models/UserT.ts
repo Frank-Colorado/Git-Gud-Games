@@ -63,7 +63,7 @@ export class User {
   @prop({ type: () => [GameObject], default: [] })
   gameLibrary?: Ref<GameObject>[];
 
-  async isCorrectPassword(this: DocumentType<User>, password: string) {
+  public async isCorrectPassword(this: DocumentType<User>, password: string) {
     return bcrypt.compare(password, this.password);
   }
 }

@@ -1,4 +1,10 @@
-import { CreateUserInput, LoginInput, UserModel } from '../schemas/UserT';
+import {
+  CreateUserInput,
+  LoginInput,
+  UpdateUserInput,
+  UserModel,
+  User,
+} from '../schemas/UserT';
 import Context from '../types/context';
 import { ApolloError } from 'apollo-server-express';
 import bcrypt from 'bcrypt';
@@ -27,6 +33,10 @@ class UserService {
     const token = signJwt(user);
     // Return the JWT Token
     return token;
+  }
+
+  async updateUser(input: UpdateUserInput & { user: User['_id'] }) {
+    return UserModel.findByIdAndUpdate(input.user, input, { new: true }).lean();
   }
 }
 

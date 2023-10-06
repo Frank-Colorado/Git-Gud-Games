@@ -38,7 +38,7 @@ export default class UserResolver {
   }
 
   @Authorized()
-  @Mutation()
+  @Mutation(() => User)
   addGameToLibrary(
     @Arg('input') input: EditGameInput,
     @Ctx() context: Context
@@ -48,7 +48,7 @@ export default class UserResolver {
   }
 
   @Authorized()
-  @Mutation()
+  @Mutation(() => User)
   removeGameFromLibrary(
     @Arg('input') input: EditGameInput,
     @Ctx() context: Context

@@ -27,11 +27,11 @@ interface QueryHelpers {
 class GameObject {
   @Field(() => String)
   @prop()
-  name?: string;
+  id?: string;
 
   @Field(() => String)
   @prop()
-  id?: string;
+  name?: string;
 }
 
 @pre<User>('save', async function (next) {
@@ -113,4 +113,13 @@ export class UpdateUserInput {
 
   @Field(() => String, { nullable: true })
   avatar?: string;
+}
+
+@InputType()
+export class AddGameInput {
+  @Field(() => String)
+  id!: string;
+
+  @Field(() => String)
+  name!: string;
 }

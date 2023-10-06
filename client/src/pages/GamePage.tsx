@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useGetGameDetailsQuery } from '../store';
-import { Grid, Typography, Box, Paper, Button } from '@mui/material';
+import { Grid } from '@mui/material';
 import GameHeader from '../components/GameHeader';
 import GameCarousel from '../components/GameCarousel';
 import GameDetails from '../components/GameDetails';

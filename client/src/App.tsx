@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import GenrePage from './pages/GenrePage';
 import SearchPage from './pages/SearchPage';
 import GamePage from './pages/GamePage';
+import LoginPage from './pages/LoginPage';
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/games/:genre" element={<GenrePage />} />
         <Route path="/search/:searchTerm" element={<SearchPage />} />
         <Route path="/game/:gameId" element={<GamePage />} />

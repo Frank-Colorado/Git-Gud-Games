@@ -71,15 +71,6 @@ export class User {
 export const UserModel = getModelForClass<typeof User, QueryHelpers>(User);
 
 @InputType()
-class GameInput {
-  @Field(() => String)
-  name?: string;
-
-  @Field(() => String)
-  id?: string;
-}
-
-@InputType()
 export class CreateUserInput {
   @Field(() => String)
   username!: string;

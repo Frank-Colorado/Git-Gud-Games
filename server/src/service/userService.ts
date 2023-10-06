@@ -4,6 +4,7 @@ import {
   UpdateUserInput,
   UserModel,
   User,
+  AddGameInput,
 } from '../schemas/UserT';
 import Context from '../types/context';
 import { ApolloError } from 'apollo-server-express';
@@ -36,7 +37,17 @@ class UserService {
   }
 
   async updateUser(input: UpdateUserInput & { user: User['_id'] }) {
-    return UserModel.findByIdAndUpdate(input.user, input, { new: true }).lean();
+    return UserModel.findByIdAndUpdate({ _id: input.user }, input, {
+      new: true,
+    }).lean();
+  }
+
+  async addGameToLibrary(input: AddGameInput & { user: User['_id'] }) {
+    return UserModel.findByIdAndUpdate(
+      { _id: input.user },
+      { $addToSet: { gameLibrary: input } },
+      { new: true }
+    ).lean();
   }
 }
 

@@ -11,7 +11,7 @@ import {
 import { buildSchema } from 'type-graphql';
 import { resolvers } from './resolvers';
 import cookieParser from 'cookie-parser';
-import { connectDB } from './utils/mongo';
+import db from './config/connection';
 
 const main = async () => {
   const PORT: string | number = process.env.PORT || 3001;
@@ -51,14 +51,14 @@ const main = async () => {
   await server.start();
   server.applyMiddleware({ app });
 
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-    console.log(
-      `GraphQL server ready at http://localhost:${PORT}${server.graphqlPath}`
-    );
+  db.once('open', () => {
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+      console.log(
+        `GraphQL server ready at http://localhost:${PORT}${server.graphqlPath}`
+      );
+    });
   });
-
-  connectDB();
 };
 
 main().catch((err) => {

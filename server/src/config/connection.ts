@@ -5,7 +5,7 @@ dotenv.config();
 mongoose
   .connect(
     (process.env.MONGODB_URI as string) ||
-      'mongodb://localhost:27017/gitGudGames'
+      'mongodb://127.0.0.1:27017/gitGudGames'
   )
   .then(() => {
     console.log('Connected to MongoDB');

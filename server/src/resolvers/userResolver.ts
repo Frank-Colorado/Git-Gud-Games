@@ -4,7 +4,7 @@ import {
   CreateUserInput,
   LoginInput,
   UpdateUserInput,
-  AddGameInput,
+  EditGameInput,
 } from '../schemas/UserT';
 import UserService from '../service/userService';
 import Context from '../types/context';
@@ -39,7 +39,10 @@ export default class UserResolver {
 
   @Authorized()
   @Mutation()
-  addGameToLibrary(@Arg('input') input: AddGameInput, @Ctx() context: Context) {
+  addGameToLibrary(
+    @Arg('input') input: EditGameInput,
+    @Ctx() context: Context
+  ) {
     const user = context.user!;
     return this.userService.addGameToLibrary({ ...input, user: user?._id });
   }
@@ -47,7 +50,7 @@ export default class UserResolver {
   @Authorized()
   @Mutation()
   removeGameFromLibrary(
-    @Arg('input') input: AddGameInput,
+    @Arg('input') input: EditGameInput,
     @Ctx() context: Context
   ) {
     const user = context.user!;

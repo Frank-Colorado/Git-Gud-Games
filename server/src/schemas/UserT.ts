@@ -107,7 +107,7 @@ export class UpdateUserInput {
 }
 
 @InputType()
-export class AddGameInput {
+export class EditGameInput {
   @Field(() => String)
   id!: string;
 

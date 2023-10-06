@@ -4,7 +4,7 @@ import {
   UpdateUserInput,
   UserModel,
   User,
-  AddGameInput,
+  EditGameInput,
 } from '../schemas/UserT';
 import Context from '../types/context';
 import { ApolloError } from 'apollo-server-express';
@@ -42,7 +42,7 @@ class UserService {
     }).lean();
   }
 
-  async addGameToLibrary(input: AddGameInput & { user: User['_id'] }) {
+  async addGameToLibrary(input: EditGameInput & { user: User['_id'] }) {
     const { id, name } = input;
     return UserModel.findByIdAndUpdate(
       { _id: input.user },
@@ -51,7 +51,7 @@ class UserService {
     ).lean();
   }
 
-  async removeGameFromLibrary(input: AddGameInput & { user: User['_id'] }) {
+  async removeGameFromLibrary(input: EditGameInput & { user: User['_id'] }) {
     const { id, name } = input;
     return UserModel.findByIdAndUpdate(
       { _id: input.user },

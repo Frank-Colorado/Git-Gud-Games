@@ -43,17 +43,19 @@ class UserService {
   }
 
   async addGameToLibrary(input: AddGameInput & { user: User['_id'] }) {
+    const { id, name } = input;
     return UserModel.findByIdAndUpdate(
       { _id: input.user },
-      { $addToSet: { gameLibrary: input } },
+      { $addToSet: { gameLibrary: { id, name } } },
       { new: true }
     ).lean();
   }
 
   async removeGameFromLibrary(input: AddGameInput & { user: User['_id'] }) {
+    const { id, name } = input;
     return UserModel.findByIdAndUpdate(
       { _id: input.user },
-      { $pull: { gameLibrary: input } },
+      { $pull: { gameLibrary: { id, name } } },
       { new: true }
     ).lean();
   }

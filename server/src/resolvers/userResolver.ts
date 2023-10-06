@@ -23,4 +23,7 @@ export default class UserResolver {
   login(@Arg('input') input: LoginInput, @Ctx() context: Context) {
     return this.userService.login(input, context);
   }
+
+  @Mutation(() => User)
+  updateUser(@Arg('input') input: )
 }

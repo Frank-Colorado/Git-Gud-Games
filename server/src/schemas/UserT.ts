@@ -100,12 +100,6 @@ export class CreateUserInput {
   })
   @Field(() => String)
   password!: string;
-
-  @Field(() => String, { nullable: true })
-  avatar?: string;
-
-  @Field(() => [GameInput], { nullable: true })
-  gameLibrary?: GameInput[];
 }
 
 @InputType()

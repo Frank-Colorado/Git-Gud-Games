@@ -49,6 +49,14 @@ class UserService {
       { new: true }
     ).lean();
   }
+
+  async removeGameFromLibrary(input: AddGameInput & { user: User['_id'] }) {
+    return UserModel.findByIdAndUpdate(
+      { _id: input.user },
+      { $pull: { gameLibrary: input } },
+      { new: true }
+    ).lean();
+  }
 }
 
 export default UserService;

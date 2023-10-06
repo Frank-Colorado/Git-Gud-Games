@@ -12,6 +12,7 @@ import { buildSchema } from 'type-graphql';
 import { resolvers } from './resolvers';
 import db from './config/connection';
 import { verifyJwt } from './utils/jwt';
+import authChecker from './utils/authChecker';
 import { User } from './schemas/UserT';
 import Context from './types/context';
 
@@ -20,7 +21,7 @@ const main = async () => {
 
   const schema = await buildSchema({
     resolvers,
-    // authChecker,
+    authChecker,
   });
 
   const server = new ApolloServer({

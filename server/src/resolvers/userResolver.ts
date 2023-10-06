@@ -35,4 +35,11 @@ export default class UserResolver {
     const user = context.user!;
     return this.userService.updateUser({ ...input, user: user?._id });
   }
+
+  @Authorized()
+  @Mutation()
+  addGameToLibrary(@Arg('input') input: AddGameInput, @Ctx() context: Context) {
+    const user = context.user!;
+    return this.userService.addGameToLibrary({ ...input, user: user?._id });
+  }
 }

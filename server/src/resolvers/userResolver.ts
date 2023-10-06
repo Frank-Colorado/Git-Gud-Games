@@ -9,6 +9,11 @@ export default class UserResolver {
     this.userService = new UserService();
   }
 
+  @Query(() => User)
+  me(@Ctx() context: Context) {
+    return context.user;
+  }
+
   @Mutation(() => User)
   createUser(@Arg('input') input: CreateUserInput) {
     return this.userService.createUser(input);
@@ -17,15 +22,5 @@ export default class UserResolver {
   @Mutation(() => String) // Returns the JWT Token
   login(@Arg('input') input: LoginInput, @Ctx() context: Context) {
     return this.userService.login(input, context);
-  }
-
-  @Query(() => User)
-  me() {
-    return {
-      _id: '1234',
-      username: 'test',
-      avatar: 'test',
-      gameLibrary: [],
-    };
   }
 }

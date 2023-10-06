@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { User } from '../schemas/UserT';
+import { User } from '../schemas/User';
 
 interface Context {
   req: Request;

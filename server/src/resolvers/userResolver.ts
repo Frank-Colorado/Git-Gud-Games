@@ -5,7 +5,7 @@ import {
   LoginInput,
   UpdateUserInput,
   EditGameInput,
-} from '../schemas/UserT';
+} from '../schemas/User';
 import UserService from '../service/userService';
 import Context from '../types/context';
 

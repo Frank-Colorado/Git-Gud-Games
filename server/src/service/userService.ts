@@ -5,7 +5,7 @@ import {
   UserModel,
   User,
   EditGameInput,
-} from '../schemas/UserT';
+} from '../schemas/User';
 import Context from '../types/context';
 import { ApolloError } from 'apollo-server-express';
 import bcrypt from 'bcrypt';

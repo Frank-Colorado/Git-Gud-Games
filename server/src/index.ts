@@ -13,7 +13,7 @@ import { resolvers } from './resolvers';
 import db from './config/connection';
 import { verifyJwt } from './utils/jwt';
 import authChecker from './utils/authChecker';
-import { User } from './schemas/UserT';
+import { User } from './schemas/User';
 import Context from './types/context';
 
 const main = async () => {

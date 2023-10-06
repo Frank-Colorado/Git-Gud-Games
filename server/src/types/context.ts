@@ -4,7 +4,7 @@ import { User } from '../schemas/UserT';
 interface Context {
   req: Request;
   res: Response;
-  user: User;
+  user: User | null;
 }
 
 export default Context;

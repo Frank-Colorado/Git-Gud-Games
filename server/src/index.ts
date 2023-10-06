@@ -12,6 +12,8 @@ import { buildSchema } from 'type-graphql';
 import { resolvers } from './resolvers';
 import db from './config/connection';
 import { verifyJwt } from './utils/jwt';
+import { User } from './schemas/UserT';
+import Context from './types/context';
 
 const main = async () => {
   const PORT: string | number = process.env.PORT || 3001;
@@ -23,9 +25,17 @@ const main = async () => {
 
   const server = new ApolloServer({
     schema,
-    context: (ctx) => {
-      console.log(ctx);
-      return ctx;
+    context: (ctx: Context) => {
+      const context = ctx;
+
+      if (ctx.req && ctx.req.headers.authorization) {
+        const token =
+          ctx.req.headers.authorization.split(' ').pop()?.trim() || '';
+        const user = verifyJwt<User>(token);
+        context.user = user;
+      }
+
+      return context;
     },
     plugins: [
       process.env.NODE_ENV === 'production'

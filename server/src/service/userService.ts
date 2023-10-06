@@ -26,6 +26,7 @@ class UserService {
     // sign a JWT Token
     const token = signJwt(user);
     // Return the JWT Token
+    return token;
   }
 }
 

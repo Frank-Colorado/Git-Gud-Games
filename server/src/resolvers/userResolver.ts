@@ -1,7 +1,6 @@
-import { Query, Mutation, Resolver, Arg, Ctx } from 'type-graphql';
+import { Query, Mutation, Resolver, Arg, Ctx, Authorized } from 'type-graphql';
 import {
   User,
-  Auth,
   CreateUserInput,
   LoginInput,
   UpdateUserInput,
@@ -30,9 +29,10 @@ export default class UserResolver {
     return this.userService.login(input, context);
   }
 
+  @Authorized()
   @Mutation(() => User)
   updateUser(@Arg('input') input: UpdateUserInput, @Ctx() context: Context) {
-    const user = context.user;
+    const user = context.user!;
     return this.userService.updateUser({ ...input, user: user?._id });
   }
 }

@@ -70,14 +70,6 @@ export class User {
 
 export const UserModel = getModelForClass<typeof User, QueryHelpers>(User);
 
-@ObjectType()
-export class Auth {
-  @Field(() => String)
-  token!: string;
-  @Field(() => User)
-  user!: User;
-}
-
 @InputType()
 class GameInput {
   @Field(() => String)

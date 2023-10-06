@@ -1,4 +1,4 @@
-import { CreateUserInput, LoginInput, UserModel } from '../models/UserT';
+import { CreateUserInput, LoginInput, UserModel } from '../schemas/UserT';
 import Context from '../types/context';
 import { ApolloError } from 'apollo-server-express';
 import bcrypt from 'bcrypt';
@@ -10,22 +10,21 @@ class UserService {
     return UserModel.create(input);
   }
 
-  async login(input: LoginInput, context: Context) {
+  async login({ username, password }: LoginInput, context: Context) {
     // Get our user by username
-    const user = await UserModel.find().findByUsername(input.username).lean();
+    const user = await UserModel.find().findByUsername(username).lean();
     // If the user doesn't exist, throw an error
     if (!user) {
       throw new ApolloError('Invalid credentials.');
     }
     // Check if the password matches
-    const validPassword = await bcrypt.compare(input.password, user.password);
+    const validPassword = await bcrypt.compare(password, user.password);
     // If the password doesn't match, throw an error
     if (!validPassword) {
       throw new ApolloError('Invalid credentials.');
     }
     // sign a JWT Token
-    const token = signJwt();
-    // Set a cookie for the JWT Token
+    const token = signJwt(user);
     // Return the JWT Token
   }
 }

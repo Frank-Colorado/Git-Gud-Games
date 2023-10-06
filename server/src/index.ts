@@ -10,8 +10,8 @@ import {
 } from 'apollo-server-core';
 import { buildSchema } from 'type-graphql';
 import { resolvers } from './resolvers';
-import cookieParser from 'cookie-parser';
 import db from './config/connection';
+import { verifyJwt } from './utils/jwt';
 
 const main = async () => {
   const PORT: string | number = process.env.PORT || 3001;
@@ -36,7 +36,6 @@ const main = async () => {
 
   const app: Express = express();
 
-  app.use(cookieParser());
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
 

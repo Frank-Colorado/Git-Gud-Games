@@ -76,11 +76,11 @@ const LoginPage = () => {
           <Button variant="contained" type="submit">
             Login
           </Button>
-          <Typography variant="subtitle1" sx={{ marginTop: '1rem' }}>
-            Don't have an account? Sign up <Link to="/signup">here</Link> !
-          </Typography>
         </form>
       </Box>
+      <Typography variant="subtitle1" sx={{ marginTop: '1rem' }}>
+        Don't have an account? Sign up <Link to="/signup">here</Link> !
+      </Typography>
     </Grid>
   );
 };

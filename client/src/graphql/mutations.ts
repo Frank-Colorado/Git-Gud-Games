@@ -34,3 +34,14 @@ export const ADD_GAME_TO_LIBRARY = graphql(`
     }
   }
 `);
+
+export const REMOVE_GAME_FROM_LIBRARY = graphql(`
+  mutation removeGameFromLibrary($input: EditGameInput!) {
+    removeGameFromLibrary(input: $input) {
+      gameLibrary {
+        id
+        name
+      }
+    }
+  }
+`);

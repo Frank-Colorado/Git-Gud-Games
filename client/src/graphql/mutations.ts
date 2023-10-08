@@ -14,3 +14,13 @@ export const LOGIN = graphql(`
     login(input: $input)
   }
 `);
+
+export const UPDATE_USER = graphql(`
+  mutation updateUser($input: UpdateUserInput!) {
+    updateUser(input: $input) {
+      _id
+      username
+      avatar
+    }
+  }
+`);

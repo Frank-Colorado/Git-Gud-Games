@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import UserForm from '../components/UserForm';
 
 const SignupPage = () => {
+  const handleSubmit = async (e: Event) => {
+    e.preventDefault();
+  };
   return (
     <Grid
       container
@@ -18,7 +21,7 @@ const SignupPage = () => {
       <Typography variant="h1" sx={{ color: '#D83F31' }}>
         Sign Up
       </Typography>
-      <UserForm onSubmit={() => {}} />
+      <UserForm onSubmit={handleSubmit} />
       <Typography variant="subtitle1" sx={{ marginTop: '1rem' }}>
         Already have an account? Login <Link to="/login">here</Link> !
       </Typography>

@@ -8,3 +8,9 @@ export const CREATE_USER = graphql(`
     }
   }
 `);
+
+export const LOGIN = graphql(`
+  mutation login($input: LoginInput!) {
+    login(input: $input)
+  }
+`);

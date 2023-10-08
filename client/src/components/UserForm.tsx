@@ -21,7 +21,11 @@ const StyledTextField = styled(TextField)({
   },
 });
 
-const UserForm = ({ onSubmit }) => {
+interface UserFormProps {
+  onSubmit: (e: Event) => Promise<void>;
+}
+
+const UserForm = ({ onSubmit }: UserFormProps) => {
   return (
     <Box sx={{ mt: 10, border: '1px solid #D83F31 ' }}>
       <form

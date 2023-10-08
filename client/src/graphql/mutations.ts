@@ -18,9 +18,19 @@ export const LOGIN = graphql(`
 export const UPDATE_USER = graphql(`
   mutation updateUser($input: UpdateUserInput!) {
     updateUser(input: $input) {
-      _id
       username
       avatar
+    }
+  }
+`);
+
+export const ADD_GAME_TO_LIBRARY = graphql(`
+  mutation addGameToLibrary($input: EditGameInput!) {
+    addGameToLibrary(input: $input) {
+      gameLibrary {
+        id
+        name
+      }
     }
   }
 `);

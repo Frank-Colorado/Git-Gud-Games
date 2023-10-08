@@ -1,4 +1,4 @@
-import { Grid, Typography, Box, Button } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 
 import { Link } from 'react-router-dom';
 import UserForm from '../components/UserForm';

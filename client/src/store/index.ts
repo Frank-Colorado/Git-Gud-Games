@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
+import { userReducer } from './slices/userSlice';
 import { gamesApi } from './apis/gamesApi';
 import { dealsApi } from './apis/dealsApi';
 
 export const store = configureStore({
   reducer: {
+    user: userReducer,
     [gamesApi.reducerPath]: gamesApi.reducer,
     [dealsApi.reducerPath]: dealsApi.reducer,
   },

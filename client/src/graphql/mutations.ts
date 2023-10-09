@@ -1,17 +1,36 @@
 import { graphql } from '../../gql';
 
 export const CREATE_USER = graphql(`
-  mutation createUser($input: CreateUserInput!) {
+  mutation createUser($input: UserInput!) {
     createUser(input: $input) {
-      _id
-      username
+      token
+      user {
+        _id
+        username
+        avatar
+        gameLibrary {
+          id
+          name
+        }
+      }
     }
   }
 `);
 
 export const LOGIN = graphql(`
-  mutation login($input: LoginInput!) {
-    login(input: $input)
+  mutation login($input: UserInput!) {
+    login(input: $input) {
+      token
+      user {
+        _id
+        username
+        avatar
+        gameLibrary {
+          id
+          name
+        }
+      }
+    }
   }
 `);
 

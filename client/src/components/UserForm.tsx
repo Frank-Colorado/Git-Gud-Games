@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Box, TextField, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
@@ -22,10 +23,12 @@ const StyledTextField = styled(TextField)({
 });
 
 interface UserFormProps {
-  onSubmit: (e: Event) => Promise<void>;
+  state: { username: string; password: string };
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
 }
 
-const UserForm = ({ onSubmit }: UserFormProps) => {
+const UserForm = ({ state, onChange, onSubmit }: UserFormProps) => {
   return (
     <Box sx={{ mt: 10, border: '1px solid #D83F31 ' }}>
       <form

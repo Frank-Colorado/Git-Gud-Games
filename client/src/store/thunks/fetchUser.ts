@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { useQuery } from '@apollo/client';
+import { apolloClient } from '../../graphql/apolloClient';
 import { GET_ME } from '../../graphql/queries';
 
 export const fetchUser = createAsyncThunk('user/fetch', async () => {

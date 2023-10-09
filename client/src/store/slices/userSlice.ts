@@ -1,33 +1,37 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { User } from '../../../gql/graphql';
-import { ApolloError } from '@apollo/client';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { User, GameObject } from '../../../gql/graphql';
+import { fetchUser } from '../thunks/fetchUser';
 
 interface UserState {
   user: User;
-  isLoading: boolean;
-  error: ApolloError | null;
 }
 
-const initialState = {
+const initialState: UserState = {
   user: {
     _id: '',
     username: '',
     avatar: '',
     gameLibrary: [],
   },
-  isLoading: false,
-  error: null,
-} as UserState;
+};
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
-  extraReducers: {
-    // TODO: Add reducers for fetching user data
-    // TODO: Add reducers for updating user data
-    // TODO: Add reducers for adding games to user library
-    // TODO: Add reducers for removing games from user library
+  reducers: {
+    setUser(state, action: PayloadAction<User>) {
+      state.user = action.payload;
+    },
+    addGameObject(state, action: PayloadAction<GameObject>) {
+      state.user.gameLibrary.push(action.payload);
+    },
+    removeGameObject(state, action: PayloadAction<string>) {
+      state.user.gameLibrary = state.user.gameLibrary.filter(
+        (game) => game.id !== action.payload
+      );
+    },
   },
 });
 
+export const { setUser, addGameObject, removeGameObject } = userSlice.actions;
 export const userReducer = userSlice.reducer;

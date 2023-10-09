@@ -40,9 +40,13 @@ const UserForm = ({ state, onChange, onSubmit }: UserFormProps) => {
           color: 'white',
           padding: '2rem',
         }}
+        onSubmit={onSubmit}
       >
         <StyledTextField
           label="Username"
+          name="username"
+          value={state.username}
+          onChange={onChange}
           sx={{ marginBottom: '3rem' }}
           InputLabelProps={{
             sx: {
@@ -52,6 +56,10 @@ const UserForm = ({ state, onChange, onSubmit }: UserFormProps) => {
         />
         <StyledTextField
           label="Password"
+          type="password"
+          name="password"
+          value={state.password}
+          onChange={onChange}
           sx={{ marginBottom: '3rem' }}
           InputLabelProps={{
             sx: {

@@ -30,6 +30,7 @@ const SignupPage = () => {
       const { data } = await createUser({
         variables: { input: { ...formState } },
       });
+      console.log(data);
       // if the mutation is successful, we'll handle the token and user data
       //  use auth to set the token to localStorage
       //  auth.login(data.createUser.token);
@@ -58,7 +59,11 @@ const SignupPage = () => {
       <Typography variant="h1" sx={{ color: '#D83F31' }}>
         Sign Up
       </Typography>
-      <UserForm gqlHook={createUser} />
+      <UserForm
+        state={formState}
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+      />
       <Typography variant="subtitle1" sx={{ marginTop: '1rem' }}>
         Already have an account? Login <Link to="/login">here</Link> !
       </Typography>

@@ -1,6 +1,5 @@
 import {
-  CreateUserInput,
-  LoginInput,
+  UserInput,
   UpdateUserInput,
   UserModel,
   User,
@@ -12,12 +11,16 @@ import bcrypt from 'bcrypt';
 import { signJwt } from '../utils/jwt';
 
 class UserService {
-  async createUser(input: CreateUserInput) {
+  async createUser(input: UserInput) {
     // Call User Model to create user
-    return UserModel.create(input);
+    const user = await UserModel.create(input);
+    // Sign a JWT Token
+    const token = signJwt(user);
+    // Return the user and token in an Auth object
+    return { token, user };
   }
 
-  async login({ username, password }: LoginInput, context: Context) {
+  async login({ username, password }: UserInput) {
     // Get our user by username
     const user = await UserModel.find().findByUsername(username).lean();
     // If the user doesn't exist, throw an error

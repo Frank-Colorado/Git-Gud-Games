@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { User, GameObject } from '../../../gql/graphql';
-import { fetchUser } from '../thunks/fetchUser';
 
 interface UserState {
   user: User;

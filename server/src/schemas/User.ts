@@ -52,8 +52,8 @@ export class User {
   @prop({ type: String, required: true, unique: true, trim: true })
   username!: string;
 
-  @Field(() => String, { nullable: true })
-  @prop({ type: String })
+  @Field(() => String)
+  @prop({ type: String, default: '' })
   avatar?: string;
 
   @prop({ type: String, required: true })
@@ -69,6 +69,15 @@ export class User {
 }
 
 export const UserModel = getModelForClass<typeof User, QueryHelpers>(User);
+
+@ObjectType()
+export class Auth {
+  @Field(() => String)
+  token!: string;
+
+  @Field(() => User)
+  user!: User;
+}
 
 @InputType()
 export class CreateUserInput {

@@ -4,6 +4,7 @@ import {
   UserModel,
   User,
   EditGameInput,
+  Auth,
 } from '../schemas/User';
 import Context from '../types/context';
 import { ApolloError } from 'apollo-server-express';
@@ -11,7 +12,7 @@ import bcrypt from 'bcrypt';
 import { signJwt } from '../utils/jwt';
 
 class UserService {
-  async createUser(input: UserInput) {
+  async createUser(input: UserInput): Promise<Auth> {
     // Call User Model to create user
     const user = await UserModel.create(input);
     // Sign a JWT Token
@@ -20,7 +21,7 @@ class UserService {
     return { token, user };
   }
 
-  async login({ username, password }: UserInput) {
+  async login({ username, password }: UserInput): Promise<Auth> {
     // Get our user by username
     const user = await UserModel.find().findByUsername(username).lean();
     // If the user doesn't exist, throw an error
@@ -55,10 +56,10 @@ class UserService {
   }
 
   async removeGameFromLibrary(input: EditGameInput & { user: User['_id'] }) {
-    const { id, name } = input;
+    const { id } = input;
     return UserModel.findByIdAndUpdate(
       { _id: input.user },
-      { $pull: { gameLibrary: { id, name } } },
+      { $pull: { gameLibrary: id } },
       { new: true }
     ).lean();
   }

@@ -22,10 +22,10 @@ const userSlice = createSlice({
     setUser(state, action: PayloadAction<User>) {
       state.user = action.payload;
     },
-    addGameObject(state, action: PayloadAction<GameObject>) {
+    addUserGame(state, action: PayloadAction<GameObject>) {
       state.user.gameLibrary.push(action.payload);
     },
-    removeGameObject(state, action: PayloadAction<string>) {
+    removeUserGame(state, action: PayloadAction<string>) {
       state.user.gameLibrary = state.user.gameLibrary.filter(
         (game) => game.id !== action.payload
       );
@@ -33,5 +33,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { setUser, addGameObject, removeGameObject } = userSlice.actions;
+export const { setUser, addUserGame, removeUserGame } = userSlice.actions;
 export const userReducer = userSlice.reducer;

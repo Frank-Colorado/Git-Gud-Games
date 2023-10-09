@@ -1,8 +1,23 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { userReducer } from './slices/userSlice';
-import { gamesApi } from './apis/gamesApi';
-import { dealsApi } from './apis/dealsApi';
+import {
+  userReducer,
+  setUser,
+  addUserGame,
+  removeUserGame,
+} from './slices/userSlice';
+import {
+  gamesApi,
+  useGetGamesQuery,
+  useGetSearchOptionsQuery,
+  useGetGameDetailsQuery,
+  useGetGameScreenShotsQuery,
+} from './apis/gamesApi';
+import {
+  dealsApi,
+  useGetGameDealsQuery,
+  useGetStoresQuery,
+} from './apis/dealsApi';
 
 export const store = configureStore({
   reducer: {
@@ -20,16 +35,21 @@ export const store = configureStore({
 setupListeners(store.dispatch);
 
 export {
+  setUser,
+  addUserGame,
+  removeUserGame,
   useGetGamesQuery,
   useGetSearchOptionsQuery,
   useGetGameDetailsQuery,
   useGetGameScreenShotsQuery,
-} from './apis/gamesApi';
+  useGetGameDealsQuery,
+  useGetStoresQuery,
+};
+
 export type {
   GameType,
   GamesApiQueryType,
   GameScreenShotsType,
 } from './apis/gamesApi';
 
-export { useGetGameDealsQuery, useGetStoresQuery } from './apis/dealsApi';
 export type { Deals } from './apis/dealsApi';

@@ -80,7 +80,13 @@ export class Auth {
 }
 
 @InputType()
-export class CreateUserInput {
+export class UserInput {
+  @MinLength(3, {
+    message: 'Username must be at least 3 characters long',
+  })
+  @MaxLength(15, {
+    message: 'Username must be less than 15 characters',
+  })
   @Field(() => String)
   username!: string;
 
@@ -90,15 +96,6 @@ export class CreateUserInput {
   @MaxLength(30, {
     message: 'Password must be less than 30 characters',
   })
-  @Field(() => String)
-  password!: string;
-}
-
-@InputType()
-export class LoginInput {
-  @Field(() => String)
-  username!: string;
-
   @Field(() => String)
   password!: string;
 }

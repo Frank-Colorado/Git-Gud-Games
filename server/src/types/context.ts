@@ -1,10 +1,14 @@
 import { Request, Response } from 'express';
 import { User } from '../schemas/User';
 
+type Data = {
+  data: User;
+};
+
 interface Context {
   req: Request;
   res: Response;
-  user: User | null;
+  user: Data;
 }
 
 export default Context;

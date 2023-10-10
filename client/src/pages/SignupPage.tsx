@@ -6,6 +6,7 @@ import UserForm from '../components/UserForm';
 import { useMutation } from '@apollo/client';
 import { CREATE_USER } from '../graphql/mutations';
 import { setUser } from '../store';
+import Auth from '../utils/auth';
 
 const SignupPage = () => {
   const dispatch = useDispatch();
@@ -31,11 +32,13 @@ const SignupPage = () => {
         variables: { input: { ...formState } },
       });
       console.log(data);
-      // if the mutation is successful, we'll handle the token and user data
-      //  use auth to set the token to localStorage
-      //  auth.login(data.createUser.token);
-      // then set the redux store state for the user accordingly
-      // dispatch(setUser(data.createUser.user));
+      if (data) {
+        // if the mutation is successful, we'll handle the token and user data
+        //  use auth to set the token to localStorage
+        Auth.login(data.createUser.token);
+        // then set the redux store state for the user accordingly
+        dispatch(setUser(data.createUser.user));
+      }
     } catch (err) {
       console.error(err);
     }

@@ -10,7 +10,6 @@ interface GamesDisplayProps {
 
 const GamesDisplay = ({ query }: GamesDisplayProps) => {
   const { data, error, isFetching } = useGetGamesQuery(query);
-  console.log(data, error, isFetching);
 
   const Fetching = (
     <>

@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { useAppDispatch } from '../hooks';
 import { Grid, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import UserForm from '../components/UserForm';
 import { useMutation } from '@apollo/client';
 import { CREATE_USER } from '../graphql/mutations';
 import { setUser } from '../store';
 import Auth from '../utils/auth';
 import { useNavigate } from 'react-router-dom';
+import UserForm from '../components/UserForm';
 
 const SignupPage = () => {
   const navigate = useNavigate();

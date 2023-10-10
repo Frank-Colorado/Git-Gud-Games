@@ -1,18 +1,16 @@
 import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
-
-dotenv.config();
+require('dotenv').config();
 
 const secret = process.env.JWT_SECRET as string;
 
 export const signJwt = (object: Object) => {
-  return jwt.sign(object, secret);
+  return jwt.sign({ data: object }, secret);
 };
 
 export const verifyJwt = <T>(token: string): T | null => {
   try {
-    const decoded = jwt.verify(token, secret) as T;
-    return decoded;
+    const data = jwt.verify(token, secret) as T;
+    return data;
   } catch (err) {
     return null;
   }

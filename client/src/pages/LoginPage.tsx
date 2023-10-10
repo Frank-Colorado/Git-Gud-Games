@@ -20,7 +20,7 @@ const LoginPage = () => {
       <Typography variant="h1" sx={{ color: '#D83F31' }}>
         Login
       </Typography>
-      <UserForm onSubmit={handleSubmit} />
+
       <Typography variant="subtitle1" sx={{ marginTop: '1rem' }}>
         Don't have an account? Sign up <Link to="/signup">here</Link> !
       </Typography>

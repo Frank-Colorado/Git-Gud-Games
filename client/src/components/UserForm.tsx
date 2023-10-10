@@ -47,7 +47,7 @@ const UserForm = ({ state, onChange, onSubmit }: UserFormProps) => {
           name="username"
           value={state.username}
           onChange={onChange}
-          sx={{ marginBottom: '3rem' }}
+          sx={{ marginBottom: '3rem', input: { color: 'white' } }}
           InputLabelProps={{
             sx: {
               color: '#EE9322',
@@ -60,7 +60,7 @@ const UserForm = ({ state, onChange, onSubmit }: UserFormProps) => {
           name="password"
           value={state.password}
           onChange={onChange}
-          sx={{ marginBottom: '3rem' }}
+          sx={{ marginBottom: '3rem', input: { color: 'white' } }}
           InputLabelProps={{
             sx: {
               color: '#EE9322',

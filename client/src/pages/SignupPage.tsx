@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '../hooks';
 import { Grid, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import UserForm from '../components/UserForm';
@@ -7,9 +7,11 @@ import { useMutation } from '@apollo/client';
 import { CREATE_USER } from '../graphql/mutations';
 import { setUser } from '../store';
 import Auth from '../utils/auth';
+import { useNavigate } from 'react-router-dom';
 
 const SignupPage = () => {
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const [formState, setFormState] = useState({
     username: '',
     password: '',
@@ -34,10 +36,12 @@ const SignupPage = () => {
       console.log(data);
       if (data) {
         // if the mutation is successful, we'll handle the token and user data
-        //  use auth to set the token to localStorage
-        Auth.login(data.createUser.token);
         // then set the redux store state for the user accordingly
         dispatch(setUser(data.createUser.user));
+        //  use auth to set the token to localStorage
+        Auth.login(data.createUser.token);
+        // navigate to the home page
+        navigate('/');
       }
     } catch (err) {
       console.error(err);

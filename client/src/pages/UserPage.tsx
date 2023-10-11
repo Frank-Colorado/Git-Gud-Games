@@ -1,4 +1,5 @@
 import { Grid, Input, Box, Typography, Button } from '@mui/material';
+import UserHeader from '../components/UserHeader';
 
 const UserPage = () => {
   return (
@@ -10,6 +11,7 @@ const UserPage = () => {
       }}
     >
       <Grid item md={7} sx={{ bgcolor: 'red' }}>
+        <UserHeader />
         <Box sx={{ height: 100, marginLeft: 2 }}>
           <Typography variant="h2">My Library</Typography>
         </Box>

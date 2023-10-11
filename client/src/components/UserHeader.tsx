@@ -2,7 +2,7 @@ import { Box, Button, Typography } from '@mui/material';
 
 const UserHeader = () => {
   return (
-    <div>
+    <>
       <Box
         sx={{
           width: '100%',
@@ -47,7 +47,7 @@ const UserHeader = () => {
           </Typography>
         </Box>
       </Box>
-    </div>
+    </>
   );
 };
 

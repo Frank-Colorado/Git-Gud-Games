@@ -72,6 +72,9 @@ const LoginPage = () => {
         onSubmit={handleSubmit}
       />
       <Typography variant="subtitle1" sx={{ marginTop: '1rem' }}>
+        {error && <Typography color="error">{error.message}</Typography>}
+      </Typography>
+      <Typography variant="subtitle1" sx={{ marginTop: '1rem' }}>
         Don't have an account? Sign up <Link to="/signup">here</Link> !
       </Typography>
     </Grid>

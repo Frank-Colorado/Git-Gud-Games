@@ -43,8 +43,8 @@ const SignupPage = () => {
         // navigate to the home page
         navigate('/');
       }
-    } catch (err) {
-      console.error(err);
+    } catch (error: any) {
+      console.error(error);
     }
     setFormState({
       username: '',
@@ -71,6 +71,9 @@ const SignupPage = () => {
         onChange={handleChange}
         onSubmit={handleSubmit}
       />
+      <Typography variant="subtitle1" sx={{ marginTop: '1rem' }}>
+        {error && <Typography color="error">{error.message}</Typography>}
+      </Typography>
       <Typography variant="subtitle1" sx={{ marginTop: '1rem' }}>
         Already have an account? Login <Link to="/login">here</Link> !
       </Typography>

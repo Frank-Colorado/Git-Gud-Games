@@ -2,6 +2,7 @@ import { Box, Typography, Button } from '@mui/material';
 import { GameDetailsType } from '../store/apis/gamesApi';
 import Auth from '../utils/auth';
 import { Link } from 'react-router-dom';
+import EditGameLibrary from './EditGameLibrary';
 
 interface GameHeaderProps {
   data: GameDetailsType;
@@ -9,7 +10,6 @@ interface GameHeaderProps {
 
 const GameHeader = ({ data }: GameHeaderProps) => {
   const loggedIn = Auth.loggedIn();
-  console.log(loggedIn);
   return (
     <Box
       sx={{
@@ -28,9 +28,7 @@ const GameHeader = ({ data }: GameHeaderProps) => {
         }}
       >
         {loggedIn ? (
-          <Button variant="contained" color="primary">
-            Add to Library
-          </Button>
+          <EditGameLibrary game={data.id} />
         ) : (
           <>
             <Typography

@@ -67,7 +67,7 @@ export class User {
   @prop({ type: String, required: true })
   password!: string;
 
-  @Field(() => [GameObject], { nullable: true })
+  @Field(() => [GameObject])
   @prop({ type: () => [GameObject], default: [] })
   gameLibrary?: Ref<GameObject>[];
 

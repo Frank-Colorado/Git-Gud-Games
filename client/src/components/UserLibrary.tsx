@@ -1,4 +1,5 @@
 import { Box, Grid, Typography } from '@mui/material';
+import LibraryItem from './LibraryItem';
 
 const UserLibrary = () => {
   return (
@@ -8,7 +9,14 @@ const UserLibrary = () => {
           My Library
         </Typography>
       </Box>
-      <Grid container spacing={2} sx={{ paddingX: 2 }}></Grid>
+      <Grid container spacing={2} sx={{ paddingX: 2 }}>
+        <LibraryItem />
+        <LibraryItem />
+        <LibraryItem />
+        <LibraryItem />
+        <LibraryItem />
+        <LibraryItem />
+      </Grid>
     </>
   );
 };

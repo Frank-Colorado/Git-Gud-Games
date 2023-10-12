@@ -24,7 +24,13 @@ const list = [
 const Sidebar = () => {
   return (
     <Grid container direction="column" alignItems="center">
-      <div style={{ position: 'fixed', backgroundColor: 'orange' }}>
+      <div
+        style={{
+          position: 'fixed',
+          backgroundColor: 'orange',
+          marginTop: '8rem',
+        }}
+      >
         {list.map((item) => {
           return (
             <List key={item.header}>

@@ -10,11 +10,11 @@ interface MainDisplayProps {
 const MainDisplay = ({ header, query }: MainDisplayProps) => {
   return (
     <Grid container sx={{ height: '100vh' }}>
-      <Grid item md={2} sx={{ backgroundColor: 'green' }}>
+      <Grid item md={2}>
         <Sidebar />
       </Grid>
-      <Grid item md={10} sx={{ backgroundColor: 'blue' }}>
-        <Typography variant="h2" sx={{ mb: 2, color: 'white' }} align="center">
+      <Grid item md={10}>
+        <Typography variant="h2" sx={{ my: 4, color: 'white' }} align="center">
           {header}
         </Typography>
         <GamesDisplay query={query} />;

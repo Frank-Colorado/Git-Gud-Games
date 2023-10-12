@@ -26,7 +26,7 @@ const GameCard = ({ game }: GameCardProps) => {
 
   return (
     <Grid item xs={3}>
-      <Card sx={{ height: '22rem', width: '22rem' }}>
+      <Card sx={{ height: '21rem', width: '22rem' }}>
         <CardMedia
           component="img"
           height="200"

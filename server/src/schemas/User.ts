@@ -56,14 +56,18 @@ export class User {
   @prop({ type: String, required: true, unique: true, trim: true })
   username!: string;
 
-  @Field(() => String)
+  @Field(() => String, { nullable: true })
   @prop({ type: String, default: '' })
   avatar?: string;
+
+  @Field(() => String, { nullable: true })
+  @prop({ type: String })
+  bio?: string;
 
   @prop({ type: String, required: true })
   password!: string;
 
-  @Field(() => [GameObject])
+  @Field(() => [GameObject], { nullable: true })
   @prop({ type: () => [GameObject], default: [] })
   gameLibrary?: Ref<GameObject>[];
 
@@ -114,6 +118,9 @@ export class UpdateUserInput {
 
   @Field(() => String, { nullable: true })
   avatar?: string;
+
+  @Field(() => String, { nullable: true })
+  bio?: string;
 }
 
 @InputType()
@@ -121,6 +128,9 @@ export class EditGameInput {
   @Field(() => String)
   id!: string;
 
-  @Field(() => String)
-  name!: string;
+  @Field(() => String, { nullable: true })
+  name?: string;
+
+  @Field(() => String, { nullable: true })
+  image?: string;
 }

@@ -3,12 +3,17 @@ import { GameDetailsType } from '../store/apis/gamesApi';
 import Auth from '../utils/auth';
 import { Link } from 'react-router-dom';
 import EditGameLibrary from './EditGameLibrary';
+import { useQuery } from '@apollo/client';
+import { GET_USER_GAMES } from '../graphql/queries';
 
 interface GameHeaderProps {
   data: GameDetailsType;
 }
 
 const GameHeader = ({ data }: GameHeaderProps) => {
+  const userGames = useQuery(GET_USER_GAMES);
+  console.log(userGames);
+
   const loggedIn = Auth.loggedIn();
   return (
     <Box

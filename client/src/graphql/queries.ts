@@ -17,7 +17,7 @@ export const GET_ME = graphql(`
 `);
 
 export const GET_USER_GAMES = graphql(`
-  query getMe {
+  query getUserGames {
     me {
       gameLibrary {
         id

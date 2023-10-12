@@ -10,6 +10,7 @@ const initialState: UserState = {
     _id: '',
     username: '',
     avatar: '',
+    bio: '',
     gameLibrary: [],
   },
 };

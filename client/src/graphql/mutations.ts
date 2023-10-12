@@ -8,9 +8,11 @@ export const CREATE_USER = graphql(`
         _id
         username
         avatar
+        bio
         gameLibrary {
           id
           name
+          image
         }
       }
     }
@@ -25,9 +27,11 @@ export const LOGIN = graphql(`
         _id
         username
         avatar
+        bio
         gameLibrary {
           id
           name
+          image
         }
       }
     }
@@ -39,6 +43,7 @@ export const UPDATE_USER = graphql(`
     updateUser(input: $input) {
       username
       avatar
+      bio
     }
   }
 `);
@@ -49,6 +54,7 @@ export const ADD_GAME_TO_LIBRARY = graphql(`
       gameLibrary {
         id
         name
+        image
       }
     }
   }
@@ -60,6 +66,7 @@ export const REMOVE_GAME_FROM_LIBRARY = graphql(`
       gameLibrary {
         id
         name
+        image
       }
     }
   }

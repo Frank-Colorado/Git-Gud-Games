@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useAppDispatch } from '../hooks';
 import { Grid } from '@mui/material';
 import UserHeader from '../components/UserHeader';
 import UserLibrary from '../components/UserLibrary';
@@ -5,8 +7,15 @@ import { useQuery } from '@apollo/client';
 import { GET_ME } from '../graphql/queries';
 
 const UserPage = () => {
+  const dispatch = useAppDispatch();
   const { loading, error, data } = useQuery(GET_ME);
-  console.log(data);
+
+  useEffect(() => {
+    if (data) {
+      console.log(data);
+    }
+  }, [data]);
+
   return (
     <Grid
       container

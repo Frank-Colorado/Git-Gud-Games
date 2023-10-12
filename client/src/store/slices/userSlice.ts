@@ -9,8 +9,8 @@ const initialState: UserState = {
   user: {
     _id: '',
     username: '',
-    avatar: '',
-    bio: '',
+    avatar: null,
+    bio: null,
     gameLibrary: [],
   },
 };

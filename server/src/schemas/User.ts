@@ -57,7 +57,7 @@ export class User {
   username!: string;
 
   @Field(() => String, { nullable: true })
-  @prop({ type: String, default: '' })
+  @prop({ type: String })
   avatar?: string;
 
   @Field(() => String, { nullable: true })

@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useGetGameDetailsQuery } from '../store';
-import { Grid } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import GameHeader from '../components/GameHeader';
 import GameCarousel from '../components/GameCarousel';
 import GameDetails from '../components/GameDetails';
@@ -14,6 +14,18 @@ const GamePage = () => {
   }
 
   const { data, error, isLoading } = useGetGameDetailsQuery(gameId);
+
+  if (isLoading) {
+    return (
+      <Typography variant="h3" textAlign="center" sx={{ color: 'white' }}>
+        Loading...
+      </Typography>
+    );
+  }
+
+  if (error) {
+    return <div>Something went wrong...</div>;
+  }
 
   if (!data) {
     return <div> No Game Found </div>;

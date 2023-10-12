@@ -31,7 +31,7 @@ const Expandable = ({ children }: ExpandableProps) => {
             color: 'red',
             cursor: 'pointer',
             '&:hover': {
-              textDecoration: 'underline',
+              color: 'yellow',
             },
           }}
         >

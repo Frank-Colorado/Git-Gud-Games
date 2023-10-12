@@ -1,8 +1,12 @@
 import { Grid, Input, Box, Typography, Button } from '@mui/material';
 import UserHeader from '../components/UserHeader';
 import UserLibrary from '../components/UserLibrary';
+import { useQuery } from '@apollo/client';
+import { GET_ME } from '../graphql/queries';
 
 const UserPage = () => {
+  const { loading, error, data } = useQuery(GET_ME);
+  console.log(data);
   return (
     <Grid
       container

@@ -6,9 +6,11 @@ export const GET_ME = graphql(`
       _id
       username
       avatar
+      bio
       gameLibrary {
         id
         name
+        image
       }
     }
   }

@@ -67,7 +67,7 @@ const UserForm = ({ state, onChange, onSubmit }: UserFormProps) => {
           }}
         />
         <Button variant="contained" type="submit">
-          Login
+          Submit
         </Button>
       </form>
     </Box>

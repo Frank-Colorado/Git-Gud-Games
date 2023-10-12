@@ -23,14 +23,14 @@ export type Auth = {
 };
 
 export type EditGameInput = {
-  id: Scalars['String']['input'];
+  id: Scalars['Int']['input'];
   image?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type GameObject = {
   __typename?: 'GameObject';
-  id: Scalars['String']['output'];
+  id: Scalars['Int']['output'];
   image: Scalars['String']['output'];
   name: Scalars['String']['output'];
 };
@@ -100,14 +100,14 @@ export type CreateUserMutationVariables = Exact<{
 }>;
 
 
-export type CreateUserMutation = { __typename?: 'Mutation', createUser: { __typename?: 'Auth', token: string, user: { __typename?: 'User', _id: string, username: string, avatar?: string | null, bio?: string | null, gameLibrary: Array<{ __typename?: 'GameObject', id: string, name: string, image: string }> } } };
+export type CreateUserMutation = { __typename?: 'Mutation', createUser: { __typename?: 'Auth', token: string, user: { __typename?: 'User', _id: string, username: string, avatar?: string | null, bio?: string | null, gameLibrary: Array<{ __typename?: 'GameObject', id: number, name: string, image: string }> } } };
 
 export type LoginMutationVariables = Exact<{
   input: UserInput;
 }>;
 
 
-export type LoginMutation = { __typename?: 'Mutation', login: { __typename?: 'Auth', token: string, user: { __typename?: 'User', _id: string, username: string, avatar?: string | null, bio?: string | null, gameLibrary: Array<{ __typename?: 'GameObject', id: string, name: string, image: string }> } } };
+export type LoginMutation = { __typename?: 'Mutation', login: { __typename?: 'Auth', token: string, user: { __typename?: 'User', _id: string, username: string, avatar?: string | null, bio?: string | null, gameLibrary: Array<{ __typename?: 'GameObject', id: number, name: string, image: string }> } } };
 
 export type UpdateUserMutationVariables = Exact<{
   input: UpdateUserInput;
@@ -121,19 +121,19 @@ export type AddGameToLibraryMutationVariables = Exact<{
 }>;
 
 
-export type AddGameToLibraryMutation = { __typename?: 'Mutation', addGameToLibrary: { __typename?: 'User', gameLibrary: Array<{ __typename?: 'GameObject', id: string, name: string, image: string }> } };
+export type AddGameToLibraryMutation = { __typename?: 'Mutation', addGameToLibrary: { __typename?: 'User', gameLibrary: Array<{ __typename?: 'GameObject', id: number, name: string, image: string }> } };
 
 export type RemoveGameFromLibraryMutationVariables = Exact<{
   input: EditGameInput;
 }>;
 
 
-export type RemoveGameFromLibraryMutation = { __typename?: 'Mutation', removeGameFromLibrary: { __typename?: 'User', gameLibrary: Array<{ __typename?: 'GameObject', id: string, name: string, image: string }> } };
+export type RemoveGameFromLibraryMutation = { __typename?: 'Mutation', removeGameFromLibrary: { __typename?: 'User', gameLibrary: Array<{ __typename?: 'GameObject', id: number, name: string, image: string }> } };
 
 export type GetMeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetMeQuery = { __typename?: 'Query', me: { __typename?: 'User', _id: string, username: string, avatar?: string | null, bio?: string | null, gameLibrary: Array<{ __typename?: 'GameObject', id: string, name: string, image: string }> } };
+export type GetMeQuery = { __typename?: 'Query', me: { __typename?: 'User', _id: string, username: string, avatar?: string | null, bio?: string | null, gameLibrary: Array<{ __typename?: 'GameObject', id: number, name: string, image: string }> } };
 
 
 export const CreateUserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"createUser"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UserInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createUser"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"token"}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_id"}},{"kind":"Field","name":{"kind":"Name","value":"username"}},{"kind":"Field","name":{"kind":"Name","value":"avatar"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"gameLibrary"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"image"}}]}}]}}]}}]}}]} as unknown as DocumentNode<CreateUserMutation, CreateUserMutationVariables>;

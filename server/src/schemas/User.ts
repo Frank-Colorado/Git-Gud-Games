@@ -1,4 +1,4 @@
-import { Field, InputType, ObjectType } from 'type-graphql';
+import { Field, InputType, Int, ObjectType } from 'type-graphql';
 import {
   getModelForClass,
   prop,
@@ -25,9 +25,9 @@ interface QueryHelpers {
 
 @ObjectType()
 class GameObject {
-  @Field(() => String)
+  @Field(() => Int)
   @prop()
-  id?: string;
+  id?: number;
 
   @Field(() => String)
   @prop()
@@ -125,8 +125,8 @@ export class UpdateUserInput {
 
 @InputType()
 export class EditGameInput {
-  @Field(() => String)
-  id!: string;
+  @Field(() => Int)
+  id!: number;
 
   @Field(() => String, { nullable: true })
   name?: string;

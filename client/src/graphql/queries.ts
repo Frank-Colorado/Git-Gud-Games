@@ -15,3 +15,15 @@ export const GET_ME = graphql(`
     }
   }
 `);
+
+export const GET_USER_GAMES = graphql(`
+  query getMe {
+    me {
+      gameLibrary {
+        id
+        name
+        image
+      }
+    }
+  }
+`);

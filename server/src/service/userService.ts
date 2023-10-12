@@ -6,7 +6,6 @@ import {
   EditGameInput,
   Auth,
 } from '../schemas/User';
-import Context from '../types/context';
 import { ApolloError } from 'apollo-server-express';
 import bcrypt from 'bcrypt';
 import { signJwt } from '../utils/jwt';
@@ -47,10 +46,10 @@ class UserService {
   }
 
   async addGameToLibrary(input: EditGameInput & { user: User['_id'] }) {
-    const { id, name } = input;
+    const { id, name, image } = input;
     return UserModel.findByIdAndUpdate(
       { _id: input.user },
-      { $addToSet: { gameLibrary: { id, name } } },
+      { $addToSet: { gameLibrary: { id, name, image } } },
       { new: true }
     ).lean();
   }

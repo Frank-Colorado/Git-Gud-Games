@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
 import { useGetGameDealsQuery } from '../store';
 
 // Here I decided to hardcode the data for the stores from CheapShark's API.
@@ -402,12 +402,29 @@ const GameDeals = ({ gameTitle }: GameDealsProps) => {
           <Typography variant="h4" sx={{ color: 'white' }}>
             {deal.storeName}
           </Typography>
-          <div>
-            <Typography variant="h4" sx={{ color: 'white' }}>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              bgcolor: 'black',
+              width: '25%',
+              justifyContent: 'center',
+              borderRadius: '0.25rem',
+            }}
+          >
+            <Typography variant="h6" sx={{ color: 'white', mx: 2 }}>
               ${deal.price}
             </Typography>
-            <button> View Deal</button>
-          </div>
+            <Button
+              href={`https://www.cheapshark.com/redirect?dealID=${deal.dealID}`}
+              target="_blank"
+              variant="contained"
+              color="primary"
+              sx={{ height: '2.5rem', width: '7rem' }}
+            >
+              Get Deal
+            </Button>
+          </Box>
         </div>
       ))}
     </Box>

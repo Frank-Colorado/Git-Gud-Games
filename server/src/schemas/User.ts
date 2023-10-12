@@ -32,6 +32,10 @@ class GameObject {
   @Field(() => String)
   @prop()
   name?: string;
+
+  @Field(() => String)
+  @prop()
+  image?: string;
 }
 
 @pre<User>('save', async function (next) {

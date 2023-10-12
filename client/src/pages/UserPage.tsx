@@ -5,6 +5,7 @@ import UserHeader from '../components/UserHeader';
 import UserLibrary from '../components/UserLibrary';
 import { useQuery } from '@apollo/client';
 import { GET_ME } from '../graphql/queries';
+import { setUser } from '../store';
 
 const UserPage = () => {
   const dispatch = useAppDispatch();
@@ -12,9 +13,9 @@ const UserPage = () => {
 
   useEffect(() => {
     if (data) {
-      console.log(data);
+      dispatch(setUser(data.me));
     }
-  }, [data]);
+  }, [data, dispatch]);
 
   return (
     <Grid

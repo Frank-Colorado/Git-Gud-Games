@@ -13,8 +13,7 @@ import { resolvers } from './resolvers';
 import db from './config/connection';
 import { verifyJwt } from './utils/jwt';
 import authChecker from './utils/authChecker';
-import { User } from './schemas/User';
-import Context from './types/context';
+import Context, { Data } from './types/context';
 
 const main = async () => {
   const PORT: string | number = process.env.PORT || 3001;
@@ -32,8 +31,8 @@ const main = async () => {
       if (ctx.req && ctx.req.headers.authorization) {
         const token =
           ctx.req.headers.authorization.split(' ').pop()?.trim() || '';
-        const user = verifyJwt<User>(token);
-        context.user = user;
+        const data = verifyJwt<Data>(token);
+        context.user = data;
       }
 
       return context;

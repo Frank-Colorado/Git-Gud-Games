@@ -17,7 +17,7 @@ export default class UserResolver {
 
   @Query(() => User)
   me(@Ctx() context: Context) {
-    return context.user.data;
+    return context.user!.data;
   }
 
   @Mutation(() => Auth)
@@ -33,7 +33,7 @@ export default class UserResolver {
   @Authorized()
   @Mutation(() => User)
   updateUser(@Arg('input') input: UpdateUserInput, @Ctx() context: Context) {
-    const user = context.user.data!;
+    const user = context.user!.data;
     return this.userService.updateUser({ ...input, user: user?._id });
   }
 
@@ -43,7 +43,7 @@ export default class UserResolver {
     @Arg('input') input: EditGameInput,
     @Ctx() context: Context
   ) {
-    const user = context.user.data!;
+    const user = context.user!.data;
     return this.userService.addGameToLibrary({ ...input, user: user?._id });
   }
 
@@ -53,7 +53,7 @@ export default class UserResolver {
     @Arg('input') input: EditGameInput,
     @Ctx() context: Context
   ) {
-    const user = context.user.data!;
+    const user = context.user!.data;
     return this.userService.removeGameFromLibrary({
       ...input,
       user: user?._id,

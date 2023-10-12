@@ -8,14 +8,14 @@ const UserHeader = () => {
           width: '100%',
           display: 'flex',
           justifyContent: 'end',
-          bgcolor: 'yellow',
         }}
       >
-        <Button variant="contained">Edit Profile</Button>
+        <Button variant="contained" sx={{ m: 2 }}>
+          Edit Profile
+        </Button>
       </Box>
       <Box
         sx={{
-          bgcolor: 'orange',
           overflow: 'hidden',
           height: '20rem',
 
@@ -25,7 +25,7 @@ const UserHeader = () => {
       >
         <Box
           sx={{
-            marginLeft: '3rem',
+            marginLeft: 3,
           }}
         >
           <img src="https://picsum.photos/300" alt="logo" />
@@ -33,13 +33,18 @@ const UserHeader = () => {
         <Box
           sx={{
             margin: '2rem',
-            bgcolor: 'green',
+
             height: '95%',
             width: '100%',
           }}
         >
-          <Typography variant="h3">Username</Typography>
-          <Typography variant="body1" sx={{ marginTop: '2rem' }}>
+          <Typography variant="h3" sx={{ color: 'white' }}>
+            Username
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{ marginTop: '2rem', color: 'white' }}
+          >
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum,
             deserunt delectus suscipit officia nesciunt, pariatur nulla incidunt
             voluptatibus animi expedita, sunt soluta autem quae ea facilis

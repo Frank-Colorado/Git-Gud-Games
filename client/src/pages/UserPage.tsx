@@ -1,5 +1,6 @@
 import { Grid, Input, Box, Typography, Button } from '@mui/material';
 import UserHeader from '../components/UserHeader';
+import UserLibrary from '../components/UserLibrary';
 
 const UserPage = () => {
   return (
@@ -10,8 +11,9 @@ const UserPage = () => {
         justifyContent: 'center',
       }}
     >
-      <Grid item md={7} sx={{ bgcolor: 'red' }}>
+      <Grid item md={7} sx={{ bgcolor: 'black' }}>
         <UserHeader />
+        <UserLibrary />
       </Grid>
     </Grid>
   );

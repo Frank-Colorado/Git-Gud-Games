@@ -14,6 +14,12 @@ const UserPage = () => {
   const { loading, error, data } = useQuery(GET_ME);
   const loggedIn = Auth.loggedIn();
 
+  useEffect(() => {
+    if (data) {
+      dispatch(setUser(data.me));
+    }
+  }, [data, dispatch]);
+
   if (!loggedIn) {
     return (
       <Box
@@ -46,12 +52,6 @@ const UserPage = () => {
       </Box>
     );
   }
-
-  useEffect(() => {
-    if (data) {
-      dispatch(setUser(data.me));
-    }
-  }, [data, dispatch]);
 
   return (
     <Grid

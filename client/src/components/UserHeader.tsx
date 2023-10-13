@@ -1,5 +1,6 @@
 import { Box, Button, Typography } from '@mui/material';
 import { useAppSelector } from '../hooks';
+import { Link } from 'react-router-dom';
 
 const UserHeader = () => {
   const { user } = useAppSelector((state) => state.user);
@@ -12,7 +13,12 @@ const UserHeader = () => {
           justifyContent: 'end',
         }}
       >
-        <Button variant="contained" sx={{ m: 2 }}>
+        <Button
+          component={Link}
+          to="/profile/edit"
+          variant="contained"
+          sx={{ m: 2 }}
+        >
           Edit Profile
         </Button>
       </Box>
@@ -20,7 +26,6 @@ const UserHeader = () => {
         sx={{
           overflow: 'hidden',
           height: '20rem',
-
           display: 'flex',
           alignItems: 'center',
         }}

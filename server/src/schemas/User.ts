@@ -8,14 +8,7 @@ import {
   index,
   DocumentType,
 } from '@typegoose/typegoose';
-import {
-  MaxLength,
-  MinLength,
-  IsOptional,
-  IsInt,
-  isString,
-  IsString,
-} from 'class-validator';
+import { MaxLength, MinLength, IsInt, IsString } from 'class-validator';
 import bcrypt from 'bcrypt';
 import { AsQueryMethod, Ref } from '@typegoose/typegoose/lib/types';
 
@@ -138,6 +131,12 @@ export class UpdateUserInput {
   @Field(() => String, { nullable: true })
   avatar?: string;
 
+  @MinLength(50, {
+    message: 'Bio must be at least 50 characters long',
+  })
+  @MaxLength(500, {
+    message: 'Bio must be less than 500 characters',
+  })
   @Field(() => String, { nullable: true })
   bio?: string;
 }

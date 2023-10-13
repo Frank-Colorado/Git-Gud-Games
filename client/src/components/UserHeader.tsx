@@ -41,10 +41,9 @@ const UserHeader = () => {
         </Box>
         <Box
           sx={{
-            margin: '2rem',
-
+            margin: '5rem',
             height: '95%',
-            width: '100%',
+            width: '50%',
           }}
         >
           <Typography variant="h3" sx={{ color: 'white' }}>

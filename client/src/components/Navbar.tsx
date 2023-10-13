@@ -58,16 +58,21 @@ const Navbar = () => {
         sx={{ height: '5rem', backgroundColor: 'white' }}
       >
         <Toolbar>
-          <Link to="/">
-            <Typography
-              variant="h4"
-              noWrap
-              component="div"
-              sx={{ color: 'black' }}
-            >
-              Git Gud Games
-            </Typography>
-          </Link>
+          <Typography
+            component={Link}
+            to="/"
+            variant="h3"
+            sx={{
+              color: 'red',
+              cursor: 'pointer',
+              textDecoration: 'none',
+              '&:hover': {
+                color: 'yellow',
+              },
+            }}
+          >
+            GIT GUD GAMES
+          </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <Autocomplete />

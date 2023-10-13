@@ -7,6 +7,7 @@ import GamePage from './pages/GamePage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import UserPage from './pages/UserPage';
+import EditUserPage from './pages/EditUserPage';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/profile" element={<UserPage />} />
+        <Route path="/profile/edit" element={<EditUserPage />} />
         <Route path="/games/:genre" element={<GenrePage />} />
         <Route path="/search/:searchTerm" element={<SearchPage />} />
         <Route path="/game/:gameId" element={<GamePage />} />

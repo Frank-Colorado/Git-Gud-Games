@@ -1,18 +1,27 @@
+import { useEffect } from 'react';
+import { useAppDispatch } from '../hooks';
+import { setUser } from '../store';
 import { Box, Typography, Button } from '@mui/material';
 import { GameDetailsType } from '../store/apis/gamesApi';
 import Auth from '../utils/auth';
 import { Link } from 'react-router-dom';
 import EditGameLibrary from './EditGameLibrary';
 import { useQuery } from '@apollo/client';
-import { GET_USER_GAMES } from '../graphql/queries';
+import { GET_ME } from '../graphql/queries';
 
 interface GameHeaderProps {
-  data: GameDetailsType;
+  details: GameDetailsType;
 }
 
-const GameHeader = ({ data }: GameHeaderProps) => {
-  const userGames = useQuery(GET_USER_GAMES);
-  console.log(userGames);
+const GameHeader = ({ details }: GameHeaderProps) => {
+  const dispatch = useAppDispatch();
+  const { data } = useQuery(GET_ME);
+
+  useEffect(() => {
+    if (data) {
+      dispatch(setUser(data.me));
+    }
+  }, [data]);
 
   const loggedIn = Auth.loggedIn();
   return (
@@ -24,7 +33,7 @@ const GameHeader = ({ data }: GameHeaderProps) => {
       }}
     >
       <Typography variant="h3" sx={{ color: 'white' }}>
-        {data.name}
+        {details.name}
       </Typography>
       <Box
         sx={{
@@ -33,7 +42,7 @@ const GameHeader = ({ data }: GameHeaderProps) => {
         }}
       >
         {loggedIn ? (
-          <EditGameLibrary game={data.id} />
+          <EditGameLibrary game={details} />
         ) : (
           <>
             <Typography

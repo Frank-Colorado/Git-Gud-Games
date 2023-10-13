@@ -43,7 +43,7 @@ const GamePage = () => {
       }}
     >
       <Grid item md={8}>
-        <GameHeader data={data} />
+        <GameHeader details={data} />
         <Grid container spacing={4}>
           <Grid item md={8}>
             <GameCarousel id={gameId} />

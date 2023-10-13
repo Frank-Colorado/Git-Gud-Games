@@ -43,6 +43,7 @@ export default class UserResolver {
     @Arg('input') input: EditGameInput,
     @Ctx() context: Context
   ) {
+    console.log('here');
     const user = context.user!.data;
     return this.userService.addGameToLibrary({ ...input, user: user?._id });
   }

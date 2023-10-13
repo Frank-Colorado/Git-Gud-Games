@@ -58,7 +58,7 @@ class UserService {
     const { id } = input;
     return UserModel.findByIdAndUpdate(
       { _id: input.user },
-      { $pull: { gameLibrary: id } },
+      { $pull: { gameLibrary: { id } } },
       { new: true }
     ).lean();
   }

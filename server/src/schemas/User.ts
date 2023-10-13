@@ -8,7 +8,14 @@ import {
   index,
   DocumentType,
 } from '@typegoose/typegoose';
-import { MaxLength, MinLength } from 'class-validator';
+import {
+  MaxLength,
+  MinLength,
+  IsOptional,
+  IsInt,
+  isString,
+  IsString,
+} from 'class-validator';
 import bcrypt from 'bcrypt';
 import { AsQueryMethod, Ref } from '@typegoose/typegoose/lib/types';
 
@@ -110,9 +117,21 @@ export class UserInput {
 
 @InputType()
 export class UpdateUserInput {
+  @MinLength(3, {
+    message: 'Username must be at least 3 characters long',
+  })
+  @MaxLength(15, {
+    message: 'Username must be less than 15 characters',
+  })
   @Field(() => String, { nullable: true })
   username?: string;
 
+  @MinLength(6, {
+    message: 'Password must be at least 6 characters long',
+  })
+  @MaxLength(30, {
+    message: 'Password must be less than 30 characters',
+  })
   @Field(() => String, { nullable: true })
   password?: string;
 
@@ -125,12 +144,15 @@ export class UpdateUserInput {
 
 @InputType()
 export class EditGameInput {
+  @IsInt()
   @Field(() => Int)
   id!: number;
 
+  @IsString()
   @Field(() => String, { nullable: true })
   name?: string;
 
+  @IsString()
   @Field(() => String, { nullable: true })
   image?: string;
 }

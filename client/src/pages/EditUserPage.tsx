@@ -5,10 +5,18 @@ import { useQuery } from '@apollo/client';
 import { GET_ME } from '../graphql/queries';
 import { setUser } from '../store';
 import Auth from '../utils/auth';
-import { Link } from 'react-router-dom';
 import LoginRedirect from '../components/LoginRedirect';
 
 const EditUserPage = () => {
+  const dispatch = useAppDispatch();
+  const { loading, error, data } = useQuery(GET_ME);
+
+  useEffect(() => {
+    if (data) {
+      dispatch(setUser(data.me));
+    }
+  }, [data, dispatch]);
+
   const loggedIn = Auth.loggedIn();
 
   if (!loggedIn) {

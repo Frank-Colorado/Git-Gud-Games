@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useAppDispatch } from '../hooks';
-import { Grid, Typography, Box } from '@mui/material';
+import { Grid } from '@mui/material';
 import UserHeader from '../components/UserHeader';
 import UserLibrary from '../components/UserLibrary';
 import LoginRedirect from '../components/LoginRedirect';
@@ -8,7 +8,6 @@ import { useQuery } from '@apollo/client';
 import { GET_ME } from '../graphql/queries';
 import { setUser } from '../store';
 import Auth from '../utils/auth';
-import { Link } from 'react-router-dom';
 
 const UserPage = () => {
   const dispatch = useAppDispatch();

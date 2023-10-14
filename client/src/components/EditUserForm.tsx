@@ -14,18 +14,6 @@ import { setUser } from '../store';
 import { Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 
-const VisuallyHiddenInput = styled('input')({
-  clip: 'rect(0 0 0 0)',
-  clipPath: 'inset(50%)',
-  height: 1,
-  overflow: 'hidden',
-  position: 'absolute',
-  bottom: 0,
-  left: 0,
-  whiteSpace: 'nowrap',
-  width: 1,
-});
-
 const StyledTextField = styled(TextField)({
   '& label.Mui-focused': {
     color: '#EE9322',
@@ -46,15 +34,6 @@ const StyledTextField = styled(TextField)({
   },
 });
 
-const encodeFileBase64 = (file: File) => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result as string);
-    reader.onerror = (error) => reject(error);
-  });
-};
-
 const EditUserForm = () => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.user);
@@ -63,16 +42,6 @@ const EditUserForm = () => {
   const [image, setImage] = useState(user.avatar);
   const [username, setUsername] = useState(user.username);
   const [bio, setBio] = useState(user.bio);
-
-  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const [file] = e.target.files as FileList;
-    if (file) {
-      const base64 = await encodeFileBase64(file);
-      if (typeof base64 === 'string') {
-        setImage(base64);
-      }
-    }
-  };
 
   const handleCancel = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -130,35 +99,7 @@ const EditUserForm = () => {
               Back To Profile
             </Typography>
           </Box>
-          <Box
-            sx={{
-              overflow: 'hidden',
-              height: '20rem',
-              width: '75%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}
-          >
-            <Box>
-              <Avatar
-                variant="square"
-                sx={{ width: 300, height: 300 }}
-                src={user.avatar ? user.avatar : undefined}
-              />
-            </Box>
-            <Box>
-              <Button component="label" variant="contained" sx={{ mt: 2 }}>
-                Upload Avatar Image
-                <VisuallyHiddenInput
-                  type="file"
-                  accept=".jpeg, .png, .jpg"
-                  multiple={false}
-                  onChange={handleImageUpload}
-                />
-              </Button>
-            </Box>
-          </Box>
+
           <Box
             sx={{
               display: 'flex',

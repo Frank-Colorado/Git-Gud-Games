@@ -11,6 +11,7 @@ import EditUserForm from '../components/EditUserForm';
 const EditUserPage = () => {
   const dispatch = useAppDispatch();
   const { loading, error, data } = useQuery(GET_ME);
+  console.log(data);
 
   useEffect(() => {
     if (data) {

@@ -58,11 +58,11 @@ const encodeFileBase64 = (file: File) => {
 const EditUserForm = () => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.user);
+  console.log(user);
 
   const [image, setImage] = useState(user.avatar);
   const [username, setUsername] = useState(user.username);
   const [bio, setBio] = useState(user.bio);
-  console.log(bio);
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const [file] = e.target.files as FileList;
@@ -74,9 +74,27 @@ const EditUserForm = () => {
     }
   };
 
+  const handleCancel = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setImage(user.avatar);
+    setUsername(user.username);
+    setBio(user.bio);
+  };
+
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = {
+      username,
+      bio,
+      avatar: image,
+    };
+
+    console.log(formData);
+  };
+
   return (
     <Grid item md={6}>
-      <form>
+      <form onSubmit={handleFormSubmit}>
         <Box
           sx={{
             mt: 10,
@@ -126,7 +144,7 @@ const EditUserForm = () => {
               <Avatar
                 variant="square"
                 sx={{ width: 300, height: 300 }}
-                src={image ? image : undefined}
+                src={user.avatar ? user.avatar : undefined}
               />
             </Box>
             <Box>
@@ -153,16 +171,16 @@ const EditUserForm = () => {
               Username
             </Typography>
             <StyledTextField
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={user.username}
+              // onChange={(e) => setUsername(e.target.value)}
               sx={{ mt: 1, width: '100%', input: { color: 'white' } }}
             />
             <Typography variant="h5" textAlign="start" sx={{ mt: 3 }}>
               About Me
             </Typography>
             <StyledTextField
-              value={bio ? bio : ''}
-              onChange={(e) => setBio(e.target.value)}
+              value={user.bio}
+              // onChange={(e) => setBio(e.target.value)}
               sx={{
                 mt: 1,
                 width: '100%',
@@ -189,6 +207,7 @@ const EditUserForm = () => {
             }}
           >
             <Button
+              onClick={handleCancel}
               variant="contained"
               color="error"
               sx={{ width: '6rem', mx: 2 }}
@@ -196,6 +215,7 @@ const EditUserForm = () => {
               Cancel
             </Button>
             <Button
+              type="submit"
               variant="contained"
               color="success"
               sx={{ width: '6rem', mx: 2 }}

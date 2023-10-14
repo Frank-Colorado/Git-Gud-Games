@@ -13,6 +13,7 @@ const UserPage = () => {
   const dispatch = useAppDispatch();
   const { loading, error, data } = useQuery(GET_ME);
   const loggedIn = Auth.loggedIn();
+  console.log(data);
 
   useEffect(() => {
     if (data) {

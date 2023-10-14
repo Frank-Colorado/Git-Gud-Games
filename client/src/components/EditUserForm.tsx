@@ -15,26 +15,6 @@ import { Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import EditUserAvatar from './EditUserAvatar';
 
-const StyledTextField = styled(TextField)({
-  '& label.Mui-focused': {
-    color: '#EE9322',
-  },
-  '& .MuiInput-underline:after': {
-    borderBottomColor: '#EE9322',
-  },
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: '#EE9322',
-    },
-    '&:hover fieldset': {
-      borderColor: '#EE9322',
-    },
-    '&.Mui-focused fieldset': {
-      borderColor: '#EE9322',
-    },
-  },
-});
-
 const EditUserForm = () => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.user);
@@ -100,44 +80,6 @@ const EditUserForm = () => {
             </Typography>
           </Box>
           <EditUserAvatar />
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              width: '75%',
-              color: 'white',
-            }}
-          >
-            <Typography variant="h5" textAlign="start" sx={{ mt: 3 }}>
-              Username
-            </Typography>
-            <StyledTextField
-              value={user.username}
-              // onChange={(e) => setUsername(e.target.value)}
-              sx={{ mt: 1, width: '100%', input: { color: 'white' } }}
-            />
-            <Typography variant="h5" textAlign="start" sx={{ mt: 3 }}>
-              About Me
-            </Typography>
-            <StyledTextField
-              value={user.bio}
-              // onChange={(e) => setBio(e.target.value)}
-              sx={{
-                mt: 1,
-                width: '100%',
-              }}
-              placeholder="Tell us about yourself!"
-              multiline
-              rows={4}
-              inputProps={{ style: { color: 'white' } }}
-            />
-            <Typography variant="h5" textAlign="start" sx={{ mt: 3 }}>
-              Password
-            </Typography>
-            <Button variant="contained" sx={{ mt: 1 }}>
-              Change Password
-            </Button>
-          </Box>
           <Box
             sx={{
               mt: 3,

@@ -44,7 +44,7 @@ const Autocomplete = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{ marginRight: '5rem' }}>
       <MuiAutocomplete
         disablePortal
         sx={{ width: 300 }}

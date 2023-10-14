@@ -10,20 +10,28 @@ import {
   Menu,
   MenuItem,
   Icon,
+  Button,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { Link } from 'react-router-dom';
+import Auth from '../utils/auth';
 
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const isMenuOpen = Boolean(anchorEl);
+  const loggedIn = Auth.loggedIn();
 
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
   const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    Auth.logout();
     setAnchorEl(null);
   };
 
@@ -47,7 +55,7 @@ const Navbar = () => {
       <Link to="/profile">
         <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       </Link>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleLogout}>Logout</MenuItem>
     </Menu>
   );
 
@@ -76,17 +84,33 @@ const Navbar = () => {
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <Autocomplete />
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleMenuOpen}
-              sx={{ color: 'black' }}
-            >
-              <AccountCircle />
-            </IconButton>
+            {loggedIn ? (
+              <IconButton
+                size="large"
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleMenuOpen}
+                sx={{ color: 'black' }}
+              >
+                <AccountCircle />
+              </IconButton>
+            ) : (
+              <div>
+                <Button
+                  component={Link}
+                  to="/login"
+                  variant="contained"
+                  sx={{ mr: 3 }}
+                >
+                  Login
+                </Button>
+                <Button component={Link} to="/signup" variant="contained">
+                  Signup
+                </Button>
+              </div>
+            )}
           </Box>
         </Toolbar>
       </AppBar>

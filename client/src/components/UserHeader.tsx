@@ -13,14 +13,23 @@ const UserHeader = () => {
           justifyContent: 'end',
         }}
       >
-        <Button
+        <Typography
           component={Link}
           to="/profile/edit"
-          variant="contained"
-          sx={{ m: 2 }}
+          variant="button"
+          sx={{
+            m: 2,
+            color: 'red',
+            cursor: 'pointer',
+            borderBottom: '1px solid white',
+            textDecoration: 'none',
+            '&:hover': {
+              color: 'yellow',
+            },
+          }}
         >
           Edit Profile
-        </Button>
+        </Typography>
       </Box>
       <Box
         sx={{

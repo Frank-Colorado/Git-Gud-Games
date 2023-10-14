@@ -14,6 +14,7 @@ import { setUser } from '../store';
 import { Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import EditUserAvatar from './EditUserAvatar';
+import EditUserDetails from './EditUserDetails';
 
 const EditUserForm = () => {
   const dispatch = useAppDispatch();
@@ -80,6 +81,7 @@ const EditUserForm = () => {
             </Typography>
           </Box>
           <EditUserAvatar />
+          <EditUserDetails />
           <Box
             sx={{
               mt: 3,

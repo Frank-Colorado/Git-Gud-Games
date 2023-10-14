@@ -67,12 +67,6 @@ const EditUserDetails = () => {
         rows={4}
         inputProps={{ style: { color: 'white' } }}
       />
-      <Typography variant="h5" textAlign="start" sx={{ mt: 3 }}>
-        Password
-      </Typography>
-      <Button variant="contained" sx={{ mt: 1 }}>
-        Change Password
-      </Button>
     </Box>
   );
 };

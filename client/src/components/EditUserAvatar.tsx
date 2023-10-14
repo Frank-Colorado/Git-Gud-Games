@@ -27,7 +27,6 @@ const encodeFileBase64 = (file: File) => {
 const EditUserAvatar = () => {
   const dispatch = useAppDispatch();
   const { avatar } = useAppSelector((state) => state.editUser);
-  console.log(avatar);
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const [file] = e.target.files as FileList;

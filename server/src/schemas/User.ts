@@ -8,7 +8,14 @@ import {
   index,
   DocumentType,
 } from '@typegoose/typegoose';
-import { MaxLength, MinLength, IsInt, IsString } from 'class-validator';
+import {
+  MaxLength,
+  MinLength,
+  IsInt,
+  IsString,
+  IsOptional,
+  IsBase64,
+} from 'class-validator';
 import bcrypt from 'bcrypt';
 import { AsQueryMethod, Ref } from '@typegoose/typegoose/lib/types';
 
@@ -60,8 +67,8 @@ export class User {
   @prop({ type: String })
   avatar?: string;
 
-  @Field(() => String, { nullable: true })
-  @prop({ type: String })
+  @Field(() => String)
+  @prop({ type: String, default: "This user doesn't have a bio yet!" })
   bio?: string;
 
   @prop({ type: String, required: true })
@@ -116,28 +123,21 @@ export class UpdateUserInput {
   @MaxLength(15, {
     message: 'Username must be less than 15 characters',
   })
-  @Field(() => String, { nullable: true })
+  @Field(() => String)
   username?: string;
 
-  @MinLength(6, {
-    message: 'Password must be at least 6 characters long',
-  })
-  @MaxLength(30, {
-    message: 'Password must be less than 30 characters',
-  })
-  @Field(() => String, { nullable: true })
-  password?: string;
-
+  @IsOptional()
+  @IsBase64()
   @Field(() => String, { nullable: true })
   avatar?: string;
 
   @MinLength(50, {
-    message: 'Bio must be at least 50 characters long',
+    message: 'Bio must be at least 25 characters long',
   })
   @MaxLength(500, {
     message: 'Bio must be less than 500 characters',
   })
-  @Field(() => String, { nullable: true })
+  @Field(() => String)
   bio?: string;
 }
 

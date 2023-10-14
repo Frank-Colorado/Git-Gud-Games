@@ -56,9 +56,13 @@ const encodeFileBase64 = (file: File) => {
 };
 
 const EditUserForm = () => {
-  const [image, setImage] = useState('');
-  const [username, setUsername] = useState('Chawnk');
-  const [bio, setBio] = useState('I am a gamer!');
+  const dispatch = useAppDispatch();
+  const { user } = useAppSelector((state) => state.user);
+
+  const [image, setImage] = useState(user.avatar);
+  const [username, setUsername] = useState(user.username);
+  const [bio, setBio] = useState(user.bio);
+  console.log(bio);
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const [file] = e.target.files as FileList;
@@ -122,7 +126,7 @@ const EditUserForm = () => {
               <Avatar
                 variant="square"
                 sx={{ width: 300, height: 300 }}
-                src={image}
+                src={image ? image : undefined}
               />
             </Box>
             <Box>
@@ -157,7 +161,7 @@ const EditUserForm = () => {
               About Me
             </Typography>
             <StyledTextField
-              value={bio}
+              value={bio ? bio : ''}
               onChange={(e) => setBio(e.target.value)}
               sx={{
                 mt: 1,

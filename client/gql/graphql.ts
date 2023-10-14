@@ -76,16 +76,15 @@ export type Query = {
 
 export type UpdateUserInput = {
   avatar?: InputMaybe<Scalars['String']['input']>;
-  bio?: InputMaybe<Scalars['String']['input']>;
-  password?: InputMaybe<Scalars['String']['input']>;
-  username?: InputMaybe<Scalars['String']['input']>;
+  bio: Scalars['String']['input'];
+  username: Scalars['String']['input'];
 };
 
 export type User = {
   __typename?: 'User';
   _id: Scalars['String']['output'];
   avatar?: Maybe<Scalars['String']['output']>;
-  bio?: Maybe<Scalars['String']['output']>;
+  bio: Scalars['String']['output'];
   gameLibrary: Array<GameObject>;
   username: Scalars['String']['output'];
 };
@@ -100,21 +99,21 @@ export type CreateUserMutationVariables = Exact<{
 }>;
 
 
-export type CreateUserMutation = { __typename?: 'Mutation', createUser: { __typename?: 'Auth', token: string, user: { __typename?: 'User', _id: string, username: string, avatar?: string | null, bio?: string | null, gameLibrary: Array<{ __typename?: 'GameObject', id: number, name: string, image: string }> } } };
+export type CreateUserMutation = { __typename?: 'Mutation', createUser: { __typename?: 'Auth', token: string, user: { __typename?: 'User', _id: string, username: string, avatar?: string | null, bio: string, gameLibrary: Array<{ __typename?: 'GameObject', id: number, name: string, image: string }> } } };
 
 export type LoginMutationVariables = Exact<{
   input: UserInput;
 }>;
 
 
-export type LoginMutation = { __typename?: 'Mutation', login: { __typename?: 'Auth', token: string, user: { __typename?: 'User', _id: string, username: string, avatar?: string | null, bio?: string | null, gameLibrary: Array<{ __typename?: 'GameObject', id: number, name: string, image: string }> } } };
+export type LoginMutation = { __typename?: 'Mutation', login: { __typename?: 'Auth', token: string, user: { __typename?: 'User', _id: string, username: string, avatar?: string | null, bio: string, gameLibrary: Array<{ __typename?: 'GameObject', id: number, name: string, image: string }> } } };
 
 export type UpdateUserMutationVariables = Exact<{
   input: UpdateUserInput;
 }>;
 
 
-export type UpdateUserMutation = { __typename?: 'Mutation', updateUser: { __typename?: 'User', username: string, avatar?: string | null, bio?: string | null } };
+export type UpdateUserMutation = { __typename?: 'Mutation', updateUser: { __typename?: 'User', username: string, avatar?: string | null, bio: string } };
 
 export type AddGameToLibraryMutationVariables = Exact<{
   input: EditGameInput;
@@ -133,7 +132,7 @@ export type RemoveGameFromLibraryMutation = { __typename?: 'Mutation', removeGam
 export type GetMeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetMeQuery = { __typename?: 'Query', me: { __typename?: 'User', _id: string, username: string, avatar?: string | null, bio?: string | null, gameLibrary: Array<{ __typename?: 'GameObject', id: number, name: string, image: string }> } };
+export type GetMeQuery = { __typename?: 'Query', me: { __typename?: 'User', _id: string, username: string, avatar?: string | null, bio: string, gameLibrary: Array<{ __typename?: 'GameObject', id: number, name: string, image: string }> } };
 
 export type GetUserGamesQueryVariables = Exact<{ [key: string]: never; }>;
 

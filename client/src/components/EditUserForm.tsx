@@ -13,6 +13,7 @@ import { UPDATE_USER } from '../graphql/mutations';
 import { setUser } from '../store';
 import { Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
+import EditUserAvatar from './EditUserAvatar';
 
 const StyledTextField = styled(TextField)({
   '& label.Mui-focused': {
@@ -37,7 +38,6 @@ const StyledTextField = styled(TextField)({
 const EditUserForm = () => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.user);
-  console.log(user);
 
   const [image, setImage] = useState(user.avatar);
   const [username, setUsername] = useState(user.username);
@@ -99,7 +99,7 @@ const EditUserForm = () => {
               Back To Profile
             </Typography>
           </Box>
-
+          <EditUserAvatar />
           <Box
             sx={{
               display: 'flex',

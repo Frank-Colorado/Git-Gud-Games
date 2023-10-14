@@ -7,6 +7,14 @@ import {
   removeUserGame,
 } from './slices/userSlice';
 import {
+  editUserReducer,
+  setForm,
+  setUsername,
+  setBio,
+  setAvatar,
+} from './slices/editUserSlice';
+
+import {
   gamesApi,
   useGetGamesQuery,
   useGetSearchOptionsQuery,
@@ -22,6 +30,7 @@ import {
 export const store = configureStore({
   reducer: {
     user: userReducer,
+    editUser: editUserReducer,
     [gamesApi.reducerPath]: gamesApi.reducer,
     [dealsApi.reducerPath]: dealsApi.reducer,
   },
@@ -41,6 +50,10 @@ export {
   setUser,
   addUserGame,
   removeUserGame,
+  setForm,
+  setUsername,
+  setBio,
+  setAvatar,
   useGetGamesQuery,
   useGetSearchOptionsQuery,
   useGetGameDetailsQuery,

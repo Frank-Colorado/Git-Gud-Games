@@ -11,6 +11,16 @@ import bcrypt from 'bcrypt';
 import { signJwt } from '../utils/jwt';
 
 class UserService {
+  async getMe(id: User['_id']): Promise<User> {
+    const user = await UserModel.findById(id).lean();
+
+    if (!user) {
+      throw new ApolloError('User not found');
+    }
+
+    return user;
+  }
+
   async createUser(input: UserInput): Promise<Auth> {
     // Call User Model to create user
     const user = await UserModel.create(input);

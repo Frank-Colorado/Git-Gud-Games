@@ -14,6 +14,7 @@ const UserPage = () => {
   const { loading, error, data } = useQuery(GET_ME);
   const loggedIn = Auth.loggedIn();
   console.log(data);
+  console.log(error);
 
   useEffect(() => {
     if (data) {

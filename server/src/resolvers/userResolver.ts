@@ -17,6 +17,7 @@ export default class UserResolver {
 
   @Query(() => User)
   me(@Ctx() context: Context) {
+    console.log(context.user!.data);
     return context.user!.data;
   }
 

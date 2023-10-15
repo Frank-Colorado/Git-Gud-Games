@@ -41,9 +41,15 @@ export const LOGIN = graphql(`
 export const UPDATE_USER = graphql(`
   mutation updateUser($input: UpdateUserInput!) {
     updateUser(input: $input) {
+      _id
       username
       avatar
       bio
+      gameLibrary {
+        id
+        name
+        image
+      }
     }
   }
 `);

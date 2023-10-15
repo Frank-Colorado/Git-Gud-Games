@@ -127,11 +127,11 @@ export class UpdateUserInput {
   username?: string;
 
   @IsOptional()
-  @IsBase64()
+  @IsString()
   @Field(() => String, { nullable: true })
   avatar?: string;
 
-  @MinLength(50, {
+  @MinLength(25, {
     message: 'Bio must be at least 25 characters long',
   })
   @MaxLength(500, {

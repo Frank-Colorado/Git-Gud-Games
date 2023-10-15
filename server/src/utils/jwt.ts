@@ -1,10 +1,15 @@
 import jwt from 'jsonwebtoken';
+import { User } from '../schemas/User';
 require('dotenv').config();
 
 const secret = process.env.JWT_SECRET as string;
 
-export const signJwt = (object: Object) => {
-  return jwt.sign({ data: object }, secret);
+export const signJwt = (user: User) => {
+  const payload = {
+    _id: user._id,
+    username: user.username,
+  };
+  return jwt.sign({ data: payload }, secret);
 };
 
 export const verifyJwt = <T>(token: string): T | null => {

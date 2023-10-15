@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 interface EditUserState {
   username: string;
   bio: string;
-  avatar: string | null;
+  avatar: string | null | undefined;
 }
 
 const initialState: EditUserState = {

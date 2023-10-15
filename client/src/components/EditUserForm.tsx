@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import {
   Grid,
@@ -11,35 +11,53 @@ import {
 import { useMutation } from '@apollo/client';
 import { UPDATE_USER } from '../graphql/mutations';
 import { setUser } from '../store';
+import { setForm } from '../store';
 import { Link } from 'react-router-dom';
-import { styled } from '@mui/material/styles';
 import EditUserAvatar from './EditUserAvatar';
 import EditUserDetails from './EditUserDetails';
 
 const EditUserForm = () => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.user);
+  const userDetails = {
+    username: user.username,
+    bio: user.bio,
+    avatar: user.avatar,
+  };
+  const editUserForm = useAppSelector((state) => state.editUser);
 
-  const [image, setImage] = useState(user.avatar);
-  const [username, setUsername] = useState(user.username);
-  const [bio, setBio] = useState(user.bio);
+  const [updateUser, { error }] = useMutation(UPDATE_USER, {
+    onCompleted: (data) => {
+      dispatch(setUser(data.updateUser));
+    },
+  });
+
+  useEffect(() => {
+    dispatch(setForm(userDetails));
+  }, [user, dispatch]);
 
   const handleCancel = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setImage(user.avatar);
-    setUsername(user.username);
-    setBio(user.bio);
+    dispatch(setForm(userDetails));
   };
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = {
-      username,
-      bio,
-      avatar: image,
-    };
 
-    console.log(formData);
+    try {
+      const { data } = await updateUser({
+        variables: {
+          input: {
+            username: editUserForm.username,
+            bio: editUserForm.bio,
+            avatar: editUserForm.avatar,
+          },
+        },
+      });
+      console.log(data?.updateUser);
+    } catch (err) {
+      console.error({ err });
+    }
   };
 
   return (
@@ -92,9 +110,9 @@ const EditUserForm = () => {
             }}
           >
             <Button
-              onClick={handleCancel}
               variant="contained"
               color="error"
+              onClick={handleCancel}
               sx={{ width: '6rem', mx: 2 }}
             >
               Cancel

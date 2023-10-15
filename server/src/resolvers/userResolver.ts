@@ -17,7 +17,8 @@ export default class UserResolver {
 
   @Query(() => User)
   me(@Ctx() context: Context) {
-    return context.user!.data;
+    const userId = context.user!.data?._id;
+    return this.userService.getMe(userId);
   }
 
   @Mutation(() => Auth)

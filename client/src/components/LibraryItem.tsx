@@ -19,10 +19,15 @@ const LibraryItem = ({ game }: LibraryItemProps) => {
             display: 'flex',
             alignItems: 'center',
             height: 150,
+            overflow: 'hidden',
           }}
         >
-          <img style={{ padding: '2rem' }} src={game.image} alt="logo" />
-          <Link to="/game/${game.id}" style={{ textDecoration: 'none' }}>
+          <img
+            style={{ padding: '2rem', width: '200px', height: '125px' }}
+            src={game.image}
+            alt="logo"
+          />
+          <Link to={`/game/${game.id}`} style={{ textDecoration: 'none' }}>
             <Typography variant="h5" sx={{ color: 'white' }}>
               {game.name}
             </Typography>

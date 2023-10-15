@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 interface LibraryItemProps {
   game: {
-    id: string;
+    id: number;
     name: string;
     image: string;
   };

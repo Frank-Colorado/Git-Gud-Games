@@ -52,7 +52,6 @@ const EditGameLibrary = ({ game }: EditGameLibraryProps) => {
         },
       });
 
-      console.log('saving game to library');
       if (data) {
         dispatch(addUserGame(gameInput));
         setHasGame(true);

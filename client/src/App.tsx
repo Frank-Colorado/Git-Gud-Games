@@ -20,10 +20,9 @@ const App = () => {
 
   useEffect(() => {
     if (data) {
-      console.log('App useEffect called');
       dispatch(setUser(data.me));
     }
-  });
+  }, [data, dispatch]);
 
   return (
     <Router>

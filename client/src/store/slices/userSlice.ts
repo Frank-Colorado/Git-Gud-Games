@@ -20,7 +20,6 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUser(state, action: PayloadAction<User>) {
-      console.log('setting user');
       state.user = action.payload;
     },
     addUserGame(state, action: PayloadAction<GameObject>) {

@@ -30,35 +30,37 @@ const EditUserForm = () => {
 
   useEffect(() => {
     dispatch(setForm(userDetails));
-  }, [user, dispatch]);
+  }, [user]);
 
   const handleCancel = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
     dispatch(setForm(userDetails));
   };
 
-  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleFormSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    const formValues = {
+      username: editUserForm.username,
+      bio: editUserForm.bio,
+      avatar: editUserForm.avatar,
+    };
 
     try {
       const { data } = await updateUser({
         variables: {
-          input: {
-            username: editUserForm.username,
-            bio: editUserForm.bio,
-            avatar: editUserForm.avatar,
-          },
+          input: formValues,
         },
       });
-      console.log('saving user changes');
+
+      if (data) {
+        dispatch(setUser(data.updateUser));
+      }
     } catch (err) {
-      console.error({ err });
+      console.error(err);
     }
   };
 
   return (
     <Grid item md={6}>
-      <form onSubmit={handleFormSubmit}>
+      <div>
         <Box
           sx={{
             mt: 10,
@@ -114,7 +116,7 @@ const EditUserForm = () => {
               Cancel
             </Button>
             <Button
-              type="submit"
+              onClick={handleFormSubmit}
               variant="contained"
               color="success"
               sx={{ width: '6rem', mx: 2 }}
@@ -123,7 +125,7 @@ const EditUserForm = () => {
             </Button>
           </Box>
         </Box>
-      </form>
+      </div>
     </Grid>
   );
 };

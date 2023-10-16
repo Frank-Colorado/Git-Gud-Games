@@ -26,11 +26,7 @@ const EditUserForm = () => {
   };
   const editUserForm = useAppSelector((state) => state.editUser);
 
-  const [updateUser, { error }] = useMutation(UPDATE_USER, {
-    onCompleted: (data) => {
-      dispatch(setUser(data.updateUser));
-    },
-  });
+  const [updateUser, { error }] = useMutation(UPDATE_USER);
 
   useEffect(() => {
     dispatch(setForm(userDetails));
@@ -54,7 +50,7 @@ const EditUserForm = () => {
           },
         },
       });
-      console.log(data?.updateUser);
+      console.log('saving user changes');
     } catch (err) {
       console.error({ err });
     }

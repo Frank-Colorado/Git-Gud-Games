@@ -16,13 +16,17 @@ interface EditGameLibraryProps {
 
 const EditGameLibrary = ({ game }: EditGameLibraryProps) => {
   const dispatch = useAppDispatch();
+
   const [addGameToLibrary, { error }] = useMutation(ADD_GAME_TO_LIBRARY);
+
   const [removeGameFromLibrary] = useMutation(REMOVE_GAME_FROM_LIBRARY);
 
   const [hasGame, setHasGame] = useState(false);
+
   const {
     user: { gameLibrary },
   } = useAppSelector((state) => state.user);
+
   const { id, name, background_image } = game;
 
   useEffect(() => {
@@ -48,6 +52,7 @@ const EditGameLibrary = ({ game }: EditGameLibraryProps) => {
         },
       });
 
+      console.log('saving game to library');
       if (data) {
         dispatch(addUserGame(gameInput));
         setHasGame(true);

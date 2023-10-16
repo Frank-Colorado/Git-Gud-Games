@@ -1,29 +1,33 @@
 import { useEffect } from 'react';
 import { useAppDispatch } from '../hooks';
+import { useQuery } from '@apollo/client';
+import { GET_ME } from '../graphql/queries';
 import { setUser } from '../store';
 import { Box, Typography, Button } from '@mui/material';
 import { GameDetailsType } from '../store/apis/gamesApi';
 import Auth from '../utils/auth';
 import { Link } from 'react-router-dom';
 import EditGameLibrary from './EditGameLibrary';
-import { useQuery } from '@apollo/client';
-import { GET_ME } from '../graphql/queries';
 
 interface GameHeaderProps {
   details: GameDetailsType;
 }
 
 const GameHeader = ({ details }: GameHeaderProps) => {
-  const dispatch = useAppDispatch();
-  const { data } = useQuery(GET_ME);
-
-  useEffect(() => {
-    if (data) {
-      dispatch(setUser(data.me));
-    }
-  }, [data]);
-
   const loggedIn = Auth.loggedIn();
+
+  const dispatch = useAppDispatch();
+  // const { data } = useQuery(GET_ME);
+
+  // console.log({ data });
+
+  // useEffect(() => {
+  //   if (data) {
+  //     console.log('GamePage useEffect called');
+  //     dispatch(setUser(data.me));
+  //   }
+  // }, [data, dispatch]);
+
   return (
     <Box
       sx={{

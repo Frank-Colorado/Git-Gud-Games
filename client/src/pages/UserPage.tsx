@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { useAppDispatch } from '../hooks';
-import { Grid } from '@mui/material';
+import { useAppDispatch, useAppSelector } from '../hooks';
+import { Grid, Box } from '@mui/material';
 import UserHeader from '../components/UserHeader';
 import UserLibrary from '../components/UserLibrary';
 import LoginRedirect from '../components/LoginRedirect';
@@ -11,14 +11,17 @@ import Auth from '../utils/auth';
 
 const UserPage = () => {
   const dispatch = useAppDispatch();
-  const { loading, error, data } = useQuery(GET_ME);
   const loggedIn = Auth.loggedIn();
+  // const { data } = useQuery(GET_ME);
 
-  useEffect(() => {
-    if (data) {
-      dispatch(setUser(data.me));
-    }
-  }, [data, dispatch]);
+  // console.log({ data });
+
+  // useEffect(() => {
+  //   if (data) {
+  //     console.log('UserPage useEffect called');
+  //     dispatch(setUser(data.me));
+  //   }
+  // }, [data, dispatch]);
 
   if (!loggedIn) {
     return <LoginRedirect />;

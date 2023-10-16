@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import Navbar from './components/Navbar';
@@ -8,8 +9,22 @@ import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import UserPage from './pages/UserPage';
 import EditUserPage from './pages/EditUserPage';
+import { useAppDispatch } from './hooks';
+import { useQuery } from '@apollo/client';
+import { GET_ME } from './graphql/queries';
+import { setUser } from './store';
 
 const App = () => {
+  const dispatch = useAppDispatch();
+  const { data } = useQuery(GET_ME);
+
+  useEffect(() => {
+    if (data) {
+      console.log('App useEffect called');
+      dispatch(setUser(data.me));
+    }
+  });
+
   return (
     <Router>
       <Navbar />

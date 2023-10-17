@@ -13,6 +13,36 @@ import { useAppDispatch } from './hooks';
 import { useQuery } from '@apollo/client';
 import { GET_ME } from './graphql/queries';
 import { setUser } from './store';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#ffffff',
+      contrastText: '#000000',
+    },
+    secondary: {
+      main: '#ea526f',
+    },
+    background: {
+      default: '#151515',
+      paper: '#202020',
+    },
+  },
+  typography: {
+    h1: {
+      fontFamily: 'Pixelify Sans',
+      fontSize: '5rem',
+      fontWeight: 500,
+    },
+    h2: {
+      fontFamily: 'Pixelify Sans',
+      fontSize: '2.5rem',
+      fontWeight: 500,
+    },
+  },
+});
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -25,19 +55,21 @@ const App = () => {
   }, [data, dispatch]);
 
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/profile" element={<UserPage />} />
-        <Route path="/profile/edit" element={<EditUserPage />} />
-        <Route path="/games/:genre" element={<GenrePage />} />
-        <Route path="/search/:searchTerm" element={<SearchPage />} />
-        <Route path="/game/:gameId" element={<GamePage />} />
-      </Routes>
-    </Router>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/profile" element={<UserPage />} />
+          <Route path="/profile/edit" element={<EditUserPage />} />
+          <Route path="/games/:genre" element={<GenrePage />} />
+          <Route path="/search/:searchTerm" element={<SearchPage />} />
+          <Route path="/game/:gameId" element={<GamePage />} />
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 };
 

@@ -28,10 +28,10 @@ const Expandable = ({ children }: ExpandableProps) => {
           component={'span'}
           onClick={handleClick}
           sx={{
-            color: 'red',
+            color: '#ea526f',
             cursor: 'pointer',
             '&:hover': {
-              color: 'yellow',
+              color: '#ffffff',
             },
           }}
         >

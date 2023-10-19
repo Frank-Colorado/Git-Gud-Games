@@ -6,14 +6,31 @@ const UserLibrary = () => {
   const { user } = useAppSelector((state) => state.user);
 
   return (
-    <>
-      <Box sx={{ height: 100, marginLeft: 2 }}>
-        <Typography variant="h2" sx={{ color: 'white' }}>
+    <Box
+      sx={{
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        mt: 5,
+      }}
+    >
+      <Box
+        sx={{
+          width: '95%',
+        }}
+      >
+        <Typography variant="h5" textAlign="start" sx={{ mt: 3 }}>
           My Library
         </Typography>
-
         {user.gameLibrary.length > 0 ? (
-          <Grid container spacing={2} sx={{ paddingX: 2 }}>
+          <Grid
+            container
+            rowSpacing={5}
+            sx={{
+              marginTop: 1,
+            }}
+          >
             {user.gameLibrary.map((game) => (
               <LibraryItem key={game.id} game={game} />
             ))}
@@ -24,7 +41,7 @@ const UserLibrary = () => {
           </Typography>
         )}
       </Box>
-    </>
+    </Box>
   );
 };
 

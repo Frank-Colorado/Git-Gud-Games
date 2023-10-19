@@ -8,7 +8,6 @@ const UserHeader = () => {
     <>
       <Box
         sx={{
-          width: '100%',
           display: 'flex',
           justifyContent: 'end',
         }}
@@ -56,12 +55,12 @@ const UserHeader = () => {
             width: '50%',
           }}
         >
-          <Typography variant="h3" sx={{ color: 'white' }}>
+          <Typography variant="h5" sx={{ color: 'white' }}>
             {user.username}
           </Typography>
           <Typography
             variant="body1"
-            sx={{ marginTop: '2rem', color: 'white' }}
+            sx={{ marginTop: '2rem', overflowWrap: 'break-word' }}
           >
             {user.bio ? user.bio : "This user doesn't have a bio yet!"}
           </Typography>

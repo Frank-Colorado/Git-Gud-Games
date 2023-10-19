@@ -59,9 +59,7 @@ const EditUserAvatar = () => {
   return (
     <Box
       sx={{
-        overflow: 'hidden',
         height: '20rem',
-
         ml: 3,
         display: 'flex',
         alignItems: 'center',

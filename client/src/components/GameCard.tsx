@@ -1,15 +1,5 @@
-import {
-  Grid,
-  Card,
-  CardMedia,
-  CardContent,
-  CardActions,
-  Button,
-  Typography,
-} from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { Grid, Card, CardMedia, CardContent, Typography } from '@mui/material';
 import { GameType } from '../store';
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 interface GameCardProps {
@@ -17,13 +7,7 @@ interface GameCardProps {
 }
 
 const GameCard = ({ game }: GameCardProps) => {
-  const navigate = useNavigate();
   const { id, name, background_image, genres } = game;
-
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const id = event.currentTarget.value;
-    navigate(`/game/${id}`);
-  };
 
   return (
     <Grid item xs={3}>

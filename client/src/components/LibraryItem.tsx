@@ -15,23 +15,34 @@ const LibraryItem = ({ game }: LibraryItemProps) => {
       <Grid item xs={6}>
         <Box
           sx={{
-            bgcolor: 'purple',
+            bgcolor: 'black',
             display: 'flex',
             alignItems: 'center',
-            height: 150,
             overflow: 'hidden',
+            border: '1px solid white',
+            p: 1,
           }}
         >
           <img
-            style={{ padding: '2rem', width: '200px', height: '125px' }}
+            style={{ width: '150px', height: '100px' }}
             src={game.image}
             alt="logo"
           />
-          <Link to={`/game/${game.id}`} style={{ textDecoration: 'none' }}>
-            <Typography variant="h5" sx={{ color: 'white' }}>
-              {game.name}
-            </Typography>
-          </Link>
+          <Typography
+            component={Link}
+            to={`/game/${game.id}`}
+            variant="h4"
+            color="primary"
+            sx={{
+              ml: 2,
+              textDecoration: 'none',
+              '&:hover': {
+                color: '#ea526f',
+              },
+            }}
+          >
+            {game.name}
+          </Typography>
         </Box>
       </Grid>
     </>

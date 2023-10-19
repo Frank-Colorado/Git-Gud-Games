@@ -9,11 +9,7 @@ const Expandable = ({ children }: ExpandableProps) => {
   const [expanded, setExpanded] = useState(false);
 
   if (children.length <= 195) {
-    return (
-      <Typography variant="body1" sx={{ color: 'white ' }}>
-        {children}
-      </Typography>
-    );
+    return <Typography variant="body1">{children}</Typography>;
   }
 
   const handleClick = () => {

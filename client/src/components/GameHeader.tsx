@@ -19,9 +19,7 @@ const GameHeader = ({ details }: GameHeaderProps) => {
         justifyContent: 'space-between',
       }}
     >
-      <Typography variant="h3" sx={{ color: 'white' }}>
-        {details.name}
-      </Typography>
+      <Typography variant="h2">{details.name}</Typography>
       <Box
         sx={{
           display: 'flex',
@@ -42,12 +40,11 @@ const GameHeader = ({ details }: GameHeaderProps) => {
               component={Link}
               to="/login"
               variant="subtitle1"
+              color="secondary"
               sx={{
-                color: 'red',
-                cursor: 'pointer',
-                textDecoration: 'none',
+                textDecoration: 'underline',
                 '&:hover': {
-                  color: 'yellow',
+                  color: 'white',
                 },
               }}
             >

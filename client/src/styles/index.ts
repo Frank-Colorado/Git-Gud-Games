@@ -6,7 +6,7 @@ export const theme = createTheme({
     mode: 'dark',
     primary: {
       main: '#ffffff',
-      contrastText: '#000000',
+      contrastText: '#ea526f',
     },
     secondary: {
       main: '#ea526f',
@@ -30,6 +30,11 @@ export const theme = createTheme({
       letterSpacing: '0.2rem',
     },
     h3: {
+      fontFamily: 'Bebas Neue',
+      fontSize: '1.3rem',
+      fontWeight: 500,
+    },
+    h4: {
       fontSize: '1.3rem',
       fontWeight: 500,
     },

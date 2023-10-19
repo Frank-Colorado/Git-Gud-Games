@@ -42,7 +42,7 @@ const Sidebar = () => {
                     <Typography
                       component={Link}
                       to={`/games/${subItem.toLowerCase()}`}
-                      variant="h3"
+                      variant="h4"
                       color="primary"
                       sx={{
                         mt: 1,

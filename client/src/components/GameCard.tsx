@@ -54,7 +54,7 @@ const GameCard = ({ game }: GameCardProps) => {
           <Typography
             component={Link}
             to={`/game/${id}`}
-            variant="h3"
+            variant="h4"
             color="primary"
             sx={{
               mt: 1,

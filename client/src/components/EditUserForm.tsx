@@ -102,7 +102,7 @@ const EditUserForm = () => {
           >
             <Button
               variant="contained"
-              color="error"
+              color="secondary"
               onClick={handleCancel}
               sx={{ width: '6rem', mx: 2 }}
             >
@@ -111,7 +111,7 @@ const EditUserForm = () => {
             <Button
               onClick={handleFormSubmit}
               variant="contained"
-              color="success"
+              color="primary"
               sx={{ width: '6rem', mx: 2 }}
             >
               Save

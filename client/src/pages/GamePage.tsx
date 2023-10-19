@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useGetGameDetailsQuery } from '../store';
-import { Grid, Typography } from '@mui/material';
+import { Grid, Typography, Paper } from '@mui/material';
 import GameHeader from '../components/GameHeader';
 import GameCarousel from '../components/GameCarousel';
 import GameDetails from '../components/GameDetails';
@@ -38,21 +38,27 @@ const GamePage = () => {
         height: '100vh',
         display: 'flex',
         justifyContent: 'center',
-        marginTop: '5rem',
-        marginBottom: '5rem',
       }}
     >
-      <Grid item md={8}>
-        <GameHeader details={data} />
-        <Grid container spacing={4}>
-          <Grid item md={8}>
-            <GameCarousel id={gameId} />
-            <GameDeals gameTitle={data.slug} />
+      <Grid item md={8} sx={{ mt: 5 }}>
+        <Paper
+          sx={{
+            height: '100%',
+            p: 5,
+            borderRadius: '1rem',
+          }}
+        >
+          <GameHeader details={data} />
+          <Grid container spacing={4}>
+            <Grid item md={8}>
+              <GameCarousel id={gameId} />
+              <GameDeals gameTitle={data.slug} />
+            </Grid>
+            <Grid item md={4}>
+              <GameDetails details={data} />
+            </Grid>
           </Grid>
-          <Grid item md={4}>
-            <GameDetails details={data} />
-          </Grid>
-        </Grid>
+        </Paper>
       </Grid>
     </Grid>
   );

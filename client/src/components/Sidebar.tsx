@@ -4,19 +4,48 @@ import { Link } from 'react-router-dom';
 const list = [
   {
     header: 'Home',
-    items: ['Popular'],
+    items: [
+      {
+        name: 'Popular',
+        path: '/',
+      },
+    ],
   },
   {
     header: 'Genres',
     items: [
-      'Action',
-      'Strategy',
-      'Indie',
-      'Shooter',
-      'Adventure',
-      'Puzzle',
-      'Racing',
-      'Sports',
+      {
+        name: 'Action',
+        path: '/games/action',
+      },
+      {
+        name: 'Strategy',
+        path: '/games/strategy',
+      },
+      {
+        name: 'Indie',
+        path: '/games/indie',
+      },
+      {
+        name: 'Shooter',
+        path: '/games/shooter',
+      },
+      {
+        name: 'Adventure',
+        path: '/games/adventure',
+      },
+      {
+        name: 'Puzzle',
+        path: '/games/puzzle',
+      },
+      {
+        name: 'Racing',
+        path: '/games/racing',
+      },
+      {
+        name: 'Sports',
+        path: '/games/sports',
+      },
     ],
   },
 ];
@@ -38,10 +67,10 @@ const Sidebar = () => {
               </Typography>
               {item.items.map((subItem) => {
                 return (
-                  <ListItem key={subItem}>
+                  <ListItem key={subItem.name}>
                     <Typography
                       component={Link}
-                      to={`/games/${subItem.toLowerCase()}`}
+                      to={`${subItem.path}`}
                       variant="h4"
                       color="primary"
                       sx={{
@@ -52,7 +81,7 @@ const Sidebar = () => {
                         },
                       }}
                     >
-                      {subItem}
+                      {subItem.name}
                     </Typography>
                   </ListItem>
                 );

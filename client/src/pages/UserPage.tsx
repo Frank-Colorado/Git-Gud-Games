@@ -20,7 +20,7 @@ const UserPage = () => {
         justifyContent: 'center',
       }}
     >
-      <Grid item md={7} sx={{ mt: 5 }}>
+      <Grid item md={6} sx={{ mt: 5 }}>
         <Paper
           sx={{
             height: '100%',

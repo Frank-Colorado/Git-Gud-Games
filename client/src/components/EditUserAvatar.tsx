@@ -61,7 +61,8 @@ const EditUserAvatar = () => {
       sx={{
         overflow: 'hidden',
         height: '20rem',
-        width: '75%',
+
+        ml: 3,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -70,7 +71,7 @@ const EditUserAvatar = () => {
       <Box>
         <Avatar
           variant="square"
-          sx={{ width: 300, height: 300 }}
+          sx={{ width: 300, height: 300, border: '2px solid #ffffff' }}
           src={avatar ? avatar : ''}
         />
       </Box>
@@ -78,7 +79,7 @@ const EditUserAvatar = () => {
         <Button
           component="label"
           variant="contained"
-          sx={{ mt: 2, fontWeight: 'bold' }}
+          sx={{ mr: 18, fontWeight: 'bold' }}
         >
           Upload Avatar Image
           <VisuallyHiddenInput

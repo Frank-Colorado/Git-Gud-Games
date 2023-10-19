@@ -52,73 +52,57 @@ const EditUserForm = () => {
   };
 
   return (
-    <Grid item md={6}>
-      <div>
-        <Box
+    <>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'end',
+        }}
+      >
+        <Typography
+          component={Link}
+          to="/profile"
+          variant="button"
+          color="secondary"
           sx={{
-            mt: 10,
-            border: '1px solid #D83F31',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            bgcolor: 'black',
+            m: 2,
+            borderBottom: '1px solid white',
+            textDecoration: 'none',
+            '&:hover': {
+              color: '#ffffff',
+            },
           }}
         >
-          <Box
-            sx={{
-              width: '100%',
-              display: 'flex',
-              justifyContent: 'end',
-            }}
-          >
-            <Typography
-              component={Link}
-              to="/profile"
-              variant="button"
-              color="secondary"
-              sx={{
-                m: 2,
-                borderBottom: '1px solid white',
-                textDecoration: 'none',
-                '&:hover': {
-                  color: '#ffffff',
-                },
-              }}
-            >
-              Back To Profile
-            </Typography>
-          </Box>
-          <EditUserAvatar />
-          <EditUserDetails />
-          <Box
-            sx={{
-              mt: 3,
-              mb: 10,
-              width: '75%',
-              display: 'flex',
-              justifyContent: 'center',
-            }}
-          >
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={handleCancel}
-              sx={{ width: '6rem', mx: 2, fontWeight: 'bold' }}
-            >
-              Cancel
-            </Button>
-            <Button
-              onClick={handleFormSubmit}
-              variant="contained"
-              color="primary"
-              sx={{ width: '6rem', mx: 2, fontWeight: 'bold' }}
-            >
-              Save
-            </Button>
-          </Box>
-        </Box>
-      </div>
-    </Grid>
+          Back To Profile
+        </Typography>
+      </Box>
+      <EditUserAvatar />
+      <EditUserDetails />
+      <Box
+        sx={{
+          mt: 7,
+          display: 'flex',
+          justifyContent: 'center',
+        }}
+      >
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={handleCancel}
+          sx={{ width: '6rem', mx: 2, fontWeight: 'bold' }}
+        >
+          Cancel
+        </Button>
+        <Button
+          onClick={handleFormSubmit}
+          variant="contained"
+          color="primary"
+          sx={{ width: '6rem', mx: 2, fontWeight: 'bold' }}
+        >
+          Save
+        </Button>
+      </Box>
+    </>
   );
 };
 

@@ -75,7 +75,11 @@ const EditUserAvatar = () => {
         />
       </Box>
       <Box>
-        <Button component="label" variant="contained" sx={{ mt: 2 }}>
+        <Button
+          component="label"
+          variant="contained"
+          sx={{ mt: 2, fontWeight: 'bold' }}
+        >
           Upload Avatar Image
           <VisuallyHiddenInput
             type="file"

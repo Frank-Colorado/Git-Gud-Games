@@ -75,14 +75,13 @@ const EditUserForm = () => {
               component={Link}
               to="/profile"
               variant="button"
+              color="secondary"
               sx={{
                 m: 2,
-                color: 'red',
-                cursor: 'pointer',
                 borderBottom: '1px solid white',
                 textDecoration: 'none',
                 '&:hover': {
-                  color: 'yellow',
+                  color: '#ffffff',
                 },
               }}
             >
@@ -104,7 +103,7 @@ const EditUserForm = () => {
               variant="contained"
               color="secondary"
               onClick={handleCancel}
-              sx={{ width: '6rem', mx: 2 }}
+              sx={{ width: '6rem', mx: 2, fontWeight: 'bold' }}
             >
               Cancel
             </Button>
@@ -112,7 +111,7 @@ const EditUserForm = () => {
               onClick={handleFormSubmit}
               variant="contained"
               color="primary"
-              sx={{ width: '6rem', mx: 2 }}
+              sx={{ width: '6rem', mx: 2, fontWeight: 'bold' }}
             >
               Save
             </Button>

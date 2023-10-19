@@ -85,11 +85,25 @@ const EditGameLibrary = ({ game }: EditGameLibraryProps) => {
   return (
     <div>
       {hasGame ? (
-        <Button onClick={handleRemoveGame} color="error" variant="contained">
+        <Button
+          onClick={handleRemoveGame}
+          color="secondary"
+          variant="contained"
+          sx={{
+            fontWeight: 'bold',
+          }}
+        >
           Remove from Library
         </Button>
       ) : (
-        <Button onClick={handleAddGame} color="success" variant="contained">
+        <Button
+          onClick={handleAddGame}
+          color="primary"
+          variant="contained"
+          sx={{
+            fontWeight: 'bold',
+          }}
+        >
           Add to Library
         </Button>
       )}

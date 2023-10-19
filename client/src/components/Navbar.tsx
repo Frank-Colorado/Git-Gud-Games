@@ -12,7 +12,7 @@ import {
   Icon,
   Button,
 } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { Link } from 'react-router-dom';
 import Auth from '../utils/auth';
@@ -53,9 +53,31 @@ const Navbar = () => {
       onClose={handleMenuClose}
     >
       <Link to="/profile">
-        <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+        <MenuItem
+          onClick={handleMenuClose}
+          sx={{
+            textDecoration: 'none',
+            color: 'white',
+            '&:hover': {
+              color: '#ea526f',
+            },
+          }}
+        >
+          Profile
+        </MenuItem>
       </Link>
-      <MenuItem onClick={handleLogout}>Logout</MenuItem>
+      <MenuItem
+        onClick={handleLogout}
+        sx={{
+          textDecoration: 'none',
+          color: 'white',
+          '&:hover': {
+            color: '#ea526f',
+          },
+        }}
+      >
+        Logout
+      </MenuItem>
     </Menu>
   );
 
@@ -63,26 +85,35 @@ const Navbar = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
         position="static"
-        sx={{ height: '5rem', backgroundColor: 'white' }}
+        sx={{
+          //add shadow
+          borderBottom: '1px solid #000000',
+          boxShadow: '0px 0px 15px #ffffff',
+        }}
       >
-        <Toolbar>
+        <Toolbar
+          sx={{
+            backgroundColor: 'black',
+            height: '7rem',
+          }}
+        >
           <Typography
             component={Link}
             to="/"
-            variant="h3"
+            variant="h1"
+            color="primary"
             sx={{
-              color: 'red',
-              cursor: 'pointer',
+              fontWeight: 'bold',
               textDecoration: 'none',
               '&:hover': {
-                color: 'yellow',
+                color: '#ea526f',
               },
             }}
           >
             GIT GUD GAMES
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, mr: 7 }}>
             <Autocomplete />
             {loggedIn ? (
               <IconButton
@@ -92,24 +123,41 @@ const Navbar = () => {
                 aria-controls={menuId}
                 aria-haspopup="true"
                 onClick={handleMenuOpen}
-                sx={{ color: 'black' }}
               >
                 <AccountCircle />
               </IconButton>
             ) : (
-              <div>
+              <>
                 <Button
                   component={Link}
                   to="/login"
-                  variant="contained"
-                  sx={{ mr: 3 }}
+                  color="primary"
+                  variant="text"
+                  sx={{
+                    mr: 2,
+                    '&:hover': {
+                      backgroundColor: '#000000',
+                      color: '#ea526f',
+                    },
+                  }}
                 >
                   Login
                 </Button>
-                <Button component={Link} to="/signup" variant="contained">
+                <Button
+                  component={Link}
+                  to="/signup"
+                  color="primary"
+                  variant="text"
+                  sx={{
+                    '&:hover': {
+                      backgroundColor: '#000000',
+                      color: '#ea526f',
+                    },
+                  }}
+                >
                   Signup
                 </Button>
-              </div>
+              </>
             )}
           </Box>
         </Toolbar>

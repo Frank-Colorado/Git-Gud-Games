@@ -10,6 +10,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { GameType } from '../store';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface GameCardProps {
   game: GameType;
@@ -26,7 +27,13 @@ const GameCard = ({ game }: GameCardProps) => {
 
   return (
     <Grid item xs={3}>
-      <Card sx={{ height: '21rem', width: '22rem', bgcolor: '#202020' }}>
+      <Card
+        sx={{
+          height: '21rem',
+          width: '22rem',
+          boxShadow: '0px 0px 10px #ffffff',
+        }}
+      >
         <CardMedia
           component="img"
           height="200"
@@ -37,19 +44,32 @@ const GameCard = ({ game }: GameCardProps) => {
           }
           alt={name}
         />
-        <CardContent>
-          <Typography variant="h6" textAlign="center">
+        <CardContent
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Typography
+            component={Link}
+            to={`/game/${id}`}
+            variant="h3"
+            color="primary"
+            sx={{
+              mt: 1,
+              textDecoration: 'none',
+              '&:hover': {
+                color: '#ea526f',
+              },
+            }}
+          >
             {name}
           </Typography>
-          <Typography component="div" textAlign="center">
+          <Typography component="div" variant="subtitle1" sx={{ mt: 3 }}>
             {genres.map((genre) => genre.name).join(', ')}
           </Typography>
         </CardContent>
-        <CardActions>
-          <Button size="small" value={id} onClick={handleClick}>
-            View
-          </Button>
-        </CardActions>
       </Card>
     </Grid>
   );

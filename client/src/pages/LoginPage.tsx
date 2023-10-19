@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../graphql/mutations';
@@ -63,9 +63,37 @@ const LoginPage = () => {
       <Typography variant="subtitle1" sx={{ marginTop: '1rem' }}>
         {error && <Typography color="error">{error.message}</Typography>}
       </Typography>
-      <Typography variant="subtitle1" sx={{ marginTop: '1rem' }}>
-        Don't have an account? Sign up <Link to="/signup">here</Link> !
-      </Typography>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Typography
+          variant="subtitle1"
+          color="primary"
+          sx={{ marginTop: '1rem' }}
+        >
+          Don't have an account?
+        </Typography>
+        <Typography
+          component={Link}
+          to="/signup"
+          color="secondary"
+          sx={{
+            fontSize: '1rem',
+            textDecoration: 'none',
+            borderBottom: '1px solid white',
+            '&:hover': {
+              color: '#ffffff',
+            },
+          }}
+        >
+          Sign Up Here!
+        </Typography>
+      </Box>
     </Grid>
   );
 };

@@ -17,14 +17,13 @@ const UserHeader = () => {
           component={Link}
           to="/profile/edit"
           variant="button"
+          color="secondary"
           sx={{
             m: 2,
-            color: 'red',
-            cursor: 'pointer',
             borderBottom: '1px solid white',
             textDecoration: 'none',
             '&:hover': {
-              color: 'yellow',
+              color: '#ffffff',
             },
           }}
         >

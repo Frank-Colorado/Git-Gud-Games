@@ -38,13 +38,16 @@ const GameHeader = ({ details }: GameHeaderProps) => {
             </Typography>
             <Typography
               component={Link}
-              to="/login"
-              variant="subtitle1"
+              to="/profile"
+              variant="button"
               color="secondary"
               sx={{
-                textDecoration: 'underline',
+                fontSize: '.75rem',
+                mx: 1,
+                borderBottom: '1px solid white',
+                textDecoration: 'none',
                 '&:hover': {
-                  color: 'white',
+                  color: '#ffffff',
                 },
               }}
             >

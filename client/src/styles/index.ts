@@ -39,6 +39,12 @@ export const theme = createTheme({
       fontSize: '1.3rem',
       fontWeight: 500,
     },
+    h5: {
+      fontFamily: 'Bebas Neue',
+      fontSize: '2.5rem',
+      fontWeight: 500,
+      letterSpacing: '0.2rem',
+    },
   },
 });
 

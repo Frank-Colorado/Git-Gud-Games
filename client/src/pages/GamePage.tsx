@@ -46,6 +46,7 @@ const GamePage = () => {
             height: '100%',
             p: 5,
             borderRadius: '1rem',
+            boxShadow: '0px 0px 15px #ffffff',
           }}
         >
           <GameHeader details={data} />

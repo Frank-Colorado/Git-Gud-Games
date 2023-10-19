@@ -54,19 +54,26 @@ const GameDeals = ({ gameTitle }: GameDealsProps) => {
           marginBottom: '2rem',
         }}
       >
-        <Typography variant="h4" sx={{ color: 'white' }}>
+        <Typography variant="h5" color="secondary">
           Deals
         </Typography>
-        <Typography variant="h4" sx={{ color: 'white' }}>
+        <Typography variant="h4">
           Retail Price: ${newData[0].retailPrice}
         </Typography>
       </div>
       {newData.map((deal) => (
         <div
-          style={{ display: 'flex', justifyContent: 'space-between' }}
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+
+            marginBottom: '1rem',
+            borderRadius: '0.25rem',
+          }}
           key={deal.dealID}
         >
-          <Typography variant="h5" sx={{ color: 'white' }}>
+          <Typography variant="h4" sx={{ color: 'white' }}>
             {deal.storeName}
           </Typography>
           <Box
@@ -77,7 +84,6 @@ const GameDeals = ({ gameTitle }: GameDealsProps) => {
               width: '25%',
               justifyContent: 'center',
               borderRadius: '0.25rem',
-              mb: 2,
             }}
           >
             <Box sx={{ width: '5rem', mx: 2 }}>
@@ -89,7 +95,15 @@ const GameDeals = ({ gameTitle }: GameDealsProps) => {
               href={`https://www.cheapshark.com/redirect?dealID=${deal.dealID}`}
               target="_blank"
               color="primary"
-              sx={{ height: '2.5rem', width: '7rem' }}
+              variant="text"
+              sx={{
+                height: '2.5rem',
+                width: '7rem',
+                '&:hover': {
+                  backgroundColor: '#000000',
+                  color: '#ea526f',
+                },
+              }}
             >
               Get Deal
             </Button>

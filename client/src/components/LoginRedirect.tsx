@@ -12,19 +12,27 @@ const LoginRedirect = () => {
         alignItems: 'center',
       }}
     >
-      <Typography variant="h3" sx={{ color: 'white', mb: 5 }}>
+      <Typography
+        variant="h3"
+        color="primary"
+        sx={{
+          fontSize: '2rem',
+          mb: 5,
+        }}
+      >
         You need to be logged in to view this page.
       </Typography>
       <Typography
         component={Link}
         to="/login"
-        variant="h3"
+        variant="button"
+        color="secondary"
         sx={{
-          color: 'red',
-          cursor: 'pointer',
+          fontSize: '1.25rem',
+          borderBottom: '1px solid white',
           textDecoration: 'none',
           '&:hover': {
-            color: 'yellow',
+            color: '#ffffff',
           },
         }}
       >

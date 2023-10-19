@@ -1,4 +1,4 @@
-import { Grid, Box } from '@mui/material';
+import { Grid, Paper } from '@mui/material';
 import UserHeader from '../components/UserHeader';
 import UserLibrary from '../components/UserLibrary';
 import LoginRedirect from '../components/LoginRedirect';
@@ -16,12 +16,22 @@ const UserPage = () => {
       container
       sx={{
         height: '100vh',
+        display: 'flex',
         justifyContent: 'center',
       }}
     >
-      <Grid item md={7} sx={{ bgcolor: 'black' }}>
-        <UserHeader />
-        <UserLibrary />
+      <Grid item md={7} sx={{ mt: 5 }}>
+        <Paper
+          sx={{
+            height: '100%',
+            p: 5,
+            borderRadius: '1rem',
+            boxShadow: '0px 0px 15px #ffffff',
+          }}
+        >
+          <UserHeader />
+          <UserLibrary />
+        </Paper>
       </Grid>
     </Grid>
   );

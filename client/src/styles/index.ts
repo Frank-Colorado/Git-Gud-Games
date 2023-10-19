@@ -33,6 +33,7 @@ export const theme = createTheme({
       fontFamily: 'Bebas Neue',
       fontSize: '1.3rem',
       fontWeight: 500,
+      letterSpacing: '0.2rem',
     },
     h4: {
       fontSize: '1.3rem',

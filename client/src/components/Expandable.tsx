@@ -22,7 +22,7 @@ const Expandable = ({ children }: ExpandableProps) => {
 
   return (
     <>
-      <Typography variant="body1" sx={{ color: 'white' }}>
+      <Typography variant="body1">
         {expanded ? children : children.slice(0, 195) + '...'}
         <Typography
           component={'span'}

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const list = [
   {
     header: 'Home',
-    items: ['Popular', 'Favorites', 'New Releases'],
+    items: ['Popular'],
   },
   {
     header: 'Genres',
@@ -27,20 +27,33 @@ const Sidebar = () => {
       <div
         style={{
           position: 'fixed',
-          backgroundColor: 'orange',
-          marginTop: '8rem',
+          marginTop: '5.5rem',
         }}
       >
         {list.map((item) => {
           return (
             <List key={item.header}>
-              <Typography variant="h5">{item.header}</Typography>
+              <Typography variant="h2" color="secondary">
+                {item.header}
+              </Typography>
               {item.items.map((subItem) => {
                 return (
                   <ListItem key={subItem}>
-                    <Link to={`/games/${subItem.toLowerCase()}`}>
+                    <Typography
+                      component={Link}
+                      to={`/games/${subItem.toLowerCase()}`}
+                      variant="h3"
+                      color="primary"
+                      sx={{
+                        mt: 1,
+                        textDecoration: 'none',
+                        '&:hover': {
+                          color: '#ea526f',
+                        },
+                      }}
+                    >
                       {subItem}
-                    </Link>
+                    </Typography>
                   </ListItem>
                 );
               })}

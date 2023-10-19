@@ -9,7 +9,7 @@ export const theme = createTheme({
       contrastText: '#000000',
     },
     secondary: {
-      main: '#000000',
+      main: '#ea526f',
       contrastText: '#ffffff',
     },
     background: {
@@ -25,7 +25,7 @@ export const theme = createTheme({
     },
     h2: {
       fontFamily: 'Bebas Neue',
-      fontSize: '2.5rem',
+      fontSize: '3.5rem',
       fontWeight: 500,
       letterSpacing: '0.2rem',
     },

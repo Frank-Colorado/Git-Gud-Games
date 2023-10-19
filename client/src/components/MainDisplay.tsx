@@ -14,7 +14,12 @@ const MainDisplay = ({ header, query }: MainDisplayProps) => {
         <Sidebar />
       </Grid>
       <Grid item md={10}>
-        <Typography variant="h2" sx={{ my: 4, color: 'white' }} align="center">
+        <Typography
+          variant="h2"
+          color="secondary"
+          sx={{ mt: 3, mb: 2 }}
+          align="center"
+        >
           {header}
         </Typography>
         <GamesDisplay query={query} />;

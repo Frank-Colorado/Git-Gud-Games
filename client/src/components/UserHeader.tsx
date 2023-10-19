@@ -45,7 +45,7 @@ const UserHeader = () => {
         >
           <Avatar
             variant="square"
-            sx={{ width: 300, height: 300 }}
+            sx={{ width: 300, height: 300, border: '2px solid #ffffff' }}
             src={user.avatar ? user.avatar : ''}
           />
         </Box>

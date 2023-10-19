@@ -17,37 +17,43 @@ const EditUserDetails = () => {
   return (
     <Box
       sx={{
+        width: '100%',
         display: 'flex',
         flexDirection: 'column',
-        width: '100%',
-        mt: 7,
-        color: 'white',
+        alignItems: 'center',
+        mt: 5,
       }}
     >
-      <Typography variant="h5" textAlign="start" sx={{ mt: 3 }}>
-        Username
-      </Typography>
-      <TextField
-        value={username}
-        onChange={handleUsernameChange}
-        sx={{ mt: 1, mb: 3, width: '100%', input: { color: 'white' } }}
-      />
-      <Typography variant="h5" textAlign="start" sx={{ mt: 3 }}>
-        About Me
-      </Typography>
-      <TextField
-        value={bio}
-        onChange={handleBioChange}
+      <Box
         sx={{
-          mt: 1,
-          mb: 3,
-          width: '100%',
+          width: '95%',
         }}
-        placeholder="Tell us about yourself!"
-        multiline
-        rows={4}
-        inputProps={{ style: { color: 'white' } }}
-      />
+      >
+        <Typography variant="h5" textAlign="start" sx={{ mt: 3 }}>
+          Username
+        </Typography>
+        <TextField
+          value={username}
+          onChange={handleUsernameChange}
+          sx={{ mt: 1, mb: 3, width: '100%', input: { color: 'white' } }}
+        />
+        <Typography variant="h5" textAlign="start" sx={{ mt: 3 }}>
+          About Me
+        </Typography>
+        <TextField
+          value={bio}
+          onChange={handleBioChange}
+          sx={{
+            mt: 1,
+            mb: 3,
+            width: '100%',
+          }}
+          placeholder="Tell us about yourself!"
+          multiline
+          rows={4}
+          inputProps={{ style: { color: 'white' } }}
+        />
+      </Box>
     </Box>
   );
 };

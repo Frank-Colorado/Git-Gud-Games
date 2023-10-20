@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks';
-import { Grid, Box, Button, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import { useMutation } from '@apollo/client';
 import { UPDATE_USER } from '../graphql/mutations';
 import { setUser } from '../store';

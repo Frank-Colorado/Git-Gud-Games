@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import SearchInput from './SearchInput';
 import Autocomplete from './Autocomplete';
 import {
   Box,
@@ -9,7 +8,6 @@ import {
   IconButton,
   Menu,
   MenuItem,
-  Icon,
   Button,
 } from '@mui/material';
 

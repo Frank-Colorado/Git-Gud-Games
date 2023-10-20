@@ -8,18 +8,18 @@ const Autocomplete = () => {
 
   const [inputValue, setInputValue] = useState('');
   const [value, setValue] = useState<GameType | null>(null);
-  const { data, error, isFetching } = useGetSearchOptionsQuery(inputValue);
+  const { data, isFetching } = useGetSearchOptionsQuery(inputValue);
   const options: GameType[] = data || [];
 
   const handleInputChange = (
-    event: React.ChangeEvent<{}>,
+    _event: React.ChangeEvent<{}>,
     newInputValue: string
   ) => {
     setInputValue(newInputValue);
   };
 
   const handleValueChange = (
-    event: React.ChangeEvent<{}>,
+    _event: React.ChangeEvent<{}>,
     newValue: GameType | null
   ) => {
     setValue(newValue);

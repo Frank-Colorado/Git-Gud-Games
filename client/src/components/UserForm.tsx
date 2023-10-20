@@ -1,25 +1,4 @@
 import { Box, TextField, Button } from '@mui/material';
-import { styled } from '@mui/material/styles';
-
-// const StyledTextField = styled(TextField)({
-//   '& label.Mui-focused': {
-//     color: '#EE9322',
-//   },
-//   '& .MuiInput-underline:after': {
-//     borderBottomColor: '#EE9322',
-//   },
-//   '& .MuiOutlinedInput-root': {
-//     '& fieldset': {
-//       borderColor: '#EE9322',
-//     },
-//     '&:hover fieldset': {
-//       borderColor: '#EE9322',
-//     },
-//     '&.Mui-focused fieldset': {
-//       borderColor: '#EE9322',
-//     },
-//   },
-// });
 
 interface UserFormProps {
   state: { username: string; password: string };

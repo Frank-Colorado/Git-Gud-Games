@@ -1,5 +1,4 @@
 import { createTheme, styled } from '@mui/material/styles';
-import { Typography } from '@mui/material';
 
 export const theme = createTheme({
   palette: {
@@ -47,12 +46,3 @@ export const theme = createTheme({
     },
   },
 });
-
-// export const StyledLinkTypography = styled(Typography)(({ theme }) => ({
-//   cursor: 'pointer',
-//   color: theme.palette.primary.main,
-//   textDecoration: 'none',
-//   '&:hover': {
-//     color: theme.palette.primary.main,
-//   },
-// }));

@@ -14,9 +14,8 @@ import {
   IsInt,
   IsString,
   IsOptional,
-  IsBase64,
 } from 'class-validator';
-import bcrypt from 'bcrypt';
+const bcrypt = require('bcrypt');
 import { AsQueryMethod, Ref } from '@typegoose/typegoose/lib/types';
 
 function findByUsername(

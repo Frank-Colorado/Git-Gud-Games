@@ -7,7 +7,7 @@
     "start": "node server/build/index.js",
     "install": "cd server && npm i && cd ../client && npm i",
     "build": "cd client && npm run build",
-    "postinstall": "tsc && npm run install && npm run build",
+    "postinstall": "tsc -p server/tsconfig.json && npm run install && npm run build",
     "develop": "concurrently \"cd server && npm run start\" \"cd client && npm run dev\""
   },
   "keywords": [],

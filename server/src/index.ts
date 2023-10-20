@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import path from 'path';
 import dotenv from 'dotenv';
 dotenv.config();
-import express, { Express } from 'express';
+import express, { Request, Response } from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import {
   ApolloServerPluginLandingPageProductionDefault,
@@ -44,7 +44,7 @@ const main = async () => {
     ],
   });
 
-  const app: Express = express();
+  const app: any = express();
 
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
@@ -53,11 +53,12 @@ const main = async () => {
     app.use(express.static(path.join(__dirname, '../client/build')));
   }
 
-  app.get('/', (req, res) => {
+  app.get('/', (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, './client/build/index.html'));
   });
 
   await server.start();
+
   server.applyMiddleware({ app });
 
   db.once('open', () => {

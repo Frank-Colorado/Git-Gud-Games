@@ -2,9 +2,10 @@
   "name": "finalproject",
   "version": "1.0.0",
   "description": "",
-  "main": "server/build/index.js",
+  "main": "server/src/index.ts",
   "scripts": {
     "start": "node server/build/index.js",
+    "postinstall": "tsc",
     "develop": "concurrently \"cd server && npm run start\" \"cd client && npm run dev\""
   },
   "keywords": [],

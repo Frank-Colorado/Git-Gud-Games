@@ -5,7 +5,9 @@
   "main": "server/src/index.ts",
   "scripts": {
     "start": "node server/build/index.js",
-    "postinstall": "tsc",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "build": "cd client && npm run build",
+    "postinstall": "tsc && npm run install && npm run build",
     "develop": "concurrently \"cd server && npm run start\" \"cd client && npm run dev\""
   },
   "keywords": [],

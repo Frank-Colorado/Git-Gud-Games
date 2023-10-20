@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { setUsername, setBio } from '../store';
-import { Box, Button, TextField, Typography } from '@mui/material';
+import { Box, TextField, Typography } from '@mui/material';
 
 const EditUserDetails = () => {
   const dispatch = useAppDispatch();

@@ -1,4 +1,4 @@
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { GameDetailsType } from '../store/apis/gamesApi';
 import Auth from '../utils/auth';
 import { Link } from 'react-router-dom';

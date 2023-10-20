@@ -19,17 +19,17 @@ const EditUserForm = () => {
   };
   const editUserForm = useAppSelector((state) => state.editUser);
 
-  const [updateUser, { error }] = useMutation(UPDATE_USER);
+  const [updateUser] = useMutation(UPDATE_USER);
 
   useEffect(() => {
     dispatch(setForm(userDetails));
   }, [user]);
 
-  const handleCancel = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleCancel = (_e: React.MouseEvent<HTMLButtonElement>) => {
     dispatch(setForm(userDetails));
   };
 
-  const handleFormSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleFormSubmit = async (_e: React.MouseEvent<HTMLButtonElement>) => {
     const formValues = {
       username: editUserForm.username,
       bio: editUserForm.bio,

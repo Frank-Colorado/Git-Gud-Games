@@ -5,7 +5,6 @@ import { useMutation } from '@apollo/client';
 import {
   ADD_GAME_TO_LIBRARY,
   REMOVE_GAME_FROM_LIBRARY,
-  UPDATE_USER,
 } from '../graphql/mutations';
 import { GameDetailsType } from '../store/apis/gamesApi';
 import { Button } from '@mui/material';
@@ -17,7 +16,7 @@ interface EditGameLibraryProps {
 const EditGameLibrary = ({ game }: EditGameLibraryProps) => {
   const dispatch = useAppDispatch();
 
-  const [addGameToLibrary, { error }] = useMutation(ADD_GAME_TO_LIBRARY);
+  const [addGameToLibrary] = useMutation(ADD_GAME_TO_LIBRARY);
 
   const [removeGameFromLibrary] = useMutation(REMOVE_GAME_FROM_LIBRARY);
 

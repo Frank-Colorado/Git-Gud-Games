@@ -3,7 +3,7 @@ import MainDisplay from '../components/MainDisplay';
 
 const SearchPage = () => {
   const { searchTerm } = useParams();
-  const headerText = `Search Results for ${searchTerm}`;
+  const headerText = `Search Results`;
   const queryText = `&search=${searchTerm}`;
   return (
     <div>

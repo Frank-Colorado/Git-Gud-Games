@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
+    "build": "tsc",
+    "start": "node build/index.js",
     "start:build": "tsc -w",
     "start:run": "nodemon build/index.js",
-    "start": "concurrently npm:start:*"
+    "start:dev": "concurrently npm:start:*"
   },
   "keywords": [],
   "author": "",

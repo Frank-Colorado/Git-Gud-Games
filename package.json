@@ -2,9 +2,9 @@
   "name": "finalproject",
   "version": "1.0.0",
   "description": "",
-  "main": "server/index.js",
+  "main": "server/build/index.js",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "node server/build/index.js",
     "develop": "concurrently \"cd server && npm run start\" \"cd client && npm run dev\""
   },
   "keywords": [],

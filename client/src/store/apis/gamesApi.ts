@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-const apiKey =
-  import.meta.env.VITE_RAWG_API_KEY || process.env.VITE_RAWG_API_KEY;
+const apiKey = process.env.VITE_RAWG_API_KEY;
 const baseUrl = `https://api.rawg.io/api`;
 
 export interface GameType {

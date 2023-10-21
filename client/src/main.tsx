@@ -13,8 +13,14 @@ import { setContext } from '@apollo/client/link/context';
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './styles';
 
+const isDevelopment = import.meta.env.DEV;
+
+const graphqlUri = isDevelopment
+  ? 'http://localhost:3001/graphql' // development
+  : 'https://git-gud-games-276f8dfab5d3.herokuapp.com/graphql';
+
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql',
+  uri: graphqlUri,
 });
 
 const authLink = setContext((_, { headers }) => {

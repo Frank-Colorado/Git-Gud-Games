@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "proxy": "https://git-gud-games-276f8dfab5d3.herokuapp.com/",
   "scripts": {
     "codegen": "graphql-codegen --watch",
     "dev": "vite",

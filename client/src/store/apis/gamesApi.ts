@@ -1,4 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import dotenv from 'dotenv';
+dotenv.config();
 const apiKey = process.env.VITE_RAWG_API_KEY;
 const baseUrl = `https://api.rawg.io/api`;
 
